@@ -1,0 +1,39 @@
+/*ALWAYS set margin to 0*/
+body {
+	margin: 0 auto;
+}
+
+.container {
+	padding: 0 20%;
+}
+
+h2 {
+	text-align: center;
+}
+
+/*flexbox makes children flex items*/
+ul {
+	list-style: none;
+	display: flex;
+	/*align-items: center;*/
+	justify-content: center;
+	padding: 0px;
+	margin: 0 auto;
+}
+
+li a {
+	text-decoration: none;
+	color: black;
+	margin: 0 20px;
+}
+
+nav {
+	background-color: #FF9B85;
+	padding: 20px 0;
+	font-family: Gochi Hand;
+	font-size: 200%;
+}
+
+section {
+	font-family: Montserrat;
+}
