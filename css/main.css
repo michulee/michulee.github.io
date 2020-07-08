@@ -1,7 +1,10 @@
 /*ALWAYS set margin to 0*/
 body {
 	margin: 0 auto;
+	font-family: Montserrat;
+	background-color: #2A2A2A;
 }
+
 
 .container {
 	padding: 0 20%;
@@ -23,17 +26,14 @@ ul {
 
 li a {
 	text-decoration: none;
-	color: black;
+	color: #BDBDBD;
 	margin: 0 20px;
 }
 
 nav {
-	background-color: #FF9B85;
+	background-color: #151515;
 	padding: 20px 0;
-	font-family: Gochi Hand;
-	font-size: 200%;
+	font-family: PT Serif;
+	font-size: 150%;
 }
 
-section {
-	font-family: Montserrat;
-}
