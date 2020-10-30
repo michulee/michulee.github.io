@@ -16,12 +16,16 @@ h1, h2, h3, p, ul, li, body {
 	padding: 0;
 }
 
+.material-icons {
+	font-size: 144px;
+}
+
 li {
 	list-style-type: none;
 }
 
 .content-wrapper {
-	width: 60%;
+	width: 50%;
 }
 
 /* align items collapses height of container */
@@ -41,9 +45,6 @@ li {
 }
 
 /* About Me Section */
-#about-me {
-	/* background-color: #e8dfc7; */
-}
 #about-me h1 {
 	font-weight: 900;
 	font-size: 500%;
