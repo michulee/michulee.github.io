@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--CSS-->
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
 
 </head>
@@ -27,16 +27,11 @@
                 <li><a href="#projects">Projects</a></li>
             </ul>
         </nav>
-        <!-- Header Banner -->
-        <!-- <div class="header-banner">
-                <h1>Michelle Lee</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur eos officia provident velit quas optio, aspernatur blanditiis itaque commodi sit, totam ducimus expedita sed. Corrupti iure inventore recusandae a eligendi.</p>
-            </div> -->
     </header>
     <!-- header height 100% doesn't work in <header> -->
     <div class="flex-layout">
         <!-- About Me Section -->
-        <div id="about-me"class="header-banner flex-item">
+        <div id="about-me" class="flex-item">
             <div class="content-wrapper">
                 <h1>Michelle Lee</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur eos officia provident velit quas
@@ -47,8 +42,8 @@
         <!-- Skills Section -->
         <div id="skills" class="skill-container flex-item">
             <div class="content-wrapper">
-                <h2>Skills</h2>
-                <div class="skill">
+                <h1>Skills</h1>
+                <div>
                     <ul>
                         <li>HTML</li>
                         <li>CSS</li>
@@ -63,28 +58,30 @@
         <!-- Projects Section -->
         <div id="projects" class="project-container flex-item">
             <div class="content-wrapper">
-                <h2>Projects</h2>
+                <h1>Projects</h1>
                 <div>
-                    <h3>One Resume</h3>
-                    <ul>
+                    <h2>One Resume</h2>
+                    <ul id="hashtag" class="project-skills">
                         <li>HTML</li>
                         <li>CSS</li>
                         <li>JS</li>
                     </ul>
-                    <img src="" alt="">
+                    <img src="img/one-resume.jpg" alt="One Resume">
                 </div>
                 <div>
-                    <h3>Sticker Product Page</h3>
-                    <ul>
+                    <h2>Sticker Product Page</h2>
+                    <ul id="hashtag" class="project-skills">
                         <li>HTML</li>
                         <li>CSS</li>
                         <li>JS</li>
                     </ul>
-                    <img src="" alt="">
+                    <img src="" alt="Sticker Product Page">
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="js/main.js"></script>
 </body>
 
 </html>

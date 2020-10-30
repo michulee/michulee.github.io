@@ -1,4 +1,7 @@
 * {box-sizing: border-box;}
+html {
+	scroll-behavior: smooth;
+}
 
 body, html {
 	font-family: Montserrat;
@@ -8,7 +11,7 @@ body, html {
 
 h1, h2, h3, p, ul, li, body {
 	/* text-align: center; */
-	/* color: #3d484b; */
+	color: #3d484b;
 	margin: 0;
 	padding: 0;
 }
@@ -32,24 +35,37 @@ li {
 .flex-item {
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
+	height: 85vh;
 	justify-content: center;
 	align-items: center;
 }
 
-/* Header Section */
-.header-banner {
-	background-color: #e8dfc7;
+/* About Me Section */
+#about-me {
+	/* background-color: #e8dfc7; */
+}
+#about-me h1 {
+	font-weight: 900;
+	font-size: 500%;
 }
 
-header h1 {
-	font-weight: 900;
-	font-size: 300%;
+#skills h1, #projects h1 {
+	font-weight: 700;
+	font-size: 400%;
+	margin-bottom: 5%;
+}
+
+#skills h2, #projects h2 {
+	font-size: 200%;
+}
+
+#skills li {
+	font-size: 200%;
 }
 
 /* Navigation Menu */
 header nav {
-	background-color: #eeeeee;
+	background-color: white;
 	padding: 20px 0;
 	/* font-family: PT Serif; */
 	font-size: 150%;
@@ -71,14 +87,33 @@ header nav ul {
 header nav li a {
 	text-decoration: none;
 	margin: 0 20px;
+	color: #ec9b84;
+}
+
+header nav li a:hover {
+	color: #e9c4ba;
 }
 
 /* Skill Section */
 .skill-container {
-	background-color: pink;
+	background-color: #e8b3a4;
 }
 
 /* Project Section */
 .project-container {
-	background-color: aquamarine;
+	/* background-color: #e8dfc7; */
+}
+
+#projects img {
+	/* makes img fit dimensions of parent */
+	max-width: 100%;
+}
+
+.project-skills {
+	display: flex;
+	justify-content: center;
+}
+
+.project-skills li {
+	margin: 0 1%;
 }
