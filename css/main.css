@@ -1,21 +1,65 @@
-/*ALWAYS set margin to 0*/
-body {
-	margin: 0 auto;
+* {box-sizing: border-box;}
+
+body, html {
 	font-family: Montserrat;
-	background-color: #2A2A2A;
+	/* position: absolute; */
+	/* height: 100%; */
 }
 
-
-.container {
-	padding: 0 20%;
+h1, h2, h3, p, ul, li, body {
+	/* text-align: center; */
+	/* color: #3d484b; */
+	margin: 0;
+	padding: 0;
 }
 
-h2 {
+li {
+	list-style-type: none;
+}
+
+.content-wrapper {
+	width: 60%;
+}
+
+/* align items collapses height of container */
+/* align-content: center does nothing on single-line flex */
+.flex-layout {
+	display: flex;
+	flex-direction: column;
 	text-align: center;
 }
 
-/*flexbox makes children flex items*/
-ul {
+.flex-item {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Header Section */
+.header-banner {
+	background-color: #e8dfc7;
+}
+
+header h1 {
+	font-weight: 900;
+	font-size: 300%;
+}
+
+/* Navigation Menu */
+header nav {
+	background-color: #eeeeee;
+	padding: 20px 0;
+	/* font-family: PT Serif; */
+	font-size: 150%;
+	/* display: flex; */
+	position: fixed;
+	width: 100%;
+	top: 0;
+}
+
+header nav ul {
 	list-style: none;
 	display: flex;
 	/*align-items: center;*/
@@ -24,16 +68,17 @@ ul {
 	margin: 0 auto;
 }
 
-li a {
+header nav li a {
 	text-decoration: none;
-	color: #BDBDBD;
 	margin: 0 20px;
 }
 
-nav {
-	background-color: #151515;
-	padding: 20px 0;
-	font-family: PT Serif;
-	font-size: 150%;
+/* Skill Section */
+.skill-container {
+	background-color: pink;
 }
 
+/* Project Section */
+.project-container {
+	background-color: aquamarine;
+}

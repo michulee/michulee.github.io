@@ -1,29 +1,90 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Michelle Lee</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <!--study precedence in CSS-->
-        <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Montserrat&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/main.css">
 
-    </head>
-    <body>
-    	<header>
-    		<nav>
-    			<ul>
-    				<li><a href="index.html">Home</a></li>
-                    <li><a href="road-map.html">Road Map</a></li>
-    				<li><a href="cheat-sheet.html">Cheat Sheets</a></li>
-                    <li><a href="resource.html">Resources</a></li>
-    			</ul>
-    		</nav>
-    	</header>
-    	
-        
-    </body>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Michelle Lee</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--CSS-->
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <!-- Header Nav Menu -->
+        <nav>
+            <ul>
+                <li>Michelle Lee</li>
+                <!-- section jump only works for id #, not classes -->
+                <li><a href="#about-me">About Me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </nav>
+        <!-- Header Banner -->
+        <!-- <div class="header-banner">
+                <h1>Michelle Lee</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur eos officia provident velit quas optio, aspernatur blanditiis itaque commodi sit, totam ducimus expedita sed. Corrupti iure inventore recusandae a eligendi.</p>
+            </div> -->
+    </header>
+    <!-- header height 100% doesn't work in <header> -->
+    <div class="flex-layout">
+        <!-- About Me Section -->
+        <div id="about-me"class="header-banner flex-item">
+            <div class="content-wrapper">
+                <h1>Michelle Lee</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur eos officia provident velit quas
+                    optio, aspernatur blanditiis itaque commodi sit, totam ducimus expedita sed. Corrupti iure inventore
+                    recusandae a eligendi.</p>
+            </div>
+        </div>
+        <!-- Skills Section -->
+        <div id="skills" class="skill-container flex-item">
+            <div class="content-wrapper">
+                <h2>Skills</h2>
+                <div class="skill">
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>Java</li>
+                        <li>PHP</li>
+                        <li>MSSQL</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Projects Section -->
+        <div id="projects" class="project-container flex-item">
+            <div class="content-wrapper">
+                <h2>Projects</h2>
+                <div>
+                    <h3>One Resume</h3>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JS</li>
+                    </ul>
+                    <img src="" alt="">
+                </div>
+                <div>
+                    <h3>Sticker Product Page</h3>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JS</li>
+                    </ul>
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
