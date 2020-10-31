@@ -26,6 +26,9 @@ li {
 
 .content-wrapper {
 	width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 /* align items collapses height of container */
@@ -44,12 +47,6 @@ li {
 	align-items: center;
 }
 
-/* About Me Section */
-#about-me h1 {
-	font-weight: 900;
-	font-size: 500%;
-}
-
 #skills h1, #projects h1 {
 	font-weight: 700;
 	font-size: 400%;
@@ -60,8 +57,15 @@ li {
 	font-size: 200%;
 }
 
-#skills li {
-	font-size: 200%;
+/* About Me Section */
+#about-me h1 {
+	font-weight: 900;
+	font-size: 500%;
+}
+
+#about-me p {
+	max-width: 80%;
+	letter-spacing: 0.1em;
 }
 
 /* Navigation Menu */
@@ -100,6 +104,17 @@ header nav li a:hover {
 	background-color: #e8b3a4;
 }
 
+#skills li {
+	margin: 5%;
+	font-size: 200%;
+}
+
+.skill-wrapper {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+}
+
 /* Project Section */
 .project-container {
 	/* background-color: #e8dfc7; */
@@ -108,6 +123,12 @@ header nav li a:hover {
 #projects img {
 	/* makes img fit dimensions of parent */
 	max-width: 100%;
+}
+
+#projects li {
+	background-color: pink;
+	border-radius: 10%;
+	padding: 0.2em;
 }
 
 .project-skills {
