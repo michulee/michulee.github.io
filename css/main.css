@@ -6,6 +6,12 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
+    font-family: 'Raleway', sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
 }
 
 /* Container */
@@ -17,12 +23,34 @@ body {
 }
 
 /* Cover */
-.cover {
+#cover {
     height: 100vh;
-    background-color: peachpuff;
+    /* background-color: #393939; */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url('../img/autumn.png');
+    background-size: cover;
+    background-position: center;
+}
+
+#cover h1 {
+    color: white;
+    font-weight: 800;
+    font-size: 6em;
+    margin: 0;
+}
+
+#cover p {
+    color: black;
+    font-weight: 900;
+}
+
+#cover #icon-down {
+    position: absolute;
+    bottom: 2em;
+    color: white;
 }
 
 /* Header */
@@ -31,22 +59,29 @@ header {
 }
 
 /* Navigation Menu */
-.navbar-vertical > * {
-    /* position: relative; */
-
+.navbar {
     display: flex;
-    flex-direction: column;
-    /* align-items: flex-end; */
-    justify-content: center;
-    height: 100vh;
-    max-width: 95%;
-    background-color: peru;
-}
-
-.bg-transparent {
-    /* opacity: 0; */
-}
-
-.fixed-right {
+    justify-content: flex-end;
     position: fixed;
+    width: 100%;
+    background-color: white;
+}
+
+/* .navbar .fixed-top {
+    width: 100%;
+} */
+
+.navbar #logo {
+    margin-right: auto;
+}
+
+.navbar > * {
+    margin: 1em 1em;
+    text-decoration: none;
+    color: salmon;
+    font-weight: 700;
+}
+
+.navbar a:hover {
+    color: gray;
 }
