@@ -1,3 +1,4 @@
+// https://stackoverflow.com/a/50279663/7799687
 // Toggle down arrow icon
 window.addEventListener('scroll', function () {
     if (this.oldScroll < this.scrollY) {
