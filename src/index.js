@@ -1,0 +1,24 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
+import Header from './components/Header';
+import HeroBanner from './components/HeroBanner';
+
+// how to structure a react app
+// https://medium.com/swlh/demystifying-the-folder-structure-of-a-react-app-c60b29d90836
+ReactDOM.render(
+  <React.StrictMode>
+    {/* <Header /> */}
+    <HeroBanner />
+    {/* <About /> */}
+    {/* <Projects /> */}
+    {/* <Footer /> */}
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
