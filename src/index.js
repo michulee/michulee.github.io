@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './styles.css';
 import reportWebVitals from './reportWebVitals';
-import Header from './components/Header';
 import HeroBanner from './components/HeroBanner';
 
 // how to structure a react app
 // https://medium.com/swlh/demystifying-the-folder-structure-of-a-react-app-c60b29d90836
 ReactDOM.render(
   <React.StrictMode>
-    {/* <Header /> */}
     <HeroBanner />
     {/* <About /> */}
     {/* <Projects /> */}

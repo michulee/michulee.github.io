@@ -1,9 +1,15 @@
+:root {
+  --backgroud-color-gradient: linear-gradient( 109.6deg,  rgba(233,57,99,0.52) 11.2%, rgba(255,103,36,0.55) 91.2% );
+  --color-primary: #A52A2A;
+  --color-secondary: #FF7A41;
+  --color-neutral-dark: #2B2D42;
+  --color-neutral-light: #ffffff;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
@@ -12,6 +18,11 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+  font-family: 'Century Gothic';
 }
 
 ul {

@@ -1,0 +1,66 @@
+.heroHeader {
+  color: var(--color-neutral-light);
+  font-weight: bold;
+  text-shadow: 3px 3px 6px var(--color-primary);
+  font-size: 2.5rem;
+}
+
+.heroText {
+  color: var(--color-neutral-light);
+  font-weight: bold;
+  text-align: center;
+}
+
+.gradient {
+  background-image: var(--backgroud-color-gradient);
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.inheritHeight {
+  height: inherit;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.colCentered {
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.middle {
+  align-items: center;
+  justify-content: center;
+}
+
+.nav {
+  background-color: black;
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  opacity: 0.8;
+}
+
+.fullHeight {
+  height: 100vh;
+}
+
+.socials {
+  /* float: left; */
+  
+}
+
+.socials svg {
+  /* display: block !important; */
+  color: var(--color-primary);
+}

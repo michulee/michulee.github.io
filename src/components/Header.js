@@ -1,10 +1,11 @@
-import styles from '../styles.module.css';
+import '../styles.css';
+import clsx from 'clsx';
 
 function Header() {
   return (
     <div className="Header">
-        <div className={styles.nav}>
-            <div className={styles.container}>
+        <div className={clsx('nav')}>
+            <div className={clsx('container')}>
                 <ul>
                     <a href="#Home">Home</a>
                     <a href="#About">About</a>
