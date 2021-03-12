@@ -56,11 +56,17 @@
 }
 
 .socials {
-  /* float: left; */
-  
 }
 
-.socials svg {
-  /* display: block !important; */
+svg {
   color: var(--color-primary);
+  padding: 0 1em;
+  /* must specify width, or it will be collapsed */
+  width: 2rem;
+}
+
+.downIcon {
+  position: absolute;
+  bottom: 0;
+  width: 1.2rem;
 }

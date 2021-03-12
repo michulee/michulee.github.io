@@ -3,6 +3,7 @@ import {ReactComponent as Github} from '../assets/github-brands.svg';
 import {ReactComponent as Mail} from '../assets/envelope-solid.svg';
 import {ReactComponent as Globe} from '../assets/globe-solid.svg';
 import {ReactComponent as Linkedin} from '../assets/linkedin-brands.svg';
+import {ReactComponent as DownArrow} from '../assets/angle-double-down-solid.svg';
 // import Flexbox from 'react-svg-flexbox';
 import clsx from 'clsx';
 
@@ -15,15 +16,12 @@ function HeroBanner() {
           React Web Developer that has experience developing beautiful and
           functional web applications for others.
         </p>
-        <div className={clsx('socials')}>
-          {/* can't use flexbox, must be display: block */}
-          hey
-          {/* <Flexbox> */}
-            <Github />
-            <Linkedin />
-            <Mail />
-          {/* </Flexbox> */}
+        <div className={clsx('row socials')}>
+          <Github />
+          <Linkedin />
+          <Mail />
         </div>
+        <DownArrow className={clsx('downIcon')}/>
       </div>
     </div>
   );
