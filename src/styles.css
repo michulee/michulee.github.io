@@ -1,3 +1,7 @@
+.heroBanner {
+  text-align: center;
+}
+
 .heroHeader {
   color: var(--color-neutral-light);
   font-weight: bold;
@@ -8,7 +12,6 @@
 .heroText {
   color: var(--color-neutral-light);
   font-weight: bold;
-  text-align: center;
 }
 
 .gradient {
@@ -16,7 +19,7 @@
 }
 
 .container {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -29,13 +32,10 @@
   flex-direction: column;
 }
 
-.colCentered {
-  text-align: center;
-}
-
 .row {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .middle {
@@ -44,7 +44,6 @@
 }
 
 .nav {
-  background-color: black;
   padding: 1rem;
   position: fixed;
   width: 100%;
@@ -55,12 +54,13 @@
   height: 100vh;
 }
 
-.socials {
+/* make socials to have padding */
+.socialIcon {
+  padding: 0 1em;
 }
 
 svg {
   color: var(--color-primary);
-  padding: 0 1em;
   /* must specify width, or it will be collapsed */
   width: 2rem;
 }
@@ -69,4 +69,32 @@ svg {
   position: absolute;
   bottom: 0;
   width: 1.2rem;
+  color: var(--color-neutral-light);
+}
+
+.projectSocials {
+
+}
+
+.desktop {
+  /* width: 100%; */
+  object-fit: fill;
+}
+
+.image-border {
+}
+
+.block {
+  display: block;
+}
+
+.skill {
+  border: 1px solid var(--color-neutral-dark);
+  border-radius: var(--round);
+  padding: 0.1em 0.3em;
+  margin: 0 0.3em;
+}
+
+.text-align-center {
+  text-align: center;
 }

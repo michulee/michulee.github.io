@@ -4,14 +4,16 @@ import './index.css';
 import './styles.css';
 import reportWebVitals from './reportWebVitals';
 import HeroBanner from './components/HeroBanner';
+import About from './components/About';
+import Projects from './components/Projects';
 
 // how to structure a react app
 // https://medium.com/swlh/demystifying-the-folder-structure-of-a-react-app-c60b29d90836
 ReactDOM.render(
   <React.StrictMode>
     <HeroBanner />
-    {/* <About /> */}
-    {/* <Projects /> */}
+    <About />
+    <Projects />
     {/* <Footer /> */}
   </React.StrictMode>,
   document.getElementById('root')

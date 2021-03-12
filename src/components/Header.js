@@ -1,4 +1,3 @@
-import '../styles.css';
 import clsx from 'clsx';
 
 function Header() {
