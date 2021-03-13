@@ -2,6 +2,8 @@ import { ReactComponent as Github } from "../assets/github-brands.svg";
 import { ReactComponent as Live } from "../assets/globe-solid.svg";
 import SWIFT from "../assets/swift.jpg";
 import TechSymposium from "../assets/tech-symposium.jpg";
+import Pizza from "../assets/pizza-app.jpg";
+import Library from "../assets/library.jpg";
 import clsx from "clsx";
 
 function Projects() {
@@ -79,7 +81,7 @@ function Projects() {
         {/* Pizza Mobile App */}
         <div className={clsx("project")}>
           <div className={clsx('gradient image-border')}>
-            <img src={TechSymposium} alt="Front page of a website"/>
+            <img src={Pizza} alt="Front page of a website"/>
           </div>
           <div className={clsx('project-header gap-xs col')}>
             <h3 className={clsx("row middle")}>Pizza Mobile App</h3>
@@ -105,7 +107,7 @@ function Projects() {
         {/* Library */}
         <div className={clsx("project")}>
           <div className={clsx('gradient image-border')}>
-            <img src={TechSymposium} alt="Front page of a website"/>
+            <img src={Library} alt="Front page of a website"/>
           </div>
           <div className={clsx('project-header gap-xs col')}>
             <h3 className={clsx("row middle")}>The Odin Project | Library</h3>
