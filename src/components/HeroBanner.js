@@ -7,7 +7,7 @@ import clsx from 'clsx';
 function HeroBanner() {
   return (
     <div className={clsx("fullHeight gradient heroBanner")}>
-      <div className={clsx("inheritHeight container col middle")}>
+      <div className={clsx("inheritHeight container col middle gap")}>
         <h1 className={clsx('heroHeader')}>Michelle Lee</h1>
         <p className={clsx('heroText')}>
           React Web Developer that has experience developing beautiful and

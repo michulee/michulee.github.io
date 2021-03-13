@@ -6,7 +6,6 @@
   color: var(--color-neutral-light);
   font-weight: bold;
   text-shadow: 3px 3px 6px var(--color-primary);
-  font-size: 2.5rem;
 }
 
 .heroText {
@@ -38,6 +37,23 @@
   flex-wrap: wrap;
 }
 
+/* https://coryrylan.com/blog/css-gap-space-with-flexbox */
+.gap {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.gap-xs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.margin-top {
+  margin-top: 1em;
+}
+
 .middle {
   align-items: center;
   justify-content: center;
@@ -59,12 +75,6 @@
   padding: 0 1em;
 }
 
-svg {
-  color: var(--color-primary);
-  /* must specify width, or it will be collapsed */
-  width: 2rem;
-}
-
 .downIcon {
   position: absolute;
   bottom: 0;
@@ -72,13 +82,9 @@ svg {
   color: var(--color-neutral-light);
 }
 
-.projectSocials {
-
-}
-
 .desktop {
-  /* width: 100%; */
-  object-fit: fill;
+  width: 100%;
+  /* object-fit: fill; */
 }
 
 .image-border {
@@ -89,12 +95,73 @@ svg {
 }
 
 .skill {
-  border: 1px solid var(--color-neutral-dark);
+  font-size: calc(0.9em + 0.1vw);
+  border: 2px solid var(--color-neutral-dark);
   border-radius: var(--round);
   padding: 0.1em 0.3em;
   margin: 0 0.3em;
+  font-weight: bold;
 }
 
 .text-align-center {
   text-align: center;
+}
+
+
+/* this should be global */
+.project {
+  margin-bottom: var(--section-margin-bottom);
+}
+
+.project-header > * {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media (min-width: 600px) {
+    .container {
+      width: 70%;
+    }
+    /* p {
+      font-size: 1.1rem;
+    } */
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media (min-width: 768px) {
+  .container {
+    width: 80%;
+  }
+  /* p {
+    font-size: 1.2rem;
+  } */
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media (min-width: 992px) {
+  .container {
+    width: 70%;
+  }
+  /* p {
+    font-size: 1.3rem;
+  } */
+}
+
+/* Extra large devices (large laptops and desktops/monitors, 1200px and up) */
+@media (min-width: 1200px) {
+  .container {
+    width: 60%;
+  }
+  /* p {
+    font-size: 1.4rem;
+  } */
+}
+
+/* Extra Extra large devices (large laptops and desktops/monitors, 1400px and up) */
+@media (min-width: 1400px) {
+  .container {
+    width: 50%;
+  }
+  /* p {
+    font-size: 1.5rem;
+  } */
 }
