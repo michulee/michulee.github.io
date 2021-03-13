@@ -13,7 +13,7 @@ function About() {
             <p>So many projects, so little time. I've been looking at many different web technologies to apply to my future projects. I got to make a website for another person, and I'm soon to participate in a web application competition.</p>
           </div>
           <div className={clsx('row')}>
-            <p>If you are a recruiter looking for new talent, I am actively looking for Web Developer positions in the Greater Los Angeles area. Please contact me through my e-mail.</p>
+            <p>If you are a recruiter looking for new talent, I am actively looking for Web Developer positions in the Greater Los Angeles area. Please contact me through my <a href="emailto:michellechulee@gmail.com">e-mail.</a></p>
           </div>
         </div>
       </div>

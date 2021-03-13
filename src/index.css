@@ -71,6 +71,8 @@ ul a {
 
 a {
   text-decoration: none;
+  color: var(--color-primary);
+  font-weight: bold;
 }
 
 img {

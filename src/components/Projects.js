@@ -22,12 +22,12 @@ function Projects() {
           <div className={clsx('project-header gap-xs col')}>
             <h3 className={clsx("row middle")}>SWIFT Website</h3>
             <div className={clsx("row middle")}>
-              {/* <a href=""> */}
+              <a href="https://github.com/cppad/swift">
                 <Github className={clsx("socialIcon")} />
-              {/* </a> */}
-              {/* <a href=""> */}
+              </a>
+              <a href="https://cppad.github.io/swift/">
                 <Live className={clsx("socialIcon")} />
-              {/* </a> */}
+              </a>
             </div>
             <div className={clsx("row middle")}>
               <div className={clsx("skill")}>
@@ -54,12 +54,9 @@ function Projects() {
           <div className={clsx('project-header gap-xs col')}>
             <h3 className={clsx("row middle")}>Tech Symposium Schedules</h3>
             <div className={clsx("row middle")}>
-              {/* <a href=""> */}
-                <Github className={clsx("socialIcon")} />
-              {/* </a> */}
-              {/* <a href=""> */}
+              <a href="https://techsymposium.calpolyswift.org/schedule.html">
                 <Live className={clsx("socialIcon")} />
-              {/* </a> */}
+              </a>
             </div>
             <div className={clsx("row middle")}>
               <div className={clsx("skill")}>
@@ -86,9 +83,9 @@ function Projects() {
           <div className={clsx('project-header gap-xs col')}>
             <h3 className={clsx("row middle")}>Pizza Mobile App</h3>
             <div className={clsx("row middle")}>
-              {/* <a href=""> */}
+              <a href="https://github.com/michulee/pizza">
                 <Github className={clsx("socialIcon")} />
-              {/* </a> */}
+              </a>
             </div>
             <div className={clsx("row middle")}>
               <div className={clsx("skill")}>
@@ -112,12 +109,12 @@ function Projects() {
           <div className={clsx('project-header gap-xs col')}>
             <h3 className={clsx("row middle")}>The Odin Project | Library</h3>
             <div className={clsx("row middle")}>
-              {/* <a href=""> */}
+              <a href="https://github.com/michulee/library">
                 <Github className={clsx("socialIcon")} />
-              {/* </a> */}
-              {/* <a href=""> */}
+              </a>
+              <a href="https://michulee.github.io/library/">
                 <Live className={clsx("socialIcon")} />
-              {/* </a> */}
+              </a>
             </div>
             <div className={clsx("row middle")}>
               <div className={clsx("skill")}>
