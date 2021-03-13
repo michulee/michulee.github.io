@@ -103,11 +103,11 @@
   text-align: center;
 }
 
-
 /* this should be global */
 .project {
-  margin-bottom: var(--section-margin-bottom);
+  margin-bottom: var(--section-margin-bottom-small);
 }
+
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media (min-width: 600px) {
@@ -126,7 +126,10 @@
     flex-wrap: wrap;
     gap: 1rem;
   }
-
+  /* this should be global */
+  .project {
+    margin-bottom: var(--section-margin-bottom);
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */

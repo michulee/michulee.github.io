@@ -39,6 +39,14 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+### `yarn deploy`
+
+Install gh-pages as a dependency with `yarn add gh-pages`. 
+
+Add the URL to where you are going to deploy, e.g. `"homepage": "https://username.github.io/",` or `"homepage": "https://username.github.io/repo/",`.
+
+Use the command `yarn deploy` to deploy your static website.
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
