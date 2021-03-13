@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.425262aa.chunk.css",
+    "main.css": "/static/css/main.d1a990ed.chunk.css",
     "main.js": "/static/js/main.0a077485.chunk.js",
     "main.js.map": "/static/js/main.0a077485.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.9a2a8aa8.js",
@@ -10,7 +10,7 @@
     "static/js/3.6af6e163.chunk.js": "/static/js/3.6af6e163.chunk.js",
     "static/js/3.6af6e163.chunk.js.map": "/static/js/3.6af6e163.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.425262aa.chunk.css.map": "/static/css/main.425262aa.chunk.css.map",
+    "static/css/main.d1a990ed.chunk.css.map": "/static/css/main.d1a990ed.chunk.css.map",
     "static/js/2.6bee0b11.chunk.js.LICENSE.txt": "/static/js/2.6bee0b11.chunk.js.LICENSE.txt",
     "static/media/angle-double-down-solid.9e916f54.svg": "/static/media/angle-double-down-solid.9e916f54.svg",
     "static/media/envelope-solid.80b23b18.svg": "/static/media/envelope-solid.80b23b18.svg",
@@ -25,7 +25,7 @@
   "entrypoints": [
     "static/js/runtime-main.9a2a8aa8.js",
     "static/js/2.6bee0b11.chunk.js",
-    "static/css/main.425262aa.chunk.css",
+    "static/css/main.d1a990ed.chunk.css",
     "static/js/main.0a077485.chunk.js"
   ]
 }
