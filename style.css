@@ -1,11 +1,20 @@
 /* GLOBALS */
 :root {
+    /* COLOR PALETTE */
     --color-primary: #F18370;
     --color-primary-high-contrast: #FF6969;
     --color-light: #fff;
     --color-dark: #464646;
     --color-yellow: #FFF7E2;
     --color-rose: #F4CBCB;
+
+    /* SKILLS SECTION */
+    --color-html: #FD7E14;
+    --color-css: #149FDA;
+    --color-js: #FCDC00;
+    --color-react: #61DAFB;
+    --color-scss: #CF649A;
+    --color-java: #FF3030;
 }
 
 * {
@@ -16,6 +25,7 @@ html, body {
     margin: 0;
     padding: 0;
     color: var(--color-dark);
+    font-family: Calibri;
 }
 
 img {
@@ -37,6 +47,10 @@ img {
 .desktop_nav .nav_title {
     margin-right: auto;
     text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
 }
 
 .desktop_nav .nav_icon {
@@ -62,14 +76,14 @@ img {
 .home .profile_pic {
     border-radius: 50%;
     overflow: hidden;
-    border: 1px solid black;
-    width: 30%;
+    /* border: 1px solid black; */
+    width: 60%;
 }
 
 .home .title {
     /* position: absolute; */
     /* position: relative; */
-    font-size: 3rem;
+    font-size: 2.5rem;
     /* height: 200px; */
 }
 
@@ -98,4 +112,41 @@ img {
     text-transform: uppercase;
     font-family: 'Aclonica', sans-serif;
     font-size: 3rem;
+}
+
+/* SKILLS SECTION */
+.skills {
+    display: grid;
+
+    /* controlling the size of the responsive skill item grid */
+    width: 25%;
+}
+
+.skills .item {
+    display: flex;
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+/* svg {
+    width: 30px;
+    height: 30px;
+} */
+
+.html { color: var(--color-html); }
+.css { color: var(--color-css); }
+.js { color: var(--color-js); }
+.react { color: var(--color-react); }
+.scss { color: var(--color-scss); }
+.java { color: var(--color-java); }
+
+.skills .item .text {
+    text-transform: uppercase;
+    color: var(--color-primary);
+}
+
+.skills .item .skill_icon {
+    width: 100px;
+    height: 100px;
 }
