@@ -1,0 +1,101 @@
+/* GLOBALS */
+:root {
+    --color-primary: #F18370;
+    --color-primary-high-contrast: #FF6969;
+    --color-light: #fff;
+    --color-dark: #464646;
+    --color-yellow: #FFF7E2;
+    --color-rose: #F4CBCB;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    color: var(--color-dark);
+}
+
+img {
+    /* max height/width so that jpg/png img fits parent container */
+    max-height: 100%;
+    max-width: 100%;
+}
+
+/* DESKTOP NAV */
+.desktop_nav .wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 5px;
+    gap: 20px;
+}
+
+.desktop_nav .nav_title {
+    margin-right: auto;
+    text-transform: uppercase;
+}
+
+.desktop_nav .nav_icon {
+    width: 30px;
+    height: 30px;
+}
+
+/* HOME SECTION */
+.home {
+    height: 90vh;
+    background: linear-gradient(161.99deg, #F18370 0%, rgba(255, 184, 0, 0.08) 100%);
+}
+
+.home .wrapper {
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.home .profile_pic {
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid black;
+    width: 30%;
+}
+
+.home .title {
+    /* position: absolute; */
+    /* position: relative; */
+    font-size: 3rem;
+    /* height: 200px; */
+}
+
+.home .title_base {
+    text-transform: uppercase;
+    color: var(--color-light);
+    /* position: absolute; */
+    position: relative;
+    /* top: 140px; */
+    /* left: 5px; */
+
+    /* text-shadow: -1px 0 0 rgba(0, 0, 0, .2); */
+
+}
+.home .title_overlay {
+    text-transform: uppercase;
+    color: var(--color-primary-high-contrast);
+    /* position: absolute; */
+    position: relative;
+    /* bottom: 140px; */
+    top: -140px;
+    right: 5px;
+}
+
+.home .title_desc {
+    text-transform: uppercase;
+    font-family: 'Aclonica', sans-serif;
+    font-size: 3rem;
+}
