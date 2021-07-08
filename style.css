@@ -5,6 +5,7 @@
     --color-primary-high-contrast: #FF6969;
     --color-light: #fff;
     --color-dark: #464646;
+    --color-black: #000;
     --color-yellow: #FFF7E2;
     --color-rose: #F4CBCB;
     --color-yellow: #FFF7E2;
@@ -38,6 +39,10 @@ img {
     /* max height/width so that jpg/png img fits parent container */
     max-height: 100%;
     max-width: 100%;
+}
+
+section {
+    padding: 100px 0;
 }
 
 /* CUSTOM GLOBAL CLASSES */
@@ -116,6 +121,7 @@ img {
     overflow: hidden;
     /* border: 1px solid black; */
 
+    /* use px + vw or px + % to slowly increase size */
     /* width: 70%; */
     width: calc(200px + 10vw);
 }
@@ -175,7 +181,6 @@ img {
 
 /* SKILLS SECTION */
 .skills {
-    padding: 100px 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     position: relative;
@@ -225,11 +230,28 @@ img {
     background-color: var(--color-yellow);
 }
 
-@media (min-width: 632px) {
+.projects .text {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+}
 
-    /* .profile_pic {
-        max-width: 50%;
-    } */
+.projects .title {
+    text-transform: uppercase;
+}
+
+.projects .features {
+    font-variant: small-caps;
+    font-size: 1.2rem;
+    /* font-weight: bold; */
+    /* color: var(--color-primary-high-contrast); */
+    letter-spacing: 1px;
+}
+
+.projects .desc {
+    padding-top: 20px;
+}
+@media (min-width: 632px) {
     .home .title {
         font-size: 2.5rem;
     }
@@ -239,11 +261,7 @@ img {
 }
 
 @media (min-width: 756px) {
-    /* .home .profile_pic {
-        max-width: 20%;
-    } */
     .skills {
-      /*         grid-template-columns: repeat(2, 1fr); */
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
 }
