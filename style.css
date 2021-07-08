@@ -211,9 +211,8 @@ section {
 }
 
 .projects .item {
-    margin-bottom: 100px;
     max-width: 1440px;
-    margin: 0 auto;
+    margin: 100px auto;
 }
 
 .projects .text {
