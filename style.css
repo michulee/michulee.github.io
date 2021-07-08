@@ -148,9 +148,14 @@ img {
     color: var(--color-primary-high-contrast);
     /* position: absolute; */
     position: relative;
-    /* bottom: 140px; */
-    top: -140px;
-    right: 5px;
+
+    top: -96%;
+    right: 1%;
+
+    /* top: -140px; */
+    /* right: 5px; */
+
+    /* transform: translate(-3%, -95%); */
 
     /* make height 0 to remove leftover parent space when floating item */
     height: 0px;
@@ -214,6 +219,10 @@ img {
 .projects {
     position: relative;
     background-color: var(--color-yellow);
+}
+
+@media (min-wdidth: 419px) {
+
 }
 
 @media (min-width: 756px) {
