@@ -212,7 +212,7 @@ section {
 
 .projects .item {
     max-width: 1440px;
-    margin: 100px auto;
+    margin: 0 auto 100px auto;
 }
 
 .projects .text {
