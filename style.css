@@ -234,6 +234,9 @@ section {
     display: flex;
     flex-direction: column;
     font-size: 1.3rem;
+    width: 90%;
+    margin: 0 auto;
+    /* margin-top: 20px; */
 }
 
 .projects .title {
@@ -243,13 +246,49 @@ section {
 .projects .features {
     font-variant: small-caps;
     font-size: 1.2rem;
-    /* font-weight: bold; */
-    /* color: var(--color-primary-high-contrast); */
     letter-spacing: 1px;
 }
 
 .projects .desc {
     padding-top: 20px;
+}
+
+.projects .overlay {
+    position: relative;
+}
+
+.projects .background {
+    width: 90%;
+    background: linear-gradient(161.99deg, #F18370 0%, rgba(255, 184, 0, 0.08) 100%);
+    display: flex;
+    margin: 0 auto;
+}
+
+.projects .background .wrapper {
+    margin: calc(5px + 1vw);
+}
+
+.projects .mobile {
+    width: 40%;
+    position: absolute;
+    right: 10%;
+    top: 60%;
+}
+
+.one_resume {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    /* padding: 0 5px; */
+    /* margin: 5px; */
+    gap: 20px;
+
+    /* background-color: pink; */
+}
+
+.one_resume .icon {
+    width: 26px;
 }
 @media (min-width: 632px) {
     .home .title {
