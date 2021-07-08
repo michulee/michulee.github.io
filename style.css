@@ -7,6 +7,7 @@
     --color-dark: #464646;
     --color-yellow: #FFF7E2;
     --color-rose: #F4CBCB;
+    --color-yellow: #FFF7E2;
 
     /* SKILLS SECTION */
     --color-html: #FD7E14;
@@ -39,6 +40,21 @@ img {
     max-width: 100%;
 }
 
+/* CUSTOM GLOBAL CLASSES */
+.header {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background-color: #F18370;
+    padding: 5px 25px;
+    text-transform: uppercase;
+    color: var(--color-light);
+    letter-spacing: 3px;
+    border-bottom: 5px solid var(--color-rose);
+    font-weight: 400;
+}
+
 /* DESKTOP NAV */
 .desktop_nav .wrapper {
     display: flex;
@@ -46,6 +62,7 @@ img {
     justify-content: flex-end;
     align-items: center;
     padding: 0 5px;
+    margin: 5px;
     gap: 20px;
 }
 
@@ -149,29 +166,15 @@ img {
 
 /* SKILLS SECTION */
 .skills {
-    padding-top: 100px;
-    /* width: 100%; */
+    padding: 100px 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    /* gap: 10px; */
-
-    /* controlling the size of the responsive skill item grid */
-    /* width: 25%; */
     position: relative;
-}
+    gap: 20px;
 
-.skills .header {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    /* first value x axis, second value y axis */
-    transform: translate(-50%, -20%);
-    background-color: #F18370;
-    padding: 5px 25px;
-    text-transform: uppercase;
-    color: var(--color-light);
-    letter-spacing: 3px;
-    border-bottom: 5px solid var(--color-rose);
+    /* control size of grid */
+    width: 80%;
+    margin: 0 auto;
 }
 
 .skills .item {
@@ -179,8 +182,6 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    /* width: 50%; */
 }
 
 /* svg {
@@ -198,11 +199,21 @@ img {
 .skills .item .text {
     text-transform: uppercase;
     color: var(--color-primary);
+    letter-spacing: 3px;
+    font-weight: bold;
+    padding: 15px 0;
+    text-align: center;
 }
 
 .skills .item .skill_icon {
     width: 80px;
     /* height: 100px; */
+}
+
+/* PROJECTS SECTION */
+.projects {
+    position: relative;
+    background-color: var(--color-yellow);
 }
 
 @media (min-width: 756px) {
