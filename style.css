@@ -77,8 +77,9 @@ section {
     justify-content: flex-end;
     align-items: center;
     padding: 0 5px;
-    margin: 5px;
+    margin: 5px auto;
     gap: 20px;
+    max-width: 1440px;
 }
 
 .desktop_nav .nav_title {
@@ -111,26 +112,12 @@ section {
     justify-content: center;
     align-items: center;
     text-align: center;
-}
-
-.home .text_wrapper {
-    /* object-fit: contain; */
-    /* display: inline; */
-    /* display: flex; */
-    /* flex-direction: column; */
-
-    /* width: 100%; */
-
-    /* height: 200px;*/
-
-    /* height: calc(); */
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .home .profile_pic {
-    /* border-radius: 50%; */
     overflow: hidden;
-    /* border: 1px solid black; */
-
     /* use px + vw or px + % to slowly increase size */
     /* width: 70%; */
     width: calc(200px + 10vw);
@@ -141,48 +128,27 @@ section {
 }
 
 .home .title {
-    /* position: absolute; */
-    /* position: relative; */
-
     font-size: 2rem;
-    /* height: 200px; */
 }
 
 .home .title_desc {
     text-transform: uppercase;
     font-family: 'Aclonica', sans-serif;
     font-size: 2.5rem;
-    /* position: relative; */
 
 }
 
 .home .title_base {
     text-transform: uppercase;
     color: var(--color-light);
-    /* position: absolute; */
     position: relative;
-
-
-    /* top: 140px; */
-    /* left: 5px; */
-
-    /* text-shadow: -1px 0 0 rgba(0, 0, 0, .2); */
-
 }
 .home .title_overlay {
     text-transform: uppercase;
     color: var(--color-primary-high-contrast);
-    /* position: absolute; */
     position: relative;
-
     top: -96%;
     right: 1%;
-
-    /* top: -140px; */
-    /* right: 5px; */
-
-    /* transform: translate(-3%, -95%); */
-
     /* make height 0 to remove leftover parent space when floating item */
     height: 0px;
 }
@@ -195,10 +161,11 @@ section {
     grid-template-columns: repeat(2, 1fr);
     position: relative;
     gap: 20px;
-
-    /* control size of grid */
     width: 80%;
     margin: 0 auto;
+
+    max-width: 1440px;
+
 }
 
 .skills .item {
@@ -245,6 +212,8 @@ section {
 
 .projects .item {
     margin-bottom: 100px;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .projects .text {
@@ -298,17 +267,14 @@ section {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    /* padding: 0 5px; */
-    /* margin: 5px; */
     gap: 20px;
-
-    /* background-color: pink; */
 }
 
 .display .icon {
     width: 26px;
     color: var(--color-primary-high-contrast);
 }
+
 @media (min-width: 632px) {
     .home .title {
         font-size: 2.5rem;
@@ -326,9 +292,5 @@ section {
     .projects .item {
         display: flex;
         flex-direction: row;
-    }
-
-    .projects .overlay {
-        /* width: 100%; */
     }
 }
