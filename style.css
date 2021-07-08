@@ -120,7 +120,7 @@ section {
     overflow: hidden;
     /* use px + vw or px + % to slowly increase size */
     /* width: 70%; */
-    width: calc(200px + 10vw);
+    width: calc(200px + 10%);
 }
 
 .profile_pic img {
