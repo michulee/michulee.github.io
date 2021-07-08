@@ -35,6 +35,16 @@ html, body {
     font-family: Calibri;
 }
 
+a {
+    color: unset;
+}
+
+a:hover {
+    /* color: var(--color-primary); */
+    opacity: 0.4;
+    transition: 0.3s;
+}
+
 img {
     /* max height/width so that jpg/png img fits parent container */
     max-height: 100%;
@@ -217,6 +227,7 @@ section {
     font-weight: bold;
     padding: 15px 0;
     text-align: center;
+    font-size: 1.2rem;
 }
 
 .skills .item .skill_icon {
@@ -228,6 +239,10 @@ section {
 .projects {
     position: relative;
     background-color: var(--color-yellow);
+}
+
+.projects .item {
+    margin-bottom: 100px;
 }
 
 .projects .text {
@@ -255,6 +270,7 @@ section {
 
 .projects .overlay {
     position: relative;
+    width: 100%;
 }
 
 .projects .background {
@@ -275,7 +291,7 @@ section {
     top: 60%;
 }
 
-.one_resume {
+.display {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -287,8 +303,9 @@ section {
     /* background-color: pink; */
 }
 
-.one_resume .icon {
+.display .icon {
     width: 26px;
+    color: var(--color-primary-high-contrast);
 }
 @media (min-width: 632px) {
     .home .title {
@@ -302,5 +319,14 @@ section {
 @media (min-width: 756px) {
     .skills {
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .projects .item {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .projects .overlay {
+        /* width: 100%; */
     }
 }
