@@ -208,10 +208,15 @@ section {
     align-items: center;
 }
 
-/* svg {
-    width: 30px;
-    height: 30px;
-} */
+.styled_components img {
+    max-width: unset;
+    width: 150px;
+    object-fit: cover;
+}
+
+.skills .item .skill_icon {
+    width: 80px;
+}
 
 .html { color: var(--color-html); }
 .css { color: var(--color-css); }
@@ -230,10 +235,7 @@ section {
     font-size: 1.2rem;
 }
 
-.skills .item .skill_icon {
-    width: 80px;
-    /* height: 100px; */
-}
+
 
 /* PROJECTS SECTION */
 .projects {
@@ -251,7 +253,7 @@ section {
     font-size: 1.3rem;
     width: 90%;
     margin: 0 auto;
-    /* margin-top: 20px; */
+    margin-top: 20px;
 }
 
 .projects .title {
