@@ -21,6 +21,11 @@
     box-sizing: border-box;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -58,6 +63,9 @@ img {
     height: 30px;
 }
 
+.content {
+}
+
 /* HOME SECTION */
 .home {
     height: 90vh;
@@ -65,7 +73,7 @@ img {
 }
 
 .home .wrapper {
-    /* width: 100%; */
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,16 +81,34 @@ img {
     text-align: center;
 }
 
+.home .text_wrapper {
+    /* object-fit: contain; */
+    /* display: inline; */
+    /* display: flex; */
+    /* flex-direction: column; */
+
+    /* width: 100%; */
+
+    /* height: 200px;*/
+
+    /* height: calc(); */
+}
+
 .home .profile_pic {
-    border-radius: 50%;
+    /* border-radius: 50%; */
     overflow: hidden;
     /* border: 1px solid black; */
-    width: 60%;
+    width: 70%;
+}
+
+.profile_pic img {
+    border-radius: 50%;
 }
 
 .home .title {
     /* position: absolute; */
     /* position: relative; */
+
     font-size: 2.5rem;
     /* height: 200px; */
 }
@@ -92,6 +118,8 @@ img {
     color: var(--color-light);
     /* position: absolute; */
     position: relative;
+
+
     /* top: 140px; */
     /* left: 5px; */
 
@@ -106,16 +134,22 @@ img {
     /* bottom: 140px; */
     top: -140px;
     right: 5px;
+
+    /* make height 0 to remove leftover parent space when floating item */
+    height: 0px;
 }
 
 .home .title_desc {
     text-transform: uppercase;
     font-family: 'Aclonica', sans-serif;
-    font-size: 3rem;
+    font-size: 2.5rem;
+    /* position: relative; */
+
 }
 
 /* SKILLS SECTION */
 .skills {
+    padding-top: 100px;
     /* width: 100%; */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -123,6 +157,21 @@ img {
 
     /* controlling the size of the responsive skill item grid */
     /* width: 25%; */
+    position: relative;
+}
+
+.skills .header {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    /* first value x axis, second value y axis */
+    transform: translate(-50%, -20%);
+    background-color: #F18370;
+    padding: 5px 25px;
+    text-transform: uppercase;
+    color: var(--color-light);
+    letter-spacing: 3px;
+    border-bottom: 5px solid var(--color-rose);
 }
 
 .skills .item {
