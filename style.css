@@ -71,6 +71,13 @@ section {
 }
 
 /* DESKTOP NAV */
+.desktop_nav {
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+    background-color: var(--color-light);
+}
+
 .desktop_nav .wrapper {
     display: flex;
     flex-direction: row;
@@ -94,9 +101,6 @@ section {
 .desktop_nav .nav_icon {
     width: 30px;
     height: 30px;
-}
-
-.content {
 }
 
 /* HOME SECTION */
