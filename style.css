@@ -157,6 +157,31 @@ section {
     height: 0px;
 }
 
+.home .text {
+    font-size: calc(1.2rem + 1vw);
+    /* font-size: 1.2rem + 1vw; */
+
+    /* font-size: 1.2rem; */
+    /* font-size: calc(1.2rem); */
+}
+
+/* ABOUT SECTION */
+/* .about {
+    background-color: var(--color-yellow);
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.about .text {
+    width: 50%;
+    background-color: teal;
+}
+
+.about p {
+    background-color: white;
+} */
+
 
 
 /* SKILLS SECTION */
