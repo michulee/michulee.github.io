@@ -107,6 +107,9 @@ section {
 .home {
     height: 90vh;
     background: linear-gradient(161.99deg, #F18370 0%, rgba(255, 184, 0, 0.08) 100%);
+    display: flex;
+    flex-direction: column;
+    padding: 0 calc(1rem + 5vw);
 }
 
 .home .wrapper {
@@ -117,6 +120,10 @@ section {
     align-items: center;
     text-align: center;
     max-width: 1440px;
+
+    /* even flex layout */
+    width: 100%;
+    /* width: 400px; */
     margin: 0 auto;
 }
 
@@ -158,7 +165,16 @@ section {
 }
 
 .home .text {
-    font-size: calc(1.2rem + 1vw);
+    /* even 50 50 flex layout */
+    width: 40%;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+
+    /* similar to 1.2rem */
+    font-size: calc(1rem + 0.5vw);
+
+    /* same as not having set a font-size */
     /* font-size: 1.2rem + 1vw; */
 
     /* font-size: 1.2rem; */
@@ -305,6 +321,7 @@ section {
 }
 
 @media (min-width: 632px) {
+
     .home .title {
         font-size: 2.5rem;
     }
@@ -314,6 +331,9 @@ section {
 }
 
 @media (min-width: 756px) {
+    .home {
+        flex-direction: row;
+    }
     .skills {
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
