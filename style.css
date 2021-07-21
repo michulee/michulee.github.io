@@ -107,14 +107,18 @@ section {
 .home {
     height: 90vh;
     background: linear-gradient(161.99deg, #F18370 0%, rgba(255, 184, 0, 0.08) 100%);
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
     /* padding: 0 calc(1rem + 5vw); */
 }
 
-/* .home > * {
+.home .container {
+    display: flex;
+    flex-direction: column;
     height: 100%;
-} */
+    max-width: 1440px;
+    margin: 0 auto;
+}
 
 .home .intro {
     /* height: 100%; */
@@ -127,8 +131,8 @@ section {
 
     /* even flex layout */
     width: 100%;
-    /* width: 400px; */
     margin: 0 auto;
+    padding-bottom: 1rem;
 }
 
 .home .profile_pic {
@@ -175,7 +179,7 @@ section {
     display: flex;
     align-items: center;
     padding: 0 10%;
-    text-align: justify;
+    /* text-align: justify; */
 
     /* similar to 1.2rem */
     font-size: calc(1rem + 0.5vw);
@@ -337,7 +341,7 @@ section {
 }
 
 @media (min-width: 756px) {
-    .home {
+    .home .container {
         flex-direction: row;
     }
     .skills {
