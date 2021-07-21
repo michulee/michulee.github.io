@@ -17,6 +17,8 @@
     --color-react: #61DAFB;
     --color-scss: #CF649A;
     --color-java: #FF3030;
+
+    --container-width: 1440px;
 }
 
 * {
@@ -116,7 +118,7 @@ section {
     display: flex;
     flex-direction: column;
     height: 100%;
-    max-width: 1440px;
+    max-width: var(--container-width);
     margin: 0 auto;
 }
 
@@ -127,7 +129,7 @@ section {
     justify-content: center;
     align-items: center;
     text-align: center;
-    max-width: 1440px;
+    max-width: var(--container-width);
 
     /* even flex layout */
     width: 100%;
@@ -219,7 +221,7 @@ section {
     width: 80%;
     margin: 0 auto;
 
-    max-width: 1440px;
+    max-width: var(--container-width);
 
 }
 
@@ -266,7 +268,7 @@ section {
 }
 
 .projects .item {
-    max-width: 1440px;
+    max-width: var(--container-width);
     margin: 0 auto 100px auto;
 }
 
