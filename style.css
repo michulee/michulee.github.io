@@ -374,7 +374,6 @@ section {
 /* CONTACT/FOOTER SECTION */
 .contact {
     background-color: var(--color-light);
-    position: relative;
 }
 
 @media (min-width: 632px) {
@@ -406,7 +405,7 @@ section {
         width: unset;
         left: 50%;
         transform: translate(-50%);
-        border-radius: 10px;
+        border-radius: 30px;
         padding: 0 1rem;
     }
 }
