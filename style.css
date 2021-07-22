@@ -222,7 +222,7 @@ section {
     /* use px + vw or px + % to slowly increase size */
     /* width: 70%; */
     width: calc(200px + 10%);
-    height: 100%;
+    /* height: 100%; */
 }
 
 .profile_pic img {
