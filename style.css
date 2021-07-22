@@ -153,7 +153,7 @@ section {
 /* HOME SECTION */
 .home {
     height: 90vh;
-    background: linear-gradient(161.99deg, #F18370 0%, rgba(255, 184, 0, 0.08) 100%);
+    background: linear-gradient(161.99deg, var(--color-primary) 0%, rgba(255, 184, 0, 0.08) 100%);
     /* padding: 0 calc(1rem + 5vw); */
 }
 
@@ -371,11 +371,16 @@ section {
     color: var(--color-primary-high-contrast);
 }
 
+/* CONTACT/FOOTER SECTION */
+.contact {
+    background-color: var(--color-light);
+    position: relative;
+}
+
 @media (min-width: 632px) {
     .home .text {
         width: calc(50%);
     }
-
 }
 
 @media (min-width: 756px) {
