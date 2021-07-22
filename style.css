@@ -35,10 +35,12 @@ html, body {
     padding: 0;
     color: var(--color-dark);
     font-family: Calibri;
+    scroll-behavior: smooth;
 }
 
 a {
     color: unset;
+    text-decoration: none;
 }
 
 a:hover {
@@ -103,6 +105,32 @@ section {
 .desktop_nav .nav_icon {
     width: 30px;
     height: 30px;
+}
+
+.links_nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 2;
+    background-color: var(--color-primary);
+    text-transform: uppercase;
+}
+
+.links_nav .nav_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5px;
+    margin: 5px auto;
+    gap: 20px;
+    /* max-width: 1440px; */
+}
+
+.links_nav .nav_icon {
+    height: 2rem;
+    font-size: 1.5rem;
+    transition: 0.3s;
 }
 
 /* HOME SECTION */
