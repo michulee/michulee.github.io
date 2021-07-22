@@ -69,7 +69,7 @@ section {
     top: 0;
     left: 50%;
     transform: translate(-50%, -20%);
-    background-color: #F18370;
+    background-color: var(--color-primary);
     padding: 5px 25px;
     text-transform: uppercase;
     color: var(--color-light);
@@ -108,7 +108,6 @@ section {
 
 .desktop_nav .nav_icon {
     width: 30px;
-    height: 30px;
 }
 
 .links_nav {
@@ -125,11 +124,8 @@ section {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    /* padding: 0 5px; */
-    /* margin: 5px auto; */
     margin: 0 auto;
     gap: 3rem;
-    /* max-width: 1440px; */
 }
 
 .links_nav a {
@@ -139,15 +135,11 @@ section {
     align-items: center;
     width: 4rem;
     padding: 0.3rem 0;
-    /* background-color: teal; */
 }
 
 .links_nav .nav_icon {
-    /* height: 2rem; */
-    /* font-size: 0.7rem;*/
     width: 2rem;
     transition: 0.3s;
-    /* width: 30px; */
 }
 
 .links_nav .nav_text {
@@ -158,8 +150,6 @@ section {
 .home {
     height: 90vh;
     background: linear-gradient(161.99deg, #F18370 0%, rgba(255, 184, 0, 0.08) 100%);
-    /* display: flex; */
-    /* flex-direction: column; */
     /* padding: 0 calc(1rem + 5vw); */
 }
 
@@ -170,12 +160,7 @@ section {
     max-width: var(--container-width);
     margin: 0 auto;
     justify-content: center;
-    /* gap: 1rem; */
     align-items: center;
-}
-
-.home .container > * {
-    /* width: 100%; */
 }
 
 .home .intro {
@@ -188,41 +173,20 @@ section {
     /* align-items: flex-end; */
     text-align: center;
     max-width: var(--container-width);
-
-    /* even flex layout */
-    /* width: 100%; */
-    /* width: 50%; */
-    /* margin: 0 auto; */
     padding-bottom: 1rem;
 }
 
 .home .text {
-    /* even 50 50 flex layout */
-    /* width: 40%; */
     height: 100%;
     max-width: 400px;
     display: flex;
     align-items: center;
-    /* padding: 0 10%; */
-    /* text-align: justify; */
-
-    /* similar to 1.2rem */
     font-size: calc(1rem + 0.3vw);
-    /* font-size: 1rem; */
-
-    /* same as not having set a font-size */
-    /* font-size: 1.2rem + 1vw; */
-
-    /* font-size: 1.2rem; */
-    /* font-size: calc(1.2rem); */
 }
 
 .home .profile_pic {
     overflow: hidden;
-    /* use px + vw or px + % to slowly increase size */
-    /* width: 70%; */
     width: calc(200px + 10%);
-    /* height: 100%; */
 }
 
 .profile_pic img {
@@ -315,7 +279,6 @@ section {
 
 .skills .item .text {
     text-transform: uppercase;
-    /* color: var(--color-primary); */
     color: var(--color-primary-high-contrast);
     letter-spacing: 3px;
     font-weight: bold;
@@ -323,8 +286,6 @@ section {
     text-align: center;
     font-size: 1.2rem;
 }
-
-
 
 /* PROJECTS SECTION */
 .projects {
@@ -378,7 +339,6 @@ section {
 
 .projects .mobile {
     width: 20%;
-    /* height: 50%; */
     position: absolute;
     right: 10%;
     top: 40%;
