@@ -200,7 +200,7 @@ section {
     /* even 50 50 flex layout */
     /* width: 40%; */
     height: 100%;
-    max-width: 500px;
+    max-width: 400px;
     display: flex;
     align-items: center;
     /* padding: 0 10%; */
@@ -315,7 +315,8 @@ section {
 
 .skills .item .text {
     text-transform: uppercase;
-    color: var(--color-primary);
+    /* color: var(--color-primary); */
+    color: var(--color-primary-high-contrast);
     letter-spacing: 3px;
     font-weight: bold;
     padding: 15px 0;
@@ -397,46 +398,20 @@ section {
 }
 
 @media (min-width: 632px) {
-
-    .home .title {
-        /* font-size: 2.5rem; */
-    }
-    .home .title_desc {
-        /* font-size: 3rem; */
-    }
-
     .home .text {
         width: calc(50%);
     }
-
 }
 
 @media (min-width: 756px) {
     /* text overlay breaks when breaking into rows */
     .home .container {
         flex-direction: row;
-    }
-    .home .title_base {
-        /* top: 0; */
-        /* right: 0;  */
-        /* left: -96%; */
-    }
-
-    .home .title_overlay {
-       /* top: -50%; */
-       /* bottom: 50%; */
-    }
-    .home .text {
-        /* width: calc(20%); */
-    }
-    .home .intro {
-        /* display: flex; */
-        /* flex-direction: column; */
+        gap: 3rem;
     }
     .skills {
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
-
     .projects .item {
         display: flex;
         flex-direction: row;
