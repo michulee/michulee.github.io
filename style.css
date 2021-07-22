@@ -174,17 +174,24 @@ section {
     align-items: center;
 }
 
+.home .container > * {
+    /* width: 100%; */
+}
+
 .home .intro {
-    /* height: 100%; */
+    /* need height 100 so text overlay stays in place */
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* align-items: flex-end; */
     text-align: center;
     max-width: var(--container-width);
 
     /* even flex layout */
     /* width: 100%; */
+    /* width: 50%; */
     /* margin: 0 auto; */
     padding-bottom: 1rem;
 }
@@ -192,7 +199,8 @@ section {
 .home .text {
     /* even 50 50 flex layout */
     /* width: 40%; */
-    /* height: 100%; */
+    height: 100%;
+    max-width: 500px;
     display: flex;
     align-items: center;
     /* padding: 0 10%; */
@@ -404,11 +412,26 @@ section {
 }
 
 @media (min-width: 756px) {
+    /* text overlay breaks when breaking into rows */
     .home .container {
         flex-direction: row;
     }
+    .home .title_base {
+        /* top: 0; */
+        /* right: 0;  */
+        /* left: -96%; */
+    }
+
+    .home .title_overlay {
+       /* top: -50%; */
+       /* bottom: 50%; */
+    }
     .home .text {
         /* width: calc(20%); */
+    }
+    .home .intro {
+        /* display: flex; */
+        /* flex-direction: column; */
     }
     .skills {
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -417,6 +440,10 @@ section {
     .projects .item {
         display: flex;
         flex-direction: row;
+    }
+
+    .links_nav {
+        /* display: none; */
     }
 }
 
