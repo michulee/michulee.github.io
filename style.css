@@ -75,7 +75,7 @@ section {
     color: var(--color-light);
     letter-spacing: 3px;
     border-bottom: 5px solid var(--color-rose);
-    font-weight: 400;
+    font-weight: bold;
 }
 
 .container {
