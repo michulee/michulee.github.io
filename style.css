@@ -302,7 +302,6 @@ section {
 
 .projects .container {
     display: grid;
-    /* grid-template-columns: repeat(auto-fill, minmax(485px, 1fr)); */
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     margin: 0 auto;
 
@@ -395,11 +394,6 @@ section {
         display: flex;
         flex-direction: column;
     }
-    .projects .container {
-        /* grid-template-columns: repeat(auto-fill, minmax(50%, 1fr)); */
-    }
-
-
     .links_nav {
         /* top: 0; */
         bottom: unset;
@@ -413,9 +407,6 @@ section {
 }
 
 @media (min-width: 1024px) {
-    .projects .container {
-        /* grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); */
-    }
     .projects .item {
         flex-direction: column;
     }
