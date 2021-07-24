@@ -17,6 +17,8 @@
     --color-react: #61DAFB;
     --color-scss: #CF649A;
     --color-java: #FF3030;
+    /* --color-figma: #ff0062; */
+    --color-figma: #ff6600;
 
     --container-width: 1440px;
 }
@@ -281,6 +283,7 @@ section {
 .react { color: var(--color-react); }
 .scss { color: var(--color-scss); }
 .java { color: var(--color-java); }
+.figma { color: var(--color-figma); }
 
 .skills .item .text {
     text-transform: uppercase;
@@ -374,6 +377,36 @@ section {
 /* CONTACT/FOOTER SECTION */
 .contact {
     background-color: var(--color-light);
+    padding-bottom: 5rem;
+}
+
+.contact .title {
+    text-align: center;
+    font-size: 3rem;
+}
+
+.contact .container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.contact .wrapper {
+    display: flex;
+    /* justify-content: center; */
+}
+
+.contact .wrapper > * {
+    width: 100%;
+}
+
+/* makes extra form gap disappear */
+#powrIframeLoader {
+    display: none;
+}
+
+.contact .content {
+
 }
 
 @media (min-width: 632px) {
