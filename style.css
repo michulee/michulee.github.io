@@ -247,11 +247,11 @@ section {
 
 /* SKILLS SECTION */
 .skills {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    /* display: grid; */
+    /* grid-template-columns: repeat(2, 1fr); */
     position: relative;
-    gap: 20px;
-    width: 80%;
+    /* gap: 20px; */
+    /* width: 80%; */
     margin: 0 auto;
 
     /* needs to have sizing container */
@@ -259,17 +259,43 @@ section {
 
 }
 
-.skills .item {
-    display: flex;
+.skills .row {
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
+
+    margin-bottom: 5rem;
+    text-align: center;
+}
+.skills .row .skills_wrapper {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    /* align-items: center; */
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    align-items: flex-end;
+    gap: 2rem;
+}
+
+.row .title {
+    text-transform: uppercase;
+    color: var(--color-primary-high-contrast);
+    border-bottom: 1px solid var(--color-primary-high-contrast);
+    font-size: 1.6rem;
+    margin-bottom: 1.25rem;
 }
 
 .styled_components img {
     max-width: unset;
     width: 150px;
     object-fit: cover;
+}
+
+.skills .item {
+    /* display: flex; */
 }
 
 .skills .item .skill_icon {
@@ -286,7 +312,7 @@ section {
 
 .skills .item .text {
     text-transform: uppercase;
-    color: var(--color-primary-high-contrast);
+    /* color: var(--color-primary-high-contrast); */
     letter-spacing: 3px;
     font-weight: bold;
     padding: 15px 0;
