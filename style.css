@@ -111,7 +111,8 @@ section {
     font-weight: bold;
     letter-spacing: 2px;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
+    /* font-size: 0.8rem; */
+    font-size: calc(0.8rem + 0.3vw);
 }
 
 .desktop_nav .nav_icon {
@@ -190,6 +191,7 @@ section {
     display: flex;
     align-items: center;
     font-size: calc(1rem + 0.3vw);
+    letter-spacing: 0.05rem;
 }
 
 .home .profile_pic {
@@ -288,6 +290,8 @@ section {
     /* justify-items: center; */
     /* justify-content: end; */
     gap: 2rem;
+
+    margin-top: 1rem;
     
 }
 
@@ -297,8 +301,11 @@ section {
     align-items: center;
     border-bottom: 1px solid var(--color-primary-high-contrast);
     /* height: fit-content; */
+
     margin: auto 0;
     /* margin-bottom: 2rem; */
+
+    padding-bottom: 1rem;
 }
 .row .title_wrapper .title {
     text-transform: uppercase;
@@ -308,7 +315,6 @@ section {
     color: var(--color-primary-high-contrast);
     /* border-bottom: 1px solid var(--color-primary-high-contrast); */
     font-size: 1.6rem;
-    /* margin-bottom: 1.25rem; */
 }
 
 .styled_components img {
@@ -483,6 +489,9 @@ section {
         /* width: 80%; */
         /* margin: 0 auto; */
         grid-template-columns: 30% 70%;
+    }
+    .skills .row .title_wrapper {
+        /* margin-bottom: 0; */
     }
     .skills .row .skills_wrapper {
         /* grid-template-columns: repeat(auto, minmax(90px, 1fr)); */
