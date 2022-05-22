@@ -25,30 +25,105 @@
     <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Montserrat:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
+    <!-- GOOGLE ICONS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
     <!-- FAVICON -->
     <link rel="icon" href="./assets/favicon/m/favicon-16x16.png" type="image/gif" sizes="16x16">
     <link rel="icon" href="./assets/favicon/m/favicon-32x32.png" type="image/gif" sizes="32x32">
 
 </head>
 
-<body>
+<body class="btn_top_parent mobile_menu_parent">
+    <nav>
+        <div id="mobile_menu">
+            <button type="button" class="btn_mobile material-symbols-outlined">nights_stay</button>
+            <ul class="no_list_style">
+                <li><a href="#hero_section" class="hidden">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects"><span class="material-symbols-outlined">rocket</span>Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <nav>
+        <a href="#hero_section"><button type="button" class="btn_top material-symbols-outlined" title="to top of page">rocket</button></a>
+    </nav>
+
     <section id="hero_section">
-        <div id="circle">
-            <div class="circle_wrapper">
-                <div class="circle_image">
-                    <img src="/assets/profile/professional2.png" alt="female">
+
+
+        <div class="container">
+            <div class="hero_wrapper">
+                <!-- FIXME links aren't broken when you add sibling when making parent a flex/grid container-->
+                <!-- <h2 class="hero_title">Michelle Lee</h2> -->
+                <div id="circle">
+                    <div class="circle_wrapper">
+                        <div class="circle_image">
+                            <img src="/assets/profile/professional2.png" alt="female">
+                        </div>
+                        <div class="circle_text">
+                            <ul class="no_list_style">
+                                <li><a href="#hero_section" class="hidden">Home</a></li>
+                                <li><a href="#about">About</a></li>
+                                <li><a href="#projects"><span class="material-symbols-outlined">rocket</span>Projects</a></li>
+                                <li><a href="#contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="circle_text">
-                    <ul>
-                        <li>Home</li>
-                        <li>About</li>
-                        <li>Projects</li>
-                        <li>Contact</li>
-                    </ul>
+                <p style="color: white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim tenetur aperiam est obcaecati recusandae nesciunt? Maiores harum ex, adipisci officiis alias accusamus veritatis sed delectus quam maxime, architecto voluptas hic?</p>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="resume" class="project">
+        <h2 id="projects" class="section_title_container">
+            <div class="section_title_wrapper">
+                <div class="section_title">Projects</div>
+            </div>
+        </h2>
+        <div class="container">
+            <div class="resume_container">
+                <div class="project_card">
+                    <div class="project_rotator">
+                        <ul class="no_list_style">
+                            <li><img src="/assets/projects/one_resume_desktop.jpg" alt=""></li>
+                            <li><img src="/assets/projects/one_resume_mobile.jpg" alt=""></li>
+                        </ul>
+                    </div>
+                    <nav class="project_nav">
+                        <ul class="no_list_style">
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="project_content">
+                    <div class="project_header">
+                        <h3 class="project_title">One Resume</h3>
+                        <div class="project_links">
+                            <ul class="no_list_style">
+                                <li><a href="#">Live</a></li>
+                                <li><a href="#">Repo</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="project_skills">
+                        <ul class="no_list_style">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                        </ul>
+                    </div>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius qui quas minima cum ullam neque at facere. Voluptatem ex tenetur, sequi vero ratione ad molestiae quia laudantium veritatis, corporis enim.</p>
                 </div>
             </div>
         </div>
+        <!-- TODO title, description, links (live, repo), tech used, lots of images -->
     </section>
+
+
 </body>
 
 </html>
