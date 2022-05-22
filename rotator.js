@@ -1,3 +1,8 @@
+// TODO
+/**
+ * - slide left and right navigation
+ */
+
 // GLOBAL VARIABLES
 let currentID = 0;
 let previousID = 0;

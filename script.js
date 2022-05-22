@@ -14,3 +14,28 @@ window.onscroll = () => {
         document.getElementById("btn_top_container").style.opacity = "0";
     }
 };
+
+// dialogue script
+const dialogueWrapper = document.querySelector(".text_dialogue_wrapper");
+dialogueWrapper.addEventListener("click", () => {
+    if(document.querySelector("#text_dialogue li:last-child.active")) {
+        // do nothing if on last dialogue
+        return
+    } else {
+        nextDialogue();
+        // hide blinker if on last dialogue
+        if(document.querySelector("#text_dialogue li:last-child.active")) {
+            document.querySelector(".text_blinker").classList.add("hidden");
+        }
+    }
+})
+function nextDialogue() {
+    // remove active
+    const current = document.querySelector("#text_dialogue li.active");
+    const next = current.nextElementSibling;
+
+    // toggle active for next element
+    current.classList.toggle("active");
+    next.classList.toggle("active");
+    
+}
