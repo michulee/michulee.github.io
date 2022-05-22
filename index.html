@@ -18,6 +18,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./rotator.css">
 
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +35,7 @@
 
 </head>
 
-<body class="btn_top_parent mobile_menu_parent">
+<body class="btn_top_parent btn_middle_parent mobile_menu_parent">
     <nav>
         <div id="mobile_menu">
             <button type="button" class="btn_mobile material-symbols-outlined">nights_stay</button>
@@ -46,13 +47,16 @@
             </ul>
         </div>
     </nav>
-    <nav>
+
+    <nav id="btn_top_container" class="btn_top_container">
         <a href="#hero_section"><button type="button" class="btn_top material-symbols-outlined" title="to top of page">rocket</button></a>
     </nav>
 
-    <section id="hero_section">
-
-
+    
+    <section id="hero_section" class="btn_middle_parent">
+        <nav id="btn_middle_container" class="btn_middle_container">
+            <span class="btn_middle material-symbols-outlined">rocket</span>
+        </nav>
         <div class="container">
             <div class="hero_wrapper">
                 <!-- FIXME links aren't broken when you add sibling when making parent a flex/grid container-->
@@ -75,30 +79,38 @@
                 <p style="color: white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim tenetur aperiam est obcaecati recusandae nesciunt? Maiores harum ex, adipisci officiis alias accusamus veritatis sed delectus quam maxime, architecto voluptas hic?</p>
             </div>
         </div>
-
     </section>
 
     <section id="resume" class="project">
         <h2 id="projects" class="section_title_container">
             <div class="section_title_wrapper">
-                <div class="section_title">Projects</div>
+                <div class="section_title">Shipped Projects</div>
             </div>
         </h2>
         <div class="container">
             <div class="resume_container">
                 <div class="project_card">
+
                     <div class="project_rotator">
-                        <ul class="no_list_style">
-                            <li><img src="/assets/projects/one_resume_desktop.jpg" alt=""></li>
+                        <ul id="rotator_image" class="no_list_style">
+                            <li class="active"><img src="/assets/projects/one_resume_desktop.jpg" alt=""></li>
                             <li><img src="/assets/projects/one_resume_mobile.jpg" alt=""></li>
                         </ul>
+                        <nav class="project_hover_nav">
+                            <ul id="rotator_hover_nav" class="no_list_style">
+                                <li id="rotator_hover_left"></li>
+                                <li id="rotator_hover_right"></li>
+                            </ul>
+                        </nav>
                     </div>
-                    <nav class="project_nav">
-                        <ul class="no_list_style">
-                            <li></li>
+
+                    <nav class="project_circle_nav">
+                        <ul id="project_circle_nav" class="no_list_style">
+                            <li class="active"></li>
                             <li></li>
                         </ul>
                     </nav>
+
                 </div>
                 <div class="project_content">
                     <div class="project_header">
@@ -124,6 +136,8 @@
     </section>
 
 
+    <script src="/rotator.js"></script>
+    <script src="/script.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,46 @@
+/* CSS VARIABLES */
+:root {
+    --color-primary: #5B6BC7;
+    --color-secondary: #74A4DF;
+    --color-secondary-dark: #3881DB;
+    --color-accent: #BE87E0;
+    --color-accent-80: #BE87E0CC;
+    --color-accent-60: #BE87E099;
+    --color-accent-50: #BE87E080;
+
+    --color-neutral-light: #FFFFFF;
+    --color-neutral-dark: #243058;
+}
+
+/* IMPORTANT: transition doesn't apply to display property */
+/* use opacity 0 and height 0 instead - https://stackoverflow.com/a/3332179 */
+
+/* opacity 0 and height 0 vs visibility*/
+/* Applying display: none or opacity: 0 will effect on child elements. visibility: hidden , on the other hand, doesn't change the visibility of any children. */
+
+#rotator_image li {
+    opacity: 0;
+    height: 0;
+    transition: 0.5s ease-in-out;
+}
+#rotator_image li.active {
+    opacity: 1;
+    height: auto;
+}
+#project_circle_nav li {
+    transition: 0.5s ease-in-out;
+}
+#project_circle_nav li.active {
+    background-color: white;
+}
+
+#rotator_hover_left, #rotator_hover_right {
+    transition: 0.5s ease-in-out;
+}
+#rotator_hover_left:hover, #rotator_hover_left:focus {
+    /* background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(0,0,0,0) 37%, rgba(0,0,0,0) 100%);  */
+    background: linear-gradient(to right, var(--color-secondary-dark) 0%, rgba(0,0,0,0) 37%, rgba(0,0,0,0) 100%); 
+}
+#rotator_hover_right:hover, #rotator_hover_right:focus {
+    background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(0,0,0,0) 37%, rgba(0,0,0,0) 100%); 
+}

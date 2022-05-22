@@ -1,3 +1,17 @@
+/* CSS VARIABLES */
+:root {
+    --color-primary: #5B6BC7;
+    --color-secondary: #74A4DF;
+    --color-secondary-dark: #3881DB;
+    --color-accent: #BE87E0;
+    --color-accent-80: #BE87E0CC;
+    --color-accent-60: #BE87E099;
+    --color-accent-50: #BE87E080;
+
+    --color-neutral-light: #FFFFFF;
+    --color-neutral-dark: #243058;
+}
+
 /* HEAD CSS */
 .material-symbols-outlined {
   font-size: inherit !important;
@@ -28,18 +42,6 @@
 
 /* GLOBAL CSS */
 * {box-sizing: border-box;}
-:root {
-    --color-primary: #5B6BC7;
-    --color-secondary: #74A4DF;
-    --color-secondary-dark: #3881DB;
-    --color-accent: #BE87E0;
-    --color-accent-80: #BE87E0CC;
-    --color-accent-60: #BE87E099;
-    --color-accent-50: #BE87E080;
-
-    --color-neutral-light: #FFFFFF;
-    --color-neutral-dark: #243058;
-}
 html, body {
     font-family: 'Montserrat', 'sans-serif';
     margin: 0;
@@ -104,13 +106,13 @@ img {
 .btn_top_parent {
     position: relative;
 }
-.btn_top {
+.btn_top_container {
     position: fixed;
     right: 5%;
     bottom: 5%;
-    /* width: 50px; */
-    /* height: 50px; */
-    border-radius: 50%;
+    transition: 0.3s ease-in-out;
+}
+.btn_top {
     background-color: transparent;
     cursor: pointer;
     color: var(--color-neutral-light);
@@ -131,6 +133,37 @@ img {
 }
 .btn_top:active {
     /* box-shadow: 0px 12px 24px -12px var(--color-accent); */
+}
+
+.btn_middle_parent {
+    position: relative;
+}
+.btn_middle_container {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transition: 0.3s ease-in-out;
+}
+.btn_middle {
+    color: var(--color-neutral-light);
+    transform: rotate(180deg);
+
+    background-color: transparent;
+    cursor: default;
+    color: var(--color-neutral-light);
+
+    font-size: 3rem !important;
+
+    text-shadow:
+    0 0 7px var(--color-secondary-dark),
+    /* 0 0 7px var(--color-secondary-dark), */
+    /* 0 0 10px var(--color-neutral-light), */
+    /* 0 0 21px var(--color-neutral-light), */
+    0 0 42px var(--color-accent),
+    0 0 82px var(--color-accent),
+    0 0 92px var(--color-accent),
+    0 0 102px var(--color-accent),
+    0 0 151px var(--color-accent);
 }
 
 /* SHARED */
@@ -155,7 +188,8 @@ img {
 .section_title {
     position: absolute;
     top: 0;
-    transform: translateY(-25%);
+    left: 50%;
+    transform: translate(-50%, -25%);
 }
 .project {
     min-height: 80vh;
@@ -169,7 +203,6 @@ img {
     gap: 1rem;
 }
 .project_card img {
-    border-radius: 15px;
     /* max-width: 900px; */
     display: block;
     box-shadow: 0px 12px 24px -12px var(--color-accent);
@@ -181,7 +214,6 @@ img {
 }
 .project_links ul, .project_skills ul, .project_rotator ul {
     display: flex;
-    gap: 1rem;
 }
 .project_skills li {
     border-radius: 20px;
@@ -189,20 +221,41 @@ img {
     padding: 0.3rem 0.8rem;
     color: var(--color-neutral-light);
 }
-.project_rotator {
 
-}
-.project_nav ul {
+.project_circle_nav ul {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
-.project_nav li {
+.project_circle_nav li {
     width: 30px;
     height: 30px;
     border-radius: 50%;
     background-color: var(--color-neutral-dark);
     border: 3px solid var(--color-primary);
+}
+
+.project_rotator {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.project_hover_nav {
+    position: absolute;
+    /* top: 50%; */
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.project_hover_nav ul {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+.project_hover_nav li {
+    /* display: flex; */
+    /* height: 100%; */
+    width: 50%;
 }
 
 /* HERO SECTION */
