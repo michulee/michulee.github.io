@@ -98,16 +98,66 @@ img {
 .mobile_menu_parent {
     position: relative;
 }
+
 #mobile_menu {
     position: fixed;
     right: 5%;
     top: 5%;
+    z-index: 1;
+}
+#mobile_menu .mobile_menu_wrapper {
+    /* display: flex; */
+}
+#mobile_menu .mobile_menu_button {
+	/* border-radius: 50%; */
+    display: flex;
+    justify-content: end;
+	/* max-width: 500px; */
+	/* overflow: hidden; */
+	/* box-shadow: 0px 12px 24px -12px var(--color-accent); */
+}
+.mobile_menu_text {
+    text-align: center;
+    border-radius: 10px;
+
+}
+.mobile_menu_text ul {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+}
+.mobile_menu_text li > * {
+    /* height: 25%; */
+    color: var(--color-neutral-light) !important;
+}
+.mobile_menu_text_list {
+    height: 0;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+
+    background: var(--color-accent-50);
+    /* border: 3px solid var(--color-primary-50); */
+
+    /* background: var(--color-primary-50); */
+    /* border: 3px solid var(--color-secondary-50); */
+
+    /* box-shadow: 0px 12px 24px -12px var(--color-neutral-dark); */
+    /* box-shadow: 0px 12px 24px -12px var(--color-accent); */
+
+}
+.mobile_menu_text:hover .mobile_menu_text_list {
+    height: auto;
+    opacity: 1;
 }
 .btn_mobile {
     border: none;
     background-color: transparent;
     color: var(--color-neutral-light);
     font-size: 3rem !important;
+    /* margin: 0 auto; */
+    /* display: block; */
     cursor: pointer;
 }
 
@@ -268,7 +318,7 @@ img {
 }
 
 /* HERO SECTION */
-#hero_section {
+#home {
     /* FIXME links aren't broken when you add sibling when making parent a flex/grid container */
     display: flex;
     /* display: grid; */
@@ -286,7 +336,7 @@ img {
     background-size: cover;
     background-position: 50% 80%;
 }
-#hero_section .hero_wrapper {
+#home .hero_wrapper {
     /* display: flex; */
     max-width: 800px;
     height: max-content;
@@ -303,9 +353,6 @@ img {
 
     /* margin: 0 auto; */
     /* display: inline-block; */
-}
-#circle .circle_wrapper {
-    /* display: flex; */
 }
 #circle .circle_image {
     border-radius: 50%;
