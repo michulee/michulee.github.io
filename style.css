@@ -19,6 +19,7 @@
 
     --color-neutral-light: #FFFFFF;
     --color-neutral-dark: #243058;
+    --color-neutral-darker: #000000;
 }
 
 /* HEAD CSS */
@@ -59,6 +60,8 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
+    position: relative;
+    background-color: var(--color-neutral-dark);
 }
 h1 {
 
@@ -166,10 +169,12 @@ img {
     position: relative;
 }
 .btn_top_container {
+    display: none;
     position: fixed;
     right: 5%;
     bottom: 5%;
     transition: 0.3s ease-in-out;
+    z-index: 1;
 }
 .btn_top {
     background-color: transparent;
@@ -227,8 +232,10 @@ img {
 
 /* SHARED */
 .container {
-    max-width: 1440px;
+    max-width: 2560px;
     margin: 0 auto;
+    padding: 0 1rem;
+    /* z-index: 1; */
 }
 .section_title_container {
     text-align: center;
@@ -251,8 +258,9 @@ img {
     transform: translate(-50%, -25%);
 }
 .project {
-    min-height: 80vh;
+    /* min-height: 80vh; */
     background-color: var(--color-neutral-dark);
+    position: relative;
 }
 .project_card {
     display: flex;
@@ -271,8 +279,10 @@ img {
     align-items: center;
     gap: 1rem;
 }
-.project_links ul, .project_skills ul, .project_rotator ul {
+.project_links ul, .project_skills ul, .project_rotator ul, footer ul {
     display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 .project_skills li {
     border-radius: 20px;
@@ -320,26 +330,34 @@ img {
 /* HERO SECTION */
 #home {
     /* FIXME links aren't broken when you add sibling when making parent a flex/grid container */
-    display: flex;
+    /* display: flex; */
     /* display: grid; */
 
     align-items: center;
     justify-content: center;
-    background-color: var(--color-neutral-dark);
+    background-color: var(--color-neutral-darker);
     height: 100vh;
-    /* background: rgb(116,164,223); */
-    /* background: linear-gradient(90deg, rgba(116,164,223,1) 0%, rgba(91,107,199,1) 37%, rgba(190,135,224,1) 100%); */
-
-    /* background-image: url('https://images.unsplash.com/photo-1464802686167-b939a6910659?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1450'); */
+    
+}
+#home .container {
     background-image: url('https://images.unsplash.com/photo-1522124624696-7ea32eb9592c?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 80%;
+
 }
 #home .hero_wrapper {
-    /* display: flex; */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
     max-width: 800px;
-    height: max-content;
+    /* height: max-content; */
+    height: 100%;
+
+    padding-bottom: 7rem;
+
 }
 
 #circle {
@@ -460,8 +478,47 @@ img {
 
 
 /* RESUME SECTION */
+
 .resume_container {
     max-width: 900px;
     margin: 0 auto;
 }
 
+/* FOOTER SECTION */
+footer {
+    text-align: center;
+    background-color: var(--color-neutral-darker);
+    color: var(--color-neutral-light);
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 0;
+    margin-top: 150px;
+    position: relative;
+    overflow: hidden;
+}
+footer .footer_socials {
+}
+footer .footer_socials ul {
+    max-width: 300px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+footer .footer_socials svg {
+    display: block;
+    width: 30px;
+    color: var(--color-primary);
+    transition: 0.5s ease-in-out;
+}
+footer .footer_socials svg:hover, footer .footer_socials svg:focus, footer .footer_socials svg:active {
+    color: var(--color-accent);
+}
+#mountains::before {
+    content: url('/assets/graphics/mountains_crop.png');
+    position: absolute;
+    bottom: 3rem;
+    right: 0;
+}
