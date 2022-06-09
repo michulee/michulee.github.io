@@ -522,3 +522,19 @@ footer .footer_socials svg:hover, footer .footer_socials svg:focus, footer .foot
     bottom: 3rem;
     right: 0;
 }
+
+@media screen and (max-width: 800px) {
+    #circle .circle_image {
+        max-width: 400px;
+    }
+}
+@media screen and (max-width: 630px) {
+    #circle .circle_image {
+        max-width: 300px;
+    }
+}
+@media screen and (max-width: 460px) {
+    #circle .circle_image {
+        max-width: 200px;
+    }
+}
