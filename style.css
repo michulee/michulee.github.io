@@ -63,11 +63,16 @@ body {
     position: relative;
     background-color: var(--color-neutral-dark);
 }
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Montserrat';
+    color: var(--color-neutral-light);
+    letter-spacing: 3px;
+}
 h1 {
 
 }
 h2 {
-    font-size: 2rem;
+    font-size: 3rem;
     text-transform: uppercase;
     transition: 1.5s ease-in-out;
 }
@@ -76,9 +81,10 @@ h2:hover, h2:focus{
     /* padding: 85px 0; */
     /* box-shadow: 0px 12px 24px -12px var(--color-accent); */
 }
-h1,h2,h3,h4,h5,h6 {
-    font-family: 'Aclonica';
-    color: var(--color-neutral-light);
+h3 {
+    font-size: 2.5rem;
+    margin: 0 0 1rem 0;
+    text-transform: uppercase;
 }
 ul, ol {
     margin: 0;
