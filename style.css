@@ -106,6 +106,7 @@ img {
 /* MOBILE MENU */
 .mobile_menu_parent {
     position: relative;
+    background-color: var(--color-neutral-darker);
 }
 
 #mobile_menu {
@@ -258,6 +259,7 @@ img {
 
 }
 .section_title {
+    width: 100%;
     position: absolute;
     top: 0;
     left: 50%;
@@ -289,6 +291,13 @@ img {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+}
+.project_links a {
+    text-decoration: underline;
+    letter-spacing: 1px;
+}
+.project_links a:hover, .project_links a:focus {
+    color: #FFFFFF;
 }
 .project_skills li {
     border-radius: 20px;
@@ -482,8 +491,19 @@ img {
     }
 }
 
+/* MAIN SECTION */
+main {
+    margin-bottom: 2rem;
+}
+
 
 /* RESUME SECTION */
+
+#resume {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
 
 .resume_container {
     max-width: 900px;
@@ -535,12 +555,22 @@ footer .footer_socials svg:hover, footer .footer_socials svg:focus, footer .foot
     }
 }
 @media screen and (max-width: 630px) {
+    #circle .circle_wrapper {
+        /* margin: 0 auto; */
+    }
     #circle .circle_image {
-        max-width: 300px;
+        margin: 3rem auto 0;
+        float: none;
+    }
+    #circle .circle_text {
+        display: none;
+    }
+}
+@media screen and (max-width: 526px) {
+    .hero_wrapper .text_frame {
+        display: none;
     }
 }
 @media screen and (max-width: 460px) {
-    #circle .circle_image {
-        max-width: 200px;
-    }
+
 }

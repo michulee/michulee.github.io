@@ -66,7 +66,6 @@
     </header>
 
     <main>
-
         <section id="home" class="btn_middle_parent">
             <nav id="btn_middle_container" class="btn_middle_container">
                 <span class="btn_middle material-symbols-outlined">rocket</span>
@@ -78,7 +77,7 @@
                     <div id="circle">
                         <div class="circle_wrapper">
                             <div class="circle_image">
-                                <img src="/assets/profile/professional2.png" alt="female">
+                                <img src="/assets/profile/sakha_purple.png" alt="female headshot">
                             </div>
                             <div class="circle_text">
                                 <ul class="no_list_style">
@@ -105,17 +104,6 @@
                                 <li>
                                     <p>I am a front-end focused Web Developer that enjoys making experiences that are
                                         functional and aesthetic.</p>
-                                </li>
-                                <li>
-                                    <p>Based in Southern California, I love food and enjoy trying to find good places to
-                                        eat
-                                        and drink milk tea. In my free time, I play a lot of games, read manga, and
-                                        watch
-                                        YouTube videos or Twitch streamers.</p>
-                                </li>
-                                <li>
-                                    <p>Every once in a while, I'll work on a personal web development project which will
-                                        appear here on this page if it's ever shipped.</p>
                                 </li>
                                 <li>
                                     <p>Thanks again for dropping by, I hope you like the experience here!</p>
@@ -164,8 +152,8 @@
                             <h3 class="project_title">One Resume</h3>
                             <div class="project_links">
                                 <ul class="no_list_style">
-                                    <li><a href="#">Live</a></li>
-                                    <li><a href="#">Repo</a></li>
+                                    <li><a href="https://michulee.com/one-resume/classic">Live</a></li>
+                                    <li><a href="https://github.com/michulee/one-resume">Repo</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -184,7 +172,53 @@
                     </div>
                 </div>
             </div>
-            <!-- TODO title, description, links (live, repo), tech used, lots of images -->
+
+            <div class="container">
+                <div class="resume_container">
+                    <div class="project_card">
+
+                        <div class="project_rotator">
+                            <ul id="rotator_image" class="no_list_style">
+                                <li class="active"><img src="/assets/projects/color_customizer_default_desktop.png" alt=""></li>
+                                <!-- <li class=""><img src="/assets/projects/color_customizer_yellow_desktop.png" alt=""></li> -->
+                            </ul>
+                            <nav class="project_hover_nav">
+                                <ul id="rotator_hover_nav" class="no_list_style">
+                                    <li id="rotator_hover_left"></li>
+                                    <li id="rotator_hover_right"></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <nav class="project_circle_nav hidden">
+                            <ul id="project_circle_nav" class="no_list_style">
+                                <li class="active"></li>
+                                <li></li>
+                            </ul>
+                        </nav>
+
+                    </div>
+                    <div class="project_content">
+                        <div class="project_header">
+                            <h3 class="project_title">Color Customizer</h3>
+                            <div class="project_links">
+                                <ul class="no_list_style">
+                                    <li><a href="https://v6umji-3000.preview.csb.app/">Live</a></li>
+                                    <li><a href="https://github.com/michulee/color_customizer">Repo</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="project_skills">
+                            <ul class="no_list_style">
+                                <li>React</li>
+                                <li>Styled Components</li>
+                                <li>Stateful Components</li>
+                            </ul>
+                        </div>
+                        <p>An application that dynamically changes the hue color of an SVG image using its average color and converting it into your desired color.</p>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
