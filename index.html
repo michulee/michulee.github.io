@@ -41,32 +41,24 @@
 
 <body class="btn_top_parent btn_middle_parent ">
     <header>
-        <div class="container mobile_menu_parent">
-            <nav id="mobile_menu">
-                <div class="mobile_menu_wrapper">
-                    <!-- <div class="mobile_menu_button"><button type="button" class="btn_mobile material-symbols-outlined">nights_stay</button></div> -->
-                    <div class="mobile_menu_text">
-                        <div class="mobile_menu_button"><button type="button"
-                                class="btn_mobile material-symbols-outlined">menu</button></div>
-                        <ul class="no_list_style mobile_menu_text_list">
-                            <!-- <li><a href="#home">Home</a></li> -->
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#projects"><span class="material-symbols-outlined">rocket</span>Projects</a>
-                            </li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
+        <nav id="top_menu">
+            <div class="top_menu_wrapper">
+                <ul class="no_list_style top_menu_list">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects"><span class="material-symbols-outlined">rocket</span>Projects</a>
+                    </li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
         <nav id="btn_top_container" class="btn_top_container">
-            <a href="#home"><button type="button" class="btn_top material-symbols-outlined"
+            <a href="#about"><button type="button" class="btn_top material-symbols-outlined"
                     title="to top of page">rocket</button></a>
         </nav>
     </header>
 
     <main>
-        <section id="home" class="btn_middle_parent">
+        <section id="about" class="btn_middle_parent">
             <nav id="btn_middle_container" class="btn_middle_container">
                 <span class="btn_middle material-symbols-outlined">rocket</span>
             </nav>
@@ -81,7 +73,6 @@
                             </div>
                             <div class="circle_text">
                                 <ul class="no_list_style">
-                                    <li><a href="#home" class="hidden">Home</a></li>
                                     <li><a href="#about">About</a></li>
                                     <li><a href="#projects"><span
                                                 class="material-symbols-outlined">rocket</span>Projects</a></li>
@@ -97,6 +88,9 @@
                             </span>
                         </div>
                         <div class="text_dialogue">
+                            <div class="text_dialogue_speaker">
+                                <span>Michelle Lee</span>
+                            </div>
                             <ul id="text_dialogue" class="text_dialogue_wrapper no_list_style">
                                 <li class="active">
                                     <p>Hey there! Thanks for stopping by my page!</p>
@@ -115,8 +109,8 @@
             </div>
         </section>
 
-        <section id="resume" class="project">
-            <h2 id="projects" class="section_title_container">
+        <section id="projects" class="project">
+            <h2 id="" class="section_title_container">
                 <div class="section_title_wrapper">
                     <div class="section_title">Shipped Projects</div>
                 </div>
@@ -253,11 +247,11 @@
                         </svg></a></li>
             </ul>
         </div>
-        <small>Copyright &copy;
+        <p>Copyright &copy;
             <script>
                 document.write(new Date().getFullYear())
             </script> Michelle Lee. All Rights Reserved
-        </small>
+        </p>
     </footer>
 
 
