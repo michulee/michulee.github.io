@@ -83,7 +83,7 @@ h2:hover, h2:focus{
 }
 h3 {
     font-size: 2.5rem;
-    margin: 0 0 1rem 0;
+    margin: 0;
     text-transform: uppercase;
 }
 ul, ol {
@@ -97,6 +97,7 @@ a {
 }
 p {
     color: var(--color-neutral-light);
+    font-size: 1.25rem;
 }
 img {
     max-width: 100%;
@@ -286,15 +287,22 @@ img {
     display: flex;
     align-items: center;
     gap: 1rem;
+    margin: 1rem 0;
 }
 .project_links ul, .project_skills ul, .project_rotator ul, footer ul {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    font-size: 1.25rem;
+}
+.project_links {
+    align-self: end;
+    padding: 0 0 8px 0;
 }
 .project_links a {
     text-decoration: underline;
     letter-spacing: 1px;
+    font-size: 1.25rem;
 }
 .project_links a:hover, .project_links a:focus {
     color: #FFFFFF;
@@ -450,11 +458,10 @@ img {
     margin-top: 2rem;
 }
 .text_dialogue_wrapper {
-    padding: 1rem 5rem;
-
     display: flex;
     flex-direction: column;
-    height: 140px;
+    min-height: 140px;
+    font-size: 1.25rem;
 }
 .text_dialogue li {
     color: var(--color-neutral-light);
@@ -466,9 +473,16 @@ img {
 .text_dialogue li {
     /* height: 150px; */
 }
+.text_dialogue {
+    display: flex;
+}
 .text_dialogue li.active {
     opacity: 1;
-    height: 30px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
 }
 .text_blinker_parent {
     position: relative;
@@ -549,9 +563,45 @@ footer .footer_socials svg:hover, footer .footer_socials svg:focus, footer .foot
     right: 0;
 }
 
+/* FONT QUERIES */
+@media screen and (max-width: 800px) {
+    h2 {
+        font-size: 2rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+    .project_header {
+        flex-direction: column;
+        align-items: start;
+    }
+    .project_links {
+        align-self: auto;
+    }
+    .text_dialogue_wrapper {
+        font-size: 1.1rem;
+    }
+    #circle .circle_text li {
+        font-size: 1.8rem;
+    }
+    .project_links a {
+        font-size: 1rem;
+    }
+    p {
+        font-size: 1rem;
+    }
+    .project_links ul, .project_skills ul, .project_rotator ul, footer ul {
+        font-size: 1rem;
+    }
+}
+
+/* GENERAL QUERIES */
 @media screen and (max-width: 800px) {
     #circle .circle_image {
         max-width: 400px;
+    }
+    .project_links {
+        padding: 0 0 4px 0;
     }
 }
 @media screen and (max-width: 630px) {
