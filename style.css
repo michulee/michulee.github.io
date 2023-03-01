@@ -26,15 +26,6 @@
 .material-symbols-outlined {
   font-size: inherit !important;
   vertical-align: sub;
-
-  /* display: flex;
-  align-self: center;
-  align-items: center;
-  align-content: center; */
-
-  /* display: inline-block; */
-  /* vertical-align: middle; */
-
   font-variation-settings:
   'FILL' 0,
   'wght' 400,
@@ -44,7 +35,7 @@
 
 /* UTILITIES */
 .hidden {
-    display: none;
+    display: none !important;
 }
 .no_list_style {
     list-style-type: none;
@@ -216,6 +207,9 @@ header {
     align-content: center;
     position: relative;
 }
+section:not(#about) {
+    padding-bottom: 3rem;
+}
 .section_title_wrapper {
     /* position: relative; */
     height: 20px;
@@ -229,6 +223,10 @@ header {
     top: 0;
     left: 50%;
     transform: translate(-50%, -25%);
+}
+.wrapper_padding {
+    max-width: 800px;
+    margin: 0 auto;
 }
 .project {
     /* min-height: 80vh; */
@@ -341,7 +339,6 @@ header {
     flex-direction: column;
     /* align-items: center; */
     justify-content: center;
-    max-width: 800px;
     /* height: max-content; */
     height: 100%;
 
@@ -490,7 +487,12 @@ header {
 
 /* MAIN SECTION */
 main {
-    margin-bottom: 2rem;
+    margin: 2rem 0;
+}
+
+/* SKILLS SECTION */
+#skills {
+
 }
 
 

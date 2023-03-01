@@ -45,6 +45,7 @@
             <div class="top_menu_wrapper">
                 <ul class="no_list_style top_menu_list">
                     <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects"><span class="material-symbols-outlined">rocket</span>Projects</a>
                     </li>
                     <li><a href="#contact">Contact</a></li>
@@ -63,7 +64,7 @@
                 <span class="btn_middle material-symbols-outlined">rocket</span>
             </nav>
             <div class="container">
-                <div class="hero_wrapper">
+                <div class="hero_wrapper wrapper_padding">
                     <!-- FIXME links aren't broken when you add sibling when making parent a flex/grid container-->
                     <!-- <h2 class="hero_title">Michelle Lee</h2> -->
                     <div id="circle">
@@ -74,6 +75,7 @@
                             <div class="circle_text">
                                 <ul class="no_list_style">
                                     <li><a href="#about">About</a></li>
+                                    <li><a href="#skills">&nbsp;&nbsp;&nbsp;&nbsp;Skills</a></li>
                                     <li><a href="#projects"><span
                                                 class="material-symbols-outlined">rocket</span>Projects</a></li>
                                     <li><a href="#contact">Contact</a></li>
@@ -112,8 +114,21 @@
             </div>
         </section>
 
+        <section id="skills" class="wrapper_padding">
+            <h2 class="section_title_container">
+                <div class="section_title_wrapper">
+                    <div class="section_title">Skills</div>
+                </div>
+            </h2>
+            <div class="container">
+                <p><strong>Languages</strong>: HTML, CSS, JavaScript, jQuery, SCSS, SQL, Java</p>
+                <p><strong>Frameworks & Libraries</strong>: Node.js, React, React Hooks, Styled Components</p>
+                <p><strong>Tools</strong>: Git, GitHub, MySQL, REST, Figma</p>
+            </div>
+        </section>
+
         <section id="projects" class="project">
-            <h2 id="" class="section_title_container">
+            <h2 class="section_title_container">
                 <div class="section_title_wrapper">
                     <div class="section_title">Shipped Projects</div>
                 </div>
@@ -163,13 +178,12 @@
                         </div>
                         <p>Responsive resume generator based on templates so you don't have to worry about styling your
                             resume. Fill out the information and see changes live as you type. Switch between templates
-                            of
-                            your choosing.</p>
+                            of your choosing. Built in 2021 as an introduction to React.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="container">
+            <div class="container hidden">
                 <div class="resume_container">
                     <div class="project_card">
 
