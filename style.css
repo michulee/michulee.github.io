@@ -64,7 +64,12 @@ h1,h2,h3,h4,h5,h6 {
     letter-spacing: 3px;
 }
 h1 {
-
+    text-align: center;
+    letter-spacing: normal;
+    font-size: 2.5rem;
+}
+h1 span {
+    color: var(--color-accent)
 }
 h2 {
     font-size: 3rem;
@@ -504,7 +509,7 @@ main {
 #projects {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    /* gap: 3rem; */
 }
 
 .resume_container {
@@ -553,6 +558,9 @@ footer .footer_socials svg:hover, footer .footer_socials svg:focus, footer .foot
 
 /* FONT QUERIES */
 @media screen and (max-width: 800px) {
+    h1 {
+        font-size: 2rem;
+    }
     h2 {
         font-size: 2rem;
     }
