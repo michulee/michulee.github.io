@@ -111,6 +111,7 @@ header {
     position: fixed;
     width: 100%;
     z-index: 1;
+    height: 2.5rem;
 }
 .top_menu_list {
     display: flex;
@@ -323,7 +324,7 @@ section:not(#about) {
     align-items: center;
     justify-content: center;
     background-color: var(--color-neutral-darker);
-    height: 100vh;
+    height: calc(100vh - 2.5rem);
     
 }
 #about .container {
@@ -354,6 +355,8 @@ section:not(#about) {
     /* height:100%; */
     max-width: 800px;
     height: 500px;
+
+    display: none;
 
     /* margin: 0 auto; */
     /* display: inline-block; */
@@ -452,7 +455,7 @@ section:not(#about) {
 }
 .text_dialogue_speaker {
     position: absolute;
-    bottom: 85%;
+    bottom: calc(100% - 15px);
     left: 3%;
     padding: 0.5rem;
     color: var(--color-neutral-light);
@@ -487,7 +490,7 @@ section:not(#about) {
 
 /* MAIN SECTION */
 main {
-    margin: 2rem 0;
+    /* margin: 2rem 0; */
 }
 
 /* SKILLS SECTION */
@@ -617,6 +620,9 @@ footer .footer_socials svg:hover, footer .footer_socials svg:focus, footer .foot
     }
     .text_dialogue_speaker {
         width: 80%;
+    }
+    .rocket_icon {
+        display: none !important;
     }
 }
 @media screen and (max-width: 460px) {
