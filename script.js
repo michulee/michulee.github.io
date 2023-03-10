@@ -8,12 +8,18 @@ window.onscroll = () => {
         document.getElementById("btn_top_container").style.display = "block";
         document.getElementById("btn_top_container").style.opacity = "1";
         document.getElementById("btn_top_container").style.height = "auto";
+        
     } else {
         document.getElementById("btn_middle_container").style.opacity = "1";
         document.getElementById("btn_middle_container").style.height = "auto";
 
         document.getElementById("btn_top_container").style.display = "none";
         // document.getElementById("btn_top_container").style.opacity = "0";
+    }
+    if(scrollPos >= 350) {
+        document.getElementById("top_menu").style.backgroundColor = "var(--color-neutral-darker)";
+    } else {
+        document.getElementById("top_menu").style.backgroundColor = "rgba(0,0,0,0.3)";
     }
 };
 

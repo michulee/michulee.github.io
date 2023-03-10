@@ -60,6 +60,9 @@ body {
     flex-direction: column;
     position: relative;
     background-color: var(--color-neutral-dark);
+    /* background-image: url('/assets/graphics/starry_night.jpg'); */
+    background-repeat: no-repeat;
+    /* background-size: auto; */
 }
 h1,h2,h3,h4,h5,h6 {
     font-family: 'Montserrat';
@@ -115,7 +118,8 @@ header {
 #top_menu {
     padding: 0.5rem;
     /* background: linear-gradient(3deg, rgba(26,5,22,1) 4%, rgba(68,71,110,1) 53%, rgba(66,128,167,1) 89%);  */
-    background-color: var(--color-neutral-darker);
+    /* background-color: var(--color-neutral-darker); */
+    background-color: rgba(0,0,0,0.3);
     position: fixed;
     width: 100%;
     z-index: 1;
@@ -241,6 +245,12 @@ section:not(#about) {
     /* min-height: 80vh; */
     background-color: var(--color-neutral-dark);
     position: relative;
+}
+.project_text {
+    color: var(--color-neutral-light)
+}
+.project_text ul, .project_text ol {
+    margin-left: 1rem;
 }
 .project_card {
     display: flex;
@@ -561,6 +571,30 @@ footer .footer_socials svg:hover, footer .footer_socials svg:focus, footer .foot
     position: absolute;
     bottom: 3rem;
     right: 0;
+}
+
+/* CERTIFICATIONS SECTION */
+#certifications {
+
+}
+.certification_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+.certification {
+    color: var(--color-neutral-light);
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    text-align: center;
+}
+.certification .title {
+    max-width: 200px;
+    /* font-weight: bold; */
+    letter-spacing: 1px;
 }
 
 /* FONT QUERIES */
