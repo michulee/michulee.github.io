@@ -1,0 +1,295 @@
+---
+import Base from '../layouts/Base.astro';
+
+const work = [
+  {
+    title: 'Shopify ↔ JD Edwards integrations',
+    body: 'I own the Oracle Integration Cloud orchestrations between two Shopify stores and our JD Edwards ERP: orders, cancellations, returns, fulfillments, and catalog and inventory sync. When the company changed returns apps, I rebuilt the returns and exchanges logic.',
+  },
+  {
+    title: 'Python ETL into Oracle',
+    body: 'Python jobs move production data from PolyPM (SQL Server) into Oracle ATP and ADW: styles, pricing, product metadata and shipments. I converted the Shopify sales load to an incremental MERGE with a 7-day lookback, so reruns and late updates land cleanly.',
+  },
+  {
+    title: 'The platform the pipelines run on',
+    body: 'I administer the company’s GitLab on my own: users, repositories, CI templates, and a fleet of self-hosted Linux runners. With one teammate, I migrated 28 Magic XPI integrations to Python jobs scheduled on GitLab CI.',
+  },
+  {
+    title: 'Visibility into scheduled jobs',
+    body: 'I built an internal dashboard that lists every pipeline schedule by repository, whether it is active, and when each one last succeeded.',
+  },
+];
+
+const menu = [
+  { group: 'Languages', items: 'Python, SQL' },
+  { group: 'Databases', items: 'Oracle ATP & ADW, SQL Server, Snowflake, DuckDB' },
+  { group: 'Integration', items: 'Oracle Integration Cloud, REST & GraphQL APIs' },
+  { group: 'Scheduling & CI', items: 'GitLab CI, self-hosted Linux runners, Prefect' },
+  { group: 'Transformation', items: 'SQL views, MERGE / upsert, dbt' },
+  { group: 'Systems', items: 'Shopify, JD Edwards, PolyPM' },
+  { group: 'Cloud & tooling', items: 'OCI Functions, Oracle Resource Scheduler, Docker, Git' },
+  { group: 'Reporting', items: 'Oracle Analytics' },
+];
+
+const timeline = [
+  { when: 'Dec 2023 – now', what: 'Data Engineer', where: 'Koos Manufacturing (AG Jeans)' },
+  { when: '2022', what: 'Web Developer', where: 'Crescendo Interactive' },
+  { when: '2021', what: 'B.S. Computer Information Systems', where: 'Cal Poly Pomona' },
+];
+---
+<Base
+  title="Michelle Lee · Data Engineer"
+  description="Michelle Lee is a data engineer in Los Angeles who builds and runs the pipelines between Shopify, JD Edwards and Oracle, and the CI platform they run on."
+>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <h1>Michelle Lee</h1>
+        <p class="hero-role">Data engineer in Los Angeles</p>
+        <p class="hero-lede prose">
+          I build the pipelines that move orders, returns and product data between Shopify,
+          JD Edwards and Oracle at AG Jeans, and I run the CI platform those pipelines are scheduled on.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="#projects">See my projects</a>
+          <a class="button button--ghost" href="mailto:michellechulee@gmail.com">Email me</a>
+        </div>
+      </div>
+      <figure class="portrait">
+        <div class="arch">
+          <img src="/img/portrait.jpg" alt="Illustrated portrait of Michelle" width="600" height="530" />
+        </div>
+        <figcaption>Portrait by DJARN</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <h2>What I do at work</h2>
+      <p class="prose muted">
+        AG Jeans designs, makes and ships its own clothing, so data has to move between the ERP,
+        two online stores and the warehouse every day. All of it runs on schedules I build or maintain.
+      </p>
+      <dl class="work-list">
+        {work.map((w) => (
+          <div class="work-item">
+            <dt>{w.title}</dt>
+            <dd>{w.body}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Personal projects</h2>
+      <p class="prose muted">
+        Two pipelines I’m building outside work, both written to be rerun safely.
+      </p>
+
+      <article class="project">
+        <div class="project-head">
+          <h3><a href="/budget-pipeline/">Budget Pipeline</a></h3>
+          <span class="tag">In progress</span>
+        </div>
+        <p class="stack">Python · DuckDB · dbt · Prefect</p>
+        <p class="prose">
+          A personal finance pipeline that joins bank and card transactions with Amazon order emails,
+          so each Amazon charge can be broken down item by item.
+        </p>
+        <ul class="status-list prose">
+          <li><span class="tag tag--done">Done</span> Raw, staging and mart layers in DuckDB, built by dbt with 18 passing tests, run end to end by a Prefect flow and verified rerun-safe on synthetic data.</li>
+          <li><span class="tag">Next</span> Connecting the live bank (SimpleFIN) and Gmail extractors, then scheduling it.</li>
+        </ul>
+        <a href="/budget-pipeline/">Read the case study</a>
+      </article>
+
+      <article class="project">
+        <div class="project-head">
+          <h3>Retail Orders Pipeline</h3>
+          <span class="tag">In progress</span>
+        </div>
+        <p class="stack">Python · Snowflake · Prefect · Docker</p>
+        <p class="prose">
+          Generates Shopify-style order files and loads them into Snowflake: stage the file,
+          <code>COPY INTO</code> a raw table, dedupe with <code>ROW_NUMBER()</code>, then <code>MERGE</code> into the orders table.
+        </p>
+        <ul class="status-list prose">
+          <li><span class="tag tag--done">Done</span> Key-pair auth for a service user, the full generate → load → merge flow in Prefect with retries, and a rerun test showing a second run changes nothing.</li>
+          <li><span class="tag">Next</span> Running the flow inside its Docker container.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="menu" class="menu-section">
+    <div class="wrap">
+      <div class="menu-board">
+        <h2>What I work with</h2>
+        <dl class="menu">
+          {menu.map((m) => (
+            <div class="menu-row">
+              <dt>{m.group}</dt>
+              <dd>{m.items}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2>Experience</h2>
+      <ol class="timeline">
+        {timeline.map((t) => (
+          <li>
+            <span class="when">{t.when}</span>
+            <span class="what">{t.what}</span>
+            <span class="where">{t.where}</span>
+          </li>
+        ))}
+      </ol>
+      <p class="prose muted earlier">
+        Before data work I built websites with React and JavaScript, which is where this site started in 2020.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>Let’s talk</h2>
+      <p class="prose">
+        I’m interested in data engineering roles focused on pipelines and the platforms they run on.
+        Email is the fastest way to reach me.
+      </p>
+      <a class="button" href="mailto:michellechulee@gmail.com">michellechulee@gmail.com</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding-top: clamp(1.5rem, 5vw, 4rem); border-top: 0; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+  }
+  .hero h1 {
+    font-size: clamp(3.4rem, 2rem + 7vw, 7.5rem);
+    font-weight: 300;
+    font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+  .hero-role {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.7rem);
+    color: var(--rose);
+    margin: 1rem 0 1.5rem;
+  }
+  .hero-lede { font-size: 1.15rem; color: var(--foam); }
+  .hero-actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 2rem; }
+
+  /* an arched café window holding the portrait */
+  .arch {
+    margin: 0;
+    background: var(--oat);
+    border-radius: var(--radius-arch);
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    box-shadow: 0 0 0 10px var(--walnut), 0 0 0 11px var(--brass);
+    animation: glow-in 1.2s ease-out both;
+  }
+  .portrait { margin: 0; }
+  .portrait figcaption { margin-top: 1.1rem; text-align: center; font-size: .8rem; color: var(--foam); }
+  .arch img { width: 100%; height: 88%; object-fit: cover; object-position: center 70%; mix-blend-mode: multiply; }
+  @keyframes glow-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .arch { animation: none; } }
+
+  .work-list { margin: 2.5rem 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.25rem 3rem; }
+  .work-item dt { font-family: var(--serif); font-size: 1.3rem; margin-bottom: .5rem; }
+  .work-item dd { margin: 0; color: var(--foam); }
+
+  .project { padding: 2rem 0; }
+  .project + .project { border-top: 1px dashed var(--grain); }
+  .project-head { display: flex; align-items: center; gap: .9rem; flex-wrap: wrap; }
+  .project-head a { color: var(--milk); text-decoration: none; }
+  .project-head a:hover { color: var(--rose); }
+  .stack { color: var(--brass); font-size: .95rem; margin: .5rem 0 1rem; }
+  .project code { font-size: .9em; background: var(--walnut); padding: .05rem .35rem; border-radius: 4px; }
+  .status-list { list-style: none; padding: 0; margin: 0 0 1.25rem; }
+  .status-list li { display: grid; grid-template-columns: 4.2rem 1fr; gap: .75rem; align-items: baseline; margin: .6rem 0; color: var(--foam); }
+  .status-list .tag { justify-self: start; }
+
+  /* the café menu board: groups on the left, a brass dotted leader, the items on the right */
+  .menu-board {
+    background: var(--walnut);
+    border-radius: 28px;
+    padding: clamp(1.75rem, 5vw, 3.5rem);
+    border: 1px solid var(--grain);
+  }
+  .menu-board h2 { text-align: center; font-style: italic; font-variation-settings: 'SOFT' 100, 'WONK' 1; }
+  .menu { margin: 0 auto; max-width: 52rem; }
+  .menu-row { display: flex; align-items: baseline; gap: .75rem; padding: .55rem 0; }
+  .menu-row dt { font-family: var(--serif); font-size: 1.15rem; white-space: nowrap; }
+  .menu-row dd {
+    margin: 0;
+    flex: 1;
+    display: flex;
+    align-items: baseline;
+    gap: .75rem;
+    color: var(--foam);
+    text-align: right;
+  }
+  .menu-row dd::before {
+    content: '';
+    flex: 1;
+    min-width: 2rem;
+    border-bottom: 2px dotted var(--brass);
+    opacity: .55;
+    transform: translateY(-0.3em);
+  }
+
+  .timeline { list-style: none; padding: 0; margin: 0; max-width: 46rem; }
+  .timeline li {
+    display: grid;
+    grid-template-columns: 9.5rem 1fr;
+    grid-template-areas: 'when what' 'when where';
+    column-gap: 1.5rem;
+    padding: 1rem 0 1rem 0;
+    border-left: 1px solid var(--grain);
+    position: relative;
+  }
+  .timeline li::before {
+    content: '';
+    position: absolute;
+    left: -5px; top: 1.45rem;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--rose);
+  }
+  .when { grid-area: when; color: var(--brass); padding-left: 1.25rem; font-size: .95rem; padding-top: .15rem; }
+  .what { grid-area: what; font-family: var(--serif); font-size: 1.25rem; }
+  .where { grid-area: where; color: var(--foam); }
+  .earlier { margin-top: 1.75rem; }
+
+  .contact h2 { font-size: clamp(2.2rem, 1.6rem + 2.5vw, 3.5rem); font-style: italic; font-variation-settings: 'SOFT' 100, 'WONK' 1; }
+  .contact .prose { color: var(--foam); margin-bottom: 1.75rem; }
+
+  @media (max-width: 760px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .portrait { max-width: 260px; order: -1; }
+    .work-list { grid-template-columns: 1fr; }
+    .menu-row { flex-wrap: wrap; gap: .1rem; }
+    .menu-row dd { flex-basis: 100%; text-align: left; }
+    .menu-row dd::before { display: none; }
+    .timeline li { grid-template-columns: 1fr; grid-template-areas: 'when' 'what' 'where'; }
+    .what, .where { padding-left: 1.25rem; }
+  }
+</style>

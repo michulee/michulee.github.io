@@ -1,0 +1,71 @@
+---
+import '@fontsource-variable/fraunces/full.css';
+import '@fontsource-variable/fraunces/full-italic.css';
+import '@fontsource-variable/hanken-grotesk';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  current?: 'home' | 'budget' | 'privacy';
+}
+const { title, description, current = 'home' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#2a1d19" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL('/img/portrait.jpg', Astro.site)} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!-- Google Analytics, carried over from the previous site -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWTQ0L34ZG"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-DWTQ0L34ZG');
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="wordmark" href="/">Michelle Lee</a>
+        <nav class="site-nav" aria-label="Main">
+          <a href="/#work">Work</a>
+          <a href="/#projects">Projects</a>
+          <a href="/budget-pipeline/" aria-current={current === 'budget' ? 'page' : undefined}>Budget Pipeline</a>
+          <a href="/#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>
+          <a href="mailto:michellechulee@gmail.com">michellechulee@gmail.com</a>
+          &ensp;<a href="https://www.linkedin.com/in/michulee/">LinkedIn</a>
+          &ensp;<a href="https://github.com/michulee">GitHub</a>
+        </p>
+        <p>© {year} Michelle Lee, Los Angeles</p>
+      </div>
+    </footer>
+  </body>
+</html>

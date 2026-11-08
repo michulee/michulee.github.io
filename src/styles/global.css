@@ -1,0 +1,134 @@
+/* michulee.com — an evening café: dark roast walls, steamed-milk type,
+   a rose-latte accent and brass fixtures. */
+
+:root {
+  --roast: #2a1d19;      /* page background */
+  --walnut: #3a2923;     /* raised surfaces */
+  --grain: #4b372f;      /* borders on walnut */
+  --milk: #f3e8de;       /* main text */
+  --foam: #cdbbad;       /* secondary text */
+  --rose: #e3aca7;       /* links, accents */
+  --rose-deep: #c98680;  /* hover, tags */
+  --brass: #c9a463;      /* menu leaders, rules */
+  --oat: #efe2d3;        /* portrait window */
+
+  --serif: 'Fraunces Variable', Georgia, serif;
+  --sans: 'Hanken Grotesk Variable', system-ui, sans-serif;
+
+  --measure: 66ch;
+  --wide: 1080px;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --radius-arch: 999px 999px 18px 18px;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--roast);
+  color: var(--milk);
+  font-family: var(--sans);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  /* a faint warm lamp glow in the top corner */
+  background-image: radial-gradient(60rem 40rem at 85% -10%, rgba(227, 172, 167, 0.09), transparent 60%);
+  background-repeat: no-repeat;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--rose); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+a:hover { color: var(--milk); text-decoration-color: var(--rose); }
+:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; border-radius: 4px; }
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-variation-settings: 'SOFT' 100, 'WONK' 0;
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+h2 { font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem); margin-bottom: 1.5rem; }
+h3 { font-size: 1.45rem; }
+p { margin: 0 0 1rem; }
+
+.wrap { max-width: var(--wide); margin: 0 auto; padding: 0 var(--gutter); }
+.prose { max-width: var(--measure); }
+.muted { color: var(--foam); }
+
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 1rem; top: 1rem; background: var(--milk); color: var(--roast); padding: .5rem .75rem; z-index: 10; }
+
+/* ---------- header ---------- */
+.site-header { padding: 1.5rem 0; }
+.site-header .wrap { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.wordmark { font-family: var(--serif); font-size: 1.25rem; color: var(--milk); text-decoration: none; font-variation-settings: 'SOFT' 100, 'WONK' 1; font-style: italic; }
+.site-nav { display: flex; gap: clamp(.9rem, 2.5vw, 1.75rem); flex-wrap: wrap; }
+.site-nav a { color: var(--foam); text-decoration: none; font-size: .95rem; }
+.site-nav a:hover, .site-nav a[aria-current='page'] { color: var(--milk); }
+
+/* ---------- sections ---------- */
+section { padding: clamp(3rem, 7vw, 6rem) 0; }
+section + section { border-top: 1px solid rgba(201, 164, 99, 0.18); }
+
+/* ---------- footer ---------- */
+.site-footer { padding: 3rem 0 4rem; border-top: 1px solid rgba(201, 164, 99, 0.18); color: var(--foam); font-size: .95rem; }
+.site-footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.site-footer a { color: var(--foam); }
+.site-footer a:hover { color: var(--milk); }
+
+/* ---------- shared bits ---------- */
+.tag {
+  display: inline-block;
+  font-size: .8rem;
+  padding: .15rem .65rem;
+  border-radius: 999px;
+  border: 1px solid var(--rose-deep);
+  color: var(--rose);
+  white-space: nowrap;
+}
+.tag--done { border-color: var(--brass); color: var(--brass); }
+
+.button {
+  display: inline-block;
+  padding: .7rem 1.25rem;
+  border-radius: 999px;
+  background: var(--rose);
+  color: var(--roast);
+  text-decoration: none;
+  font-weight: 600;
+}
+.button:hover { background: var(--milk); color: var(--roast); }
+.button--ghost { background: transparent; color: var(--milk); border: 1px solid var(--grain); }
+.button--ghost:hover { background: var(--walnut); color: var(--milk); }
+
+/* ---------- long-form pages (case study, privacy) ---------- */
+.page-head { padding-top: clamp(2.5rem, 6vw, 4.5rem); padding-bottom: 2rem; }
+.page-head h1 { font-size: clamp(2.4rem, 1.6rem + 3.5vw, 4rem); margin: .75rem 0 1rem; }
+.page-head .lede { font-size: 1.15rem; color: var(--foam); max-width: 58ch; }
+section.longform { padding: 0 var(--gutter) 4rem; border-top: 0; }
+.longform h2 { font-size: 1.6rem; margin: 2.75rem 0 .9rem; }
+.longform ul { padding-left: 1.2rem; }
+.longform li { margin: .35rem 0; }
+.longform li::marker { color: var(--brass); }
+.longform code { overflow-wrap: anywhere; font-size: .9em; background: var(--walnut); padding: .1rem .35rem; border-radius: 4px; }
+
+.callout {
+  background: var(--walnut);
+  border-radius: 14px;
+  padding: 1.1rem 1.35rem;
+  margin: 1.5rem 0;
+  border-left: 3px solid var(--rose);
+}
+.callout p:last-child { margin: 0; }
+
+table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+th, td { text-align: left; padding: .6rem .75rem .6rem 0; border-bottom: 1px solid var(--grain); vertical-align: top; }
+th { font-weight: 600; color: var(--foam); }
+.table-scroll { overflow-x: auto; }

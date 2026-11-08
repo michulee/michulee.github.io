@@ -1,0 +1,126 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base
+  title="Budget Pipeline · Michelle Lee"
+  description="Budget Pipeline is a personal data pipeline by Michelle Lee that joins bank and card transactions with Amazon order emails to report spending item by item."
+  current="budget"
+>
+  <div class="wrap page-head">
+    <span class="tag">In progress</span>
+    <h1>Budget Pipeline</h1>
+    <p class="lede">
+      A personal data pipeline that turns bank, card and Amazon order data into itemized
+      spending and net worth reports. It’s a private tool for my own accounts, built the way
+      I’d build a production pipeline: layered, tested and safe to rerun.
+    </p>
+  </div>
+
+  <section class="wrap longform">
+    <div class="prose">
+      <h2>The problem</h2>
+      <p>
+        Bank feeds show an Amazon charge as one amount and a merchant name. The useful detail,
+        what was actually bought and what was refunded, only exists in Amazon’s order emails.
+        Joining the two sources answers questions a budgeting app can’t, like how much went to
+        household items versus clothing last quarter.
+      </p>
+
+      <h2>How it works</h2>
+    </div>
+
+    <figure class="flow" aria-labelledby="flow-caption">
+      <svg viewBox="0 0 880 250" role="img" aria-labelledby="flow-title flow-desc">
+        <title id="flow-title">Budget Pipeline data flow</title>
+        <desc id="flow-desc">Bank and card data from SimpleFIN and Amazon emails from Gmail are extracted by Python into raw tables, cleaned into staging tables by dbt, and joined into marts. Prefect runs every step.</desc>
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#c9a463" />
+          </marker>
+        </defs>
+        <g font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#f3e8de">
+          <rect x="10" y="30" width="160" height="58" rx="14" fill="#3a2923" stroke="#4b372f" />
+          <text x="90" y="56" text-anchor="middle">SimpleFIN</text>
+          <text x="90" y="75" text-anchor="middle" fill="#cdbbad" font-size="12.5">banks, cards</text>
+
+          <rect x="10" y="132" width="160" height="58" rx="14" fill="#3a2923" stroke="#4b372f" />
+          <text x="90" y="158" text-anchor="middle">Gmail (read-only)</text>
+          <text x="90" y="177" text-anchor="middle" fill="#cdbbad" font-size="12.5">Amazon order emails</text>
+
+          <rect x="250" y="80" width="150" height="58" rx="14" fill="#3a2923" stroke="#c9a463" />
+          <text x="325" y="106" text-anchor="middle">raw</text>
+          <text x="325" y="125" text-anchor="middle" fill="#cdbbad" font-size="12.5">as extracted</text>
+
+          <rect x="480" y="80" width="150" height="58" rx="14" fill="#3a2923" stroke="#c9a463" />
+          <text x="555" y="106" text-anchor="middle">staging</text>
+          <text x="555" y="125" text-anchor="middle" fill="#cdbbad" font-size="12.5">typed, deduped</text>
+
+          <rect x="710" y="80" width="160" height="58" rx="14" fill="#e3aca7" />
+          <text x="790" y="106" text-anchor="middle" fill="#2a1d19">marts</text>
+          <text x="790" y="125" text-anchor="middle" fill="#2a1d19" font-size="12.5">itemized spending</text>
+
+          <text x="210" y="222" fill="#c9a463" font-size="13">Python extract</text>
+          <text x="470" y="222" fill="#c9a463" font-size="13">dbt models + tests in DuckDB</text>
+          <text x="440" y="20" text-anchor="middle" fill="#cdbbad" font-size="13">Prefect runs each step in order, with retries</text>
+        </g>
+        <g stroke="#c9a463" stroke-width="1.6" fill="none" marker-end="url(#arrow)">
+          <path d="M170 59 C 210 59, 210 100, 247 104" />
+          <path d="M170 161 C 210 161, 210 118, 247 114" />
+          <path d="M400 109 H 476" />
+          <path d="M630 109 H 706" />
+        </g>
+      </svg>
+      <figcaption id="flow-caption" class="muted">Extract and load first, then transform inside the warehouse (ELT).</figcaption>
+    </figure>
+
+    <div class="prose">
+      <ul>
+        <li><strong>Extract:</strong> Python pulls accounts and transactions from SimpleFIN, and order, shipping and refund emails from six Amazon sender addresses through the Gmail API with read-only access.</li>
+        <li><strong>Load:</strong> records land unchanged in raw tables in DuckDB, keyed so a rerun can’t duplicate them.</li>
+        <li><strong>Transform:</strong> dbt casts and dedupes into staging tables, then builds marts that match Amazon order items to card charges.</li>
+        <li><strong>Orchestrate:</strong> a Prefect flow runs extract, load and transform in order, with retries on the network steps.</li>
+      </ul>
+
+      <h2>Where it stands</h2>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th scope="col">Piece</th><th scope="col">Status</th></tr></thead>
+          <tbody>
+            <tr><td>Raw, staging and mart layers</td><td>Built and tested on synthetic data</td></tr>
+            <tr><td>dbt project</td><td>18 tests passing</td></tr>
+            <tr><td>Prefect flow</td><td>Runs end to end; a second run changes nothing</td></tr>
+            <tr><td>SimpleFIN and Gmail extractors</td><td>Written; connecting real accounts next</td></tr>
+            <tr><td>Scheduling and hosted warehouse (MotherDuck)</td><td>Planned</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Decisions worth explaining</h2>
+      <ul>
+        <li><strong>DuckDB over Snowflake or Postgres.</strong> A personal dataset is megabytes. DuckDB runs locally at no cost, and MotherDuck can host the same database later without rewriting the dbt models.</li>
+        <li><strong>ELT instead of ETL.</strong> Keeping raw data unchanged means a parsing fix can be replayed over history without calling the APIs again.</li>
+        <li><strong>Synthetic data first.</strong> A seeded generator produces the same records every run, so tests and rerun checks are repeatable before any real account is connected.</li>
+      </ul>
+
+      <h2>How this app uses Google data</h2>
+      <div class="callout">
+        <p>
+          Budget Pipeline requests read-only Gmail access (<code>gmail.readonly</code>) to read order,
+          shipping and refund emails from Amazon in the author’s own mailbox. It never sends, changes or
+          deletes email, stores data only on the author’s computer or the author’s own database, and shares
+          nothing with anyone. It is a personal tool and isn’t offered to other users.
+          Details are in the <a href="/budget-pipeline/privacy/">privacy policy</a>.
+        </p>
+      </div>
+
+      <h2>Contact</h2>
+      <p>Michelle Lee · <a href="mailto:michellechulee@gmail.com">michellechulee@gmail.com</a></p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .flow { margin: 1rem 0 2rem; max-width: 880px; }
+  .flow svg { width: 100%; height: auto; }
+  .flow figcaption { font-size: .9rem; margin-top: .5rem; }
+</style>
