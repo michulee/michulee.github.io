@@ -19,7 +19,7 @@ const work = [
   {
     icon: 'plug',
     title: 'Connect the apps the business uses',
-    line: 'Partner apps like NuORDER, Jotform and Verkada stay in sync with our systems.',
+    line: 'The third-party apps other teams depend on stay in sync with our systems.',
     more: 'I also build custom syncs for very specific data other teams rely on. Every connection checks for changes on a schedule, which keeps costs down.',
     tools: 'Python, REST APIs',
   },
@@ -70,7 +70,7 @@ const menu = [
   { group: 'App building', items: 'Oracle APEX' },
   { group: 'Scheduling & CI', items: 'GitLab CI, self-hosted Linux runners, Prefect' },
   { group: 'Transformation', items: 'SQL views, MERGE / upsert, dbt' },
-  { group: 'Systems', items: 'Shopify, JD Edwards, PolyPM, NuORDER, Jotform, Verkada' },
+  { group: 'Systems', items: 'Shopify, JD Edwards, PolyPM, third-party apps' },
   { group: 'Cloud & tooling', items: 'OCI Functions, Oracle Resource Scheduler, Git, AI coding tools' },
 ];
 
@@ -115,7 +115,7 @@ const timeline = [
         then sells online, in its own stores and wholesale. Here’s how its data connects, and the parts I build and run.
       </p>
 
-      <div class="flow" role="img" aria-label="Two online stores and retail stores connect to JD Edwards through Oracle Integration Cloud. The design system, partner apps and a new vendor app connect to JD Edwards through Python. Sales and product data are also copied to a reporting database. Everything runs on a scheduled platform Michelle manages.">
+      <div class="flow" role="img" aria-label="Two online stores and retail stores connect to JD Edwards through Oracle Integration Cloud. The design system, third-party apps and a new vendor app connect to JD Edwards through Python. Sales and product data are also copied to a reporting database. Everything runs on a scheduled platform Michelle manages.">
         <div class="flow-group">
           <p class="flow-title">Where we sell</p>
           <span class="chip">agjeans.com</span>
@@ -129,11 +129,9 @@ const timeline = [
         </div>
         <div class="flow-link"><span>Python</span></div>
         <div class="flow-group">
-          <p class="flow-title">Where products and partners live</p>
+          <p class="flow-title">Where products and partner data live</p>
           <span class="chip">Design system (PolyPM)</span>
-          <span class="chip">NuORDER</span>
-          <span class="chip">Jotform</span>
-          <span class="chip">Verkada</span>
+          <span class="chip">Third-party apps</span>
           <span class="chip chip--new">Vendor app, in progress</span>
         </div>
         <p class="flow-note">Sales and product data are also copied into a reporting database for the business to analyze.</p>
