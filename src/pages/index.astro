@@ -3,32 +3,35 @@ import Base from '../layouts/Base.astro';
 
 const work = [
   {
-    title: 'Shopify ↔ JD Edwards integrations',
-    body: 'I own the Oracle Integration Cloud orchestrations between two Shopify stores and our JD Edwards ERP: orders, cancellations, returns, fulfillments, and catalog and inventory sync. When the company changed returns apps, I rebuilt the returns and exchanges logic.',
+    title: 'Keeping online orders and the warehouse in sync',
+    body: 'When a customer orders, cancels or returns something on either of our two online stores, that change has to reach the company’s central business system so the warehouse can ship, restock or refund correctly. I own the integrations that carry those updates, and I rebuilt the returns and exchanges process when the company switched returns providers.',
+    tools: 'Shopify, JD Edwards, Oracle Integration Cloud, REST and GraphQL APIs',
   },
   {
-    title: 'Python ETL into Oracle',
-    body: 'Python jobs move production data from PolyPM (SQL Server) into Oracle ATP and ADW: styles, pricing, product metadata and shipments. I converted the Shopify sales load to an incremental MERGE with a 7-day lookback, so reruns and late updates land cleanly.',
+    title: 'Bringing product and sales data together for reporting',
+    body: 'Product details from the design team’s system and daily online sales are copied into one reporting database, so the business can look at styles, pricing and sales side by side. I write and maintain those jobs, and set them up so a rerun never creates duplicate records.',
+    tools: 'Python, SQL, SQL Server, Oracle Autonomous Database',
   },
   {
-    title: 'The platform the pipelines run on',
-    body: 'I administer the company’s GitLab on my own: users, repositories, CI templates, and a fleet of self-hosted Linux runners. With one teammate, I migrated 28 Magic XPI integrations to Python jobs scheduled on GitLab CI.',
+    title: 'Running the system our automations live on',
+    body: 'I manage the company’s code platform on my own: who has access, where the code is kept, and the servers that run every scheduled job. With one teammate, I moved 28 automations off an aging integration tool and rewrote them in Python.',
+    tools: 'GitLab, GitLab CI, self-hosted Linux runners',
   },
   {
-    title: 'Visibility into scheduled jobs',
-    body: 'I built an internal dashboard that lists every pipeline schedule by repository, whether it is active, and when each one last succeeded.',
+    title: 'Showing at a glance which jobs ran',
+    body: 'I built an internal dashboard that lists every scheduled job, whether it’s turned on, and when it last finished successfully, so the team can spot a stalled job without digging through logs.',
+    tools: 'GitLab',
   },
 ];
 
 const menu = [
   { group: 'Languages', items: 'Python, SQL' },
-  { group: 'Databases', items: 'Oracle ATP & ADW, SQL Server, Snowflake, DuckDB' },
+  { group: 'Databases', items: 'Oracle ATP & ADW, SQL Server, DuckDB' },
   { group: 'Integration', items: 'Oracle Integration Cloud, REST & GraphQL APIs' },
   { group: 'Scheduling & CI', items: 'GitLab CI, self-hosted Linux runners, Prefect' },
   { group: 'Transformation', items: 'SQL views, MERGE / upsert, dbt' },
   { group: 'Systems', items: 'Shopify, JD Edwards, PolyPM' },
-  { group: 'Cloud & tooling', items: 'OCI Functions, Oracle Resource Scheduler, Docker, Git' },
-  { group: 'Reporting', items: 'Oracle Analytics' },
+  { group: 'Cloud & tooling', items: 'OCI Functions, Oracle Resource Scheduler, Git' },
 ];
 
 const timeline = [
@@ -51,7 +54,7 @@ const timeline = [
           JD Edwards and Oracle at AG Jeans, and I run the CI platform those pipelines are scheduled on.
         </p>
         <div class="hero-actions">
-          <a class="button" href="#projects">See my projects</a>
+          <a class="button" href="#projects">See my project</a>
           <a class="button button--ghost" href="mailto:michellechulee@gmail.com">Email me</a>
         </div>
       </div>
@@ -68,14 +71,17 @@ const timeline = [
     <div class="wrap">
       <h2>What I do at work</h2>
       <p class="prose muted">
-        AG Jeans designs, makes and ships its own clothing, so data has to move between the ERP,
+        AG Jeans designs, makes and ships its own clothing, so information has to move between its business system,
         two online stores and the warehouse every day. All of it runs on schedules I build or maintain.
       </p>
       <dl class="work-list">
         {work.map((w) => (
           <div class="work-item">
             <dt>{w.title}</dt>
-            <dd>{w.body}</dd>
+            <dd>
+              <p>{w.body}</p>
+              <p class="tools">{w.tools}</p>
+            </dd>
           </div>
         ))}
       </dl>
@@ -84,9 +90,9 @@ const timeline = [
 
   <section id="projects">
     <div class="wrap">
-      <h2>Personal projects</h2>
+      <h2>Outside work</h2>
       <p class="prose muted">
-        Two pipelines I’m building outside work, both written to be rerun safely.
+        A pipeline I’m building on my own time, held to the same standards as the ones I run at work.
       </p>
 
       <article class="project">
@@ -104,22 +110,6 @@ const timeline = [
           <li><span class="tag">Next</span> Connecting the live bank (SimpleFIN) and Gmail extractors, then scheduling it.</li>
         </ul>
         <a href="/budget-pipeline/">Read the case study</a>
-      </article>
-
-      <article class="project">
-        <div class="project-head">
-          <h3>Retail Orders Pipeline</h3>
-          <span class="tag">In progress</span>
-        </div>
-        <p class="stack">Python · Snowflake · Prefect · Docker</p>
-        <p class="prose">
-          Generates Shopify-style order files and loads them into Snowflake: stage the file,
-          <code>COPY INTO</code> a raw table, dedupe with <code>ROW_NUMBER()</code>, then <code>MERGE</code> into the orders table.
-        </p>
-        <ul class="status-list prose">
-          <li><span class="tag tag--done">Done</span> Key-pair auth for a service user, the full generate → load → merge flow in Prefect with retries, and a rerun test showing a second run changes nothing.</li>
-          <li><span class="tag">Next</span> Running the flow inside its Docker container.</li>
-        </ul>
       </article>
     </div>
   </section>
@@ -216,6 +206,7 @@ const timeline = [
   .work-list { margin: 2.5rem 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.25rem 3rem; }
   .work-item dt { font-family: var(--serif); font-size: 1.3rem; margin-bottom: .5rem; }
   .work-item dd { margin: 0; color: var(--foam); }
+  .work-item .tools { color: var(--brass); font-size: .92rem; margin: 0; }
 
   .project { padding: 2rem 0; }
   .project + .project { border-top: 1px dashed var(--grain); }
