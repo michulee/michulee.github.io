@@ -14,12 +14,12 @@ const work = [
   },
   {
     title: 'Running the system our automations live on',
-    body: 'I manage the company’s code platform on my own: who has access, where the code is kept, and the servers that run every scheduled job. With one teammate, I moved 28 automations off an aging integration tool and rewrote them in Python.',
+    body: 'I manage the company’s code platform on my own: who has access, where the code is kept, and the servers that run every scheduled job. As part of a small team, I helped move 28 automations off an aging integration tool and rewrite them in Python.',
     tools: 'GitLab, GitLab CI, self-hosted Linux runners',
   },
   {
     title: 'Showing at a glance which jobs ran',
-    body: 'I built an internal dashboard that lists every scheduled job, whether it’s turned on, and when it last finished successfully, so the team can spot a stalled job without digging through logs.',
+    body: 'GitLab only shows scheduled jobs one project at a time, and our jobs are spread across many projects. I built an internal dashboard that lists all of them in one place, whether each is turned on, and when it last finished successfully, so the team can spot a stalled job without opening project after project.',
     tools: 'GitLab',
   },
 ];
@@ -71,8 +71,9 @@ const timeline = [
     <div class="wrap">
       <h2>What I do at work</h2>
       <p class="prose muted">
-        AG Jeans designs, makes and ships its own clothing, so information has to move between its business system,
-        two online stores and the warehouse every day. All of it runs on schedules I build or maintain.
+        AG Jeans designs its own clothing, makes part of it in-house, sources the rest from vendors,
+        and ships it all from its own warehouse. Information has to move between the company’s business system,
+        two online stores and that warehouse every day. All of it runs on schedules I build or maintain.
       </p>
       <dl class="work-list">
         {work.map((w) => (
@@ -102,8 +103,9 @@ const timeline = [
         </div>
         <p class="stack">Python · DuckDB · dbt · Prefect</p>
         <p class="prose">
-          A personal finance pipeline that joins bank and card transactions with Amazon order emails,
-          so each Amazon charge can be broken down item by item.
+          Shopping is my favorite hobby, and my most expensive one. My bank only shows an Amazon
+          charge as a single total, so I’m building a pipeline that matches each charge to the items in
+          the order emails. The goal is to see exactly where my money goes and set spending limits I’ll actually keep.
         </p>
         <ul class="status-list prose">
           <li><span class="tag tag--done">Done</span> Raw, staging and mart layers in DuckDB, built by dbt with 18 passing tests, run end to end by a Prefect flow and verified rerun-safe on synthetic data.</li>
@@ -206,14 +208,14 @@ const timeline = [
   .work-list { margin: 2.5rem 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.25rem 3rem; }
   .work-item dt { font-family: var(--serif); font-size: 1.3rem; margin-bottom: .5rem; }
   .work-item dd { margin: 0; color: var(--foam); }
-  .work-item .tools { color: var(--brass); font-size: .92rem; margin: 0; }
+  .work-item .tools { color: var(--sage); font-size: .92rem; margin: 0; }
 
   .project { padding: 2rem 0; }
   .project + .project { border-top: 1px dashed var(--grain); }
   .project-head { display: flex; align-items: center; gap: .9rem; flex-wrap: wrap; }
   .project-head a { color: var(--milk); text-decoration: none; }
   .project-head a:hover { color: var(--rose); }
-  .stack { color: var(--brass); font-size: .95rem; margin: .5rem 0 1rem; }
+  .stack { color: var(--sage); font-size: .95rem; margin: .5rem 0 1rem; }
   .project code { font-size: .9em; background: var(--walnut); padding: .05rem .35rem; border-radius: 4px; }
   .status-list { list-style: none; padding: 0; margin: 0 0 1.25rem; }
   .status-list li { display: grid; grid-template-columns: 4.2rem 1fr; gap: .75rem; align-items: baseline; margin: .6rem 0; color: var(--foam); }
