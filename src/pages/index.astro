@@ -275,6 +275,64 @@ const timeline = [
   .contact h2 { font-size: clamp(2.2rem, 1.6rem + 2.5vw, 3.5rem); font-style: italic; font-variation-settings: 'SOFT' 100, 'WONK' 1; }
   .contact .prose { color: var(--foam); margin-bottom: 1.75rem; }
 
+  /* ---------- quiet café motifs, one per section, kept to the edges ---------- */
+  #work, #projects, #experience, #contact { position: relative; isolation: isolate; overflow: hidden; }
+  #work::before, #projects::before, #experience::before, #contact::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  /* a cup and saucer, bottom right */
+  #work::before {
+    background-image: url('/img/bg/cup.svg');
+    width: 190px; height: 200px;
+    right: max(1.5vw, calc(50% - 760px)); bottom: -36px;
+    opacity: .08;
+    transform: rotate(-6deg);
+  }
+  /* a pothos vine trailing from the top right */
+  #projects::before {
+    background-image: url('/img/bg/vine.svg');
+    width: 300px; height: 390px;
+    right: max(0px, calc(50% - 720px)); top: -10px;
+    opacity: .12;
+  }
+  /* terrazzo floor, fading in from the bottom */
+  #experience::before {
+    inset: 0;
+    background-image: url('/img/bg/terrazzo.svg');
+    background-repeat: repeat;
+    background-size: 320px;
+    opacity: .07;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 10%, #000 85%);
+    mask-image: linear-gradient(to bottom, transparent 10%, #000 85%);
+  }
+  /* steam rising on the right */
+  #contact::before {
+    background-image: url('/img/bg/steam.svg');
+    width: 240px; height: 330px;
+    right: max(4vw, calc(50% - 600px)); bottom: -20px;
+    opacity: .1;
+  }
+  /* faint wood grain on the menu board */
+  .menu-board { position: relative; isolation: isolate; overflow: hidden; }
+  .menu-board::before {
+    content: '';
+    position: absolute; inset: 0; z-index: -1;
+    background: url('/img/bg/grain.svg') 0 0 / 520px auto repeat;
+    opacity: .05;
+    pointer-events: none;
+  }
+
+  @media (max-width: 760px) {
+    #work::before { width: 150px; height: 160px; bottom: 1rem; }
+    #projects::before { width: 160px; height: 210px; opacity: .09; }
+    #contact::before { width: 140px; height: 200px; }
+  }
+
   @media (max-width: 760px) {
     .hero-grid { grid-template-columns: 1fr; }
     .portrait { max-width: 260px; order: -1; }
