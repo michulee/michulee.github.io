@@ -3,35 +3,75 @@ import Base from '../layouts/Base.astro';
 
 const work = [
   {
-    title: 'Keeping online orders and the warehouse in sync',
-    body: 'When a customer orders, cancels or returns something on either of our two online stores, that change has to reach the company’s central business system so the warehouse can ship, restock or refund correctly. I own the integrations that carry those updates, and I rebuilt the returns and exchanges process when the company switched returns providers.',
-    tools: 'Shopify, JD Edwards, Oracle Integration Cloud, REST and GraphQL APIs',
+    icon: 'sync',
+    title: 'Keep every order flowing',
+    line: 'Orders, cancellations and returns from our two online stores and our retail stores reach the warehouse correctly.',
+    more: 'Online and retail orders each run on their own integrations, along with catalog and inventory updates going back to the stores. I own all of them, and rebuilt the returns and exchanges process when the company switched returns providers.',
+    tools: 'Shopify, JD Edwards, Oracle Integration Cloud',
   },
   {
-    title: 'Bringing product and sales data together for reporting',
-    body: 'Product details from the design team’s system and daily online sales are copied into one reporting database, so the business can look at styles, pricing and sales side by side. I write and maintain those jobs, and set them up so a rerun never creates duplicate records.',
-    tools: 'Python, SQL, SQL Server, Oracle Autonomous Database',
+    icon: 'tag',
+    title: 'Keep product data consistent',
+    line: 'Styles, pricing and seasons match between the design team’s system and the business system.',
+    more: 'These syncs run in both directions and are among our most complex automations. Sales and product data are also copied into a reporting database, set up so a rerun never creates duplicates.',
+    tools: 'Python, SQL, PolyPM, SQL Server, Oracle Autonomous Database',
   },
   {
-    title: 'Running the system our automations live on',
-    body: 'I manage the company’s code platform on my own: who has access, where the code is kept, and the servers that run every scheduled job. As part of a small team, I helped move 28 automations off an aging integration tool and rewrite them in Python.',
+    icon: 'plug',
+    title: 'Connect the apps the business uses',
+    line: 'Partner apps like NuORDER, Jotform and Verkada stay in sync with our systems.',
+    more: 'I also build custom syncs for very specific data other teams rely on. Every connection checks for changes on a schedule, which keeps costs down.',
+    tools: 'Python, REST APIs',
+  },
+  {
+    icon: 'server',
+    title: 'Run the automation platform',
+    line: 'I manage the platform every scheduled job runs on, on my own.',
+    more: 'That covers who has access, where the code lives, shared pipeline templates, and the Linux servers that run the jobs. As part of a small team, I helped move 28 automations off an aging integration tool and rewrite them in Python.',
     tools: 'GitLab, GitLab CI, self-hosted Linux runners',
   },
   {
-    title: 'Showing at a glance which jobs ran',
-    body: 'GitLab only shows scheduled jobs one project at a time, and our jobs are spread across many projects. I built an internal dashboard that lists all of them in one place, whether each is turned on, and when it last finished successfully, so the team can spot a stalled job without opening project after project.',
-    tools: 'GitLab',
+    icon: 'eye',
+    title: 'Watch every scheduled job',
+    line: 'One app shows whether each job is turned on and when it last finished successfully.',
+    more: 'Our jobs are scheduled in two places, GitLab and Oracle Cloud, and GitLab only shows schedules one project at a time. I built a monitoring app that brings all of them into one view.',
+    tools: 'GitLab, Oracle Cloud Infrastructure',
+  },
+  {
+    icon: 'app',
+    title: 'Build new internal apps',
+    line: 'I’m building an app to support the company’s move to vendor-made clothing.',
+    more: 'It’s built in Oracle APEX, the modern option we’re adopting for new business tools.',
+    tools: 'Oracle APEX, SQL',
+  },
+  {
+    icon: 'people',
+    title: 'Train the team',
+    line: 'I’m the go-to person for our code and platform, and I write the training.',
+    more: 'That includes primers and hands-on exercises for Oracle Integration Cloud, the one part of our stack where AI coding tools can’t help.',
+    tools: 'Oracle Integration Cloud, AI-assisted coding',
   },
 ];
+
+const icons: Record<string, string> = {
+  sync: '<path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/>',
+  tag: '<path d="M3.5 12.5V4.5a1 1 0 0 1 1-1h8l8 8-9 9z"/><circle cx="8.5" cy="8.5" r="1.5"/>',
+  plug: '<path d="M9 3v5M15 3v5M6.5 8h11v3a5.5 5.5 0 0 1-11 0zM12 16.5V21"/>',
+  server: '<rect x="4" y="4" width="16" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="16" height="6.5" rx="1.5"/><path d="M8 7.25h.01M8 16.75h.01"/>',
+  eye: '<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/>',
+  app: '<rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M3.5 9h17M8 13h8M8 16h5"/>',
+  people: '<circle cx="9" cy="8.5" r="3"/><path d="M3.5 19.5a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9.5" r="2.4"/><path d="M15.5 14.6a4.6 4.6 0 0 1 5 4.9"/>',
+};
 
 const menu = [
   { group: 'Languages', items: 'Python, SQL' },
   { group: 'Databases', items: 'Oracle ATP & ADW, SQL Server, DuckDB' },
   { group: 'Integration', items: 'Oracle Integration Cloud, REST & GraphQL APIs' },
+  { group: 'App building', items: 'Oracle APEX' },
   { group: 'Scheduling & CI', items: 'GitLab CI, self-hosted Linux runners, Prefect' },
   { group: 'Transformation', items: 'SQL views, MERGE / upsert, dbt' },
-  { group: 'Systems', items: 'Shopify, JD Edwards, PolyPM' },
-  { group: 'Cloud & tooling', items: 'OCI Functions, Oracle Resource Scheduler, Git' },
+  { group: 'Systems', items: 'Shopify, JD Edwards, PolyPM, NuORDER, Jotform, Verkada' },
+  { group: 'Cloud & tooling', items: 'OCI Functions, Oracle Resource Scheduler, Git, AI coding tools' },
 ];
 
 const timeline = [
@@ -71,21 +111,50 @@ const timeline = [
     <div class="wrap">
       <h2>What I do at work</h2>
       <p class="prose muted">
-        AG Jeans designs its own clothing, makes part of it in-house, sources the rest from vendors,
-        and ships it all from its own warehouse. Information has to move between the company’s business system,
-        two online stores and that warehouse every day. All of it runs on schedules I build or maintain.
+        AG Jeans designs its clothing, makes some of it in-house and sources most from vendors,
+        then sells online, in its own stores and wholesale. Here’s how its data connects, and the parts I build and run.
       </p>
-      <dl class="work-list">
+
+      <div class="flow" role="img" aria-label="Two online stores and retail stores connect to JD Edwards through Oracle Integration Cloud. The design system, partner apps and a new vendor app connect to JD Edwards through Python. Sales and product data are also copied to a reporting database. Everything runs on a scheduled platform Michelle manages.">
+        <div class="flow-group">
+          <p class="flow-title">Where we sell</p>
+          <span class="chip">agjeans.com</span>
+          <span class="chip">agjeansoutlet.com</span>
+          <span class="chip">Retail stores</span>
+        </div>
+        <div class="flow-link"><span>Oracle Integration Cloud</span></div>
+        <div class="flow-hub">
+          <strong>JD Edwards</strong>
+          <span>the company’s central business system</span>
+        </div>
+        <div class="flow-link"><span>Python</span></div>
+        <div class="flow-group">
+          <p class="flow-title">Where products and partners live</p>
+          <span class="chip">Design system (PolyPM)</span>
+          <span class="chip">NuORDER</span>
+          <span class="chip">Jotform</span>
+          <span class="chip">Verkada</span>
+          <span class="chip chip--new">Vendor app, in progress</span>
+        </div>
+        <p class="flow-note">Sales and product data are also copied into a reporting database for the business to analyze.</p>
+        <p class="flow-base">Every connection runs on a schedule, on the platform I manage, watched by a monitoring app I built.</p>
+      </div>
+
+      <div class="roles">
         {work.map((w) => (
-          <div class="work-item">
-            <dt>{w.title}</dt>
-            <dd>
-              <p>{w.body}</p>
+          <details class="role">
+            <summary>
+              <span class="role-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[w.icon]} /></span>
+              <span class="role-text"><strong>{w.title}</strong><span>{w.line}</span></span>
+              <span class="role-toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="role-more">
+              <p>{w.more}</p>
               <p class="tools">{w.tools}</p>
-            </dd>
-          </div>
+            </div>
+          </details>
         ))}
-      </dl>
+      </div>
     </div>
   </section>
 
@@ -205,10 +274,63 @@ const timeline = [
   @keyframes glow-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
   @media (prefers-reduced-motion: reduce) { .arch { animation: none; } }
 
-  .work-list { margin: 2.5rem 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.25rem 3rem; }
-  .work-item dt { font-family: var(--serif); font-size: 1.3rem; margin-bottom: .5rem; }
-  .work-item dd { margin: 0; color: var(--foam); }
-  .work-item .tools { color: var(--sage); font-size: .92rem; margin: 0; }
+  /* how the data connects */
+  .flow {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 7.5rem minmax(0, .8fr) 7.5rem minmax(0, 1fr);
+    align-items: center;
+    gap: .75rem 0;
+    margin: 2.5rem 0 2.75rem;
+  }
+  .flow-group {
+    background: var(--walnut);
+    border: 1px solid var(--grain);
+    border-radius: 18px;
+    padding: 1.1rem 1.2rem 1.2rem;
+    display: flex; flex-wrap: wrap; gap: .45rem;
+    align-content: flex-start;
+  }
+  .flow-title { flex-basis: 100%; margin: 0 0 .35rem; font-family: var(--serif); font-size: 1.1rem; }
+  .chip { font-size: .85rem; padding: .2rem .65rem; border-radius: 999px; background: var(--roast); color: var(--foam); border: 1px solid var(--grain); }
+  .chip--new { border-style: dashed; border-color: var(--sage-deep); color: var(--sage); }
+  .flow-hub {
+    background: var(--rose); color: var(--roast);
+    border-radius: 999px 999px 22px 22px;
+    padding: 2rem 1rem 1.4rem;
+    text-align: center; display: grid; gap: .2rem;
+  }
+  .flow-hub strong { font-family: var(--serif); font-weight: 500; font-size: 1.35rem; }
+  .flow-hub span { font-size: .85rem; line-height: 1.3; }
+  .flow-link { position: relative; height: 3rem; }
+  .flow-link::before { content: ''; position: absolute; left: 10px; right: 10px; top: 50%; border-top: 1.5px solid var(--brass); }
+  .flow-link::after {
+    content: ''; position: absolute; inset: calc(50% - 5px) 0 auto 0; height: 10px;
+    background:
+      linear-gradient(135deg, transparent 50%, var(--brass) 50%) left / 10px 10px no-repeat,
+      linear-gradient(-45deg, transparent 50%, var(--brass) 50%) right / 10px 10px no-repeat;
+    clip-path: polygon(0 50%, 10px 0, 10px 100%, 0 50%, 100% 50%, calc(100% - 10px) 0, calc(100% - 10px) 100%);
+  }
+  .flow-link span { position: absolute; bottom: calc(50% + 6px); left: 0; right: 0; text-align: center; font-size: .78rem; line-height: 1.2; color: var(--brass); }
+  .flow-note { grid-column: 1 / -1; margin: .5rem 0 0; text-align: center; color: var(--foam); font-size: .92rem; }
+  .flow-base { grid-column: 1 / -1; margin: 0; border: 1px dashed var(--sage-deep); border-radius: 14px; padding: .75rem 1rem; text-align: center; color: var(--sage); font-size: .95rem; }
+
+  /* the roles, one line each, details on tap */
+  .roles { max-width: 56rem; border-top: 1px solid var(--grain); }
+  .role { border-bottom: 1px solid var(--grain); }
+  .role summary { list-style: none; display: grid; grid-template-columns: 2.75rem 1fr auto; gap: 1rem; align-items: center; padding: 1rem 0; cursor: pointer; }
+  .role summary::-webkit-details-marker { display: none; }
+  .role summary:hover .role-text strong { color: var(--rose); }
+  .role-icon { width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--walnut); color: var(--rose); display: grid; place-items: center; }
+  .role-icon svg { width: 1.3rem; height: 1.3rem; }
+  .role-text { display: grid; gap: .15rem; }
+  .role-text strong { font-family: var(--serif); font-weight: 400; font-size: 1.2rem; transition: color .15s; }
+  .role-text > span { color: var(--foam); }
+  .role-toggle { font-size: 1.4rem; color: var(--brass); transition: transform .2s; padding: 0 .25rem; }
+  .role[open] .role-toggle { transform: rotate(45deg); }
+  .role-more { padding: 0 0 1.25rem 3.75rem; color: var(--foam); max-width: 66ch; }
+  .role-more p { margin: 0 0 .4rem; }
+  .role-more .tools { color: var(--sage); font-size: .92rem; margin: 0; }
+  @media (prefers-reduced-motion: reduce) { .role-toggle, .role-text strong { transition: none; } }
 
   .project { padding: 2rem 0; }
   .project + .project { border-top: 1px dashed var(--grain); }
@@ -311,14 +433,21 @@ const timeline = [
   }
 
   @media (max-width: 760px) {
-    #work::before { width: 150px; height: 160px; bottom: 1rem; }
+    #work::before { display: none; }
     #projects::before { width: 160px; height: 210px; opacity: .09; }
   }
 
   @media (max-width: 760px) {
     .hero-grid { grid-template-columns: 1fr; }
     .portrait { max-width: 260px; order: -1; }
-    .work-list { grid-template-columns: 1fr; }
+    .flow { grid-template-columns: 1fr; gap: 0; }
+    .flow-link { height: 3.25rem; }
+    .flow-link::before { left: 50%; right: auto; top: 8px; bottom: 8px; border-top: 0; border-left: 1.5px solid var(--brass); }
+    .flow-link::after { display: none; }
+    .flow-link span { bottom: auto; top: 50%; transform: translateY(-50%); left: calc(50% + .75rem); text-align: left; }
+    .flow-hub { border-radius: 22px; padding: 1.25rem 1rem; }
+    .flow-note { margin: 1rem 0 .75rem; }
+    .role-more { padding-left: 0; }
     .menu-row { flex-wrap: wrap; gap: .1rem; }
     .menu-row dd { flex-basis: 100%; text-align: left; }
     .menu-row dd::before { display: none; }
