@@ -20,21 +20,21 @@ const work = [
     icon: 'plug',
     title: 'Connect the apps the business uses',
     line: 'Third-party apps that support different sides of the business stay in sync with our systems.',
-    more: 'Wholesale orders from department-store partners are imported from order files into the business system. Store foot traffic from our cameras lands in the reporting database, and store sales and returns are sent to the camera system so footage can be matched to them. New-customer forms load straight into the business system. I also build custom syncs for very specific data other teams rely on.',
+    more: 'Wholesale orders from department-store partners are imported from order files into the business system. In-store traffic data lands in the reporting database. New-customer forms load straight into the business system. I also build custom syncs for very specific data other teams rely on.',
     tools: 'Python, REST APIs',
   },
   {
     icon: 'server',
     title: 'Run the automation platform',
-    line: 'I manage the platform every scheduled job runs on, on my own.',
-    more: 'That covers who has access, where the code lives, shared pipeline templates, and the Linux servers that run the jobs. As part of a small team, I helped move 28 automations off an aging integration tool and rewrite them in Python.',
-    tools: 'GitLab, GitLab CI, self-hosted Linux runners',
+    line: 'I manage the platform our scheduled jobs run on.',
+    more: 'That covers who has access, where the code lives and shared pipeline templates. As part of a small team, I helped move 28 automations off an aging integration tool and rewrite them in Python.',
+    tools: 'GitLab, GitLab CI, Linux',
   },
   {
     icon: 'eye',
     title: 'Watch every scheduled job',
     line: 'One app shows whether each job is turned on and when it last finished successfully.',
-    more: 'Our jobs are scheduled in two places, GitLab and Oracle Cloud, and GitLab only shows schedules one project at a time. I built a monitoring app that brings all of them into one view.',
+    more: 'Our jobs are scheduled across several systems, and GitLab only shows schedules one project at a time. I built a monitoring app that brings them all into one view.',
     tools: 'GitLab, Oracle Cloud Infrastructure',
   },
   {
@@ -68,7 +68,7 @@ const menu = [
   { group: 'Databases', items: 'Oracle ATP & ADW, SQL Server, DuckDB' },
   { group: 'Integration', items: 'Oracle Integration Cloud, REST & GraphQL APIs' },
   { group: 'App building', items: 'Oracle APEX' },
-  { group: 'Scheduling & CI', items: 'GitLab CI, self-hosted Linux runners, Prefect' },
+  { group: 'Scheduling & CI', items: 'GitLab CI, Linux runners, Prefect' },
   { group: 'Transformation', items: 'SQL views, MERGE / upsert, dbt' },
   { group: 'Systems', items: 'Shopify, JD Edwards, PolyPM, third-party apps' },
   { group: 'Cloud & tooling', items: 'OCI Functions, Oracle Resource Scheduler, Git, AI coding tools' },
@@ -115,19 +115,19 @@ const timeline = [
         then sells online, in its own stores and wholesale. Here’s how its data connects, and the parts I build and run.
       </p>
 
-      <div class="flow" role="img" aria-label="Two online stores and retail stores connect to JD Edwards through Oracle Integration Cloud. The design system, third-party apps and a new vendor app connect to JD Edwards through Python. Sales and product data are also copied to a reporting database. Everything runs on a scheduled platform Michelle manages.">
+      <div class="flow" role="img" aria-label="Two online stores and retail stores connect to the company’s business system through order integrations. The design system, third-party apps and a new vendor app connect to it through Python automations. Sales and product data are also copied to a reporting database. Everything runs on a scheduled platform Michelle manages.">
         <div class="flow-group">
           <p class="flow-title">Where we sell</p>
           <span class="chip">agjeans.com</span>
           <span class="chip">agjeansoutlet.com</span>
           <span class="chip">Retail stores</span>
         </div>
-        <div class="flow-link"><span>Oracle Integration Cloud</span></div>
+        <div class="flow-link"><span>Order integrations</span></div>
         <div class="flow-hub">
-          <strong>JD Edwards</strong>
-          <span>the company’s central business system</span>
+          <strong>Business system</strong>
+          <span>the company’s ERP and source of truth</span>
         </div>
-        <div class="flow-link"><span>Python</span></div>
+        <div class="flow-link"><span>Python automations</span></div>
         <div class="flow-group">
           <p class="flow-title">Where products and partner data live</p>
           <span class="chip">Design system (PolyPM)</span>
