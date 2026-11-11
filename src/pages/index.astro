@@ -166,19 +166,20 @@ const timeline = [
       <article class="project">
         <div class="project-head">
           <h3><a href="/budget-pipeline/">Budget Pipeline</a></h3>
-          <span class="tag">In progress</span>
+          <span class="tag tag--done">Running daily</span>
         </div>
-        <p class="stack">Python · DuckDB · dbt · Prefect</p>
+        <p class="stack">Python · dbt · MotherDuck · Prefect · GitHub Actions · Cloudflare</p>
         <p class="prose">
           Shopping is my most expensive hobby. My bank only shows an Amazon
-          charge as a single total, so I’m building a pipeline that matches each charge to the items in
-          the order emails. The goal is to see exactly where my money goes and set spending limits I’ll actually keep.
+          charge as a single total, so I built a pipeline that matches each charge to the items in
+          the order emails. Every morning it pulls my bank, card and Amazon data, tests it and
+          updates a private dashboard with spending, goals and retirement projections.
         </p>
         <ul class="status-list prose">
-          <li><span class="tag tag--done">Done</span> Raw, staging and mart layers in DuckDB, built by dbt with 18 passing tests, run end to end by a Prefect flow and verified rerun-safe on synthetic data.</li>
-          <li><span class="tag">Next</span> Connecting the live bank (SimpleFIN) and Gmail extractors, then scheduling it.</li>
+          <li><span class="tag tag--done">Done</span> Scheduled daily in the cloud: raw, staging and mart layers in MotherDuck, built by dbt with 95 passing tests, published only if every check passes.</li>
+          <li><span class="tag">Next</span> Moving the Amazon email step to the cloud.</li>
         </ul>
-        <a href="/budget-pipeline/">Read the case study</a>
+        <p class="project-links"><a href="/budget-pipeline/">Read the case study</a><a href="/budget-pipeline/demo/">Try the demo</a></p>
       </article>
     </div>
   </section>
@@ -340,6 +341,7 @@ const timeline = [
   .status-list { list-style: none; padding: 0; margin: 0 0 1.25rem; }
   .status-list li { display: grid; grid-template-columns: 4.2rem 1fr; gap: .75rem; align-items: baseline; margin: .6rem 0; color: var(--foam); }
   .status-list .tag { justify-self: start; }
+  .project-links { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 0; }
 
   /* the café menu board: groups on the left, a brass dotted leader, the items on the right */
   .menu-board {
