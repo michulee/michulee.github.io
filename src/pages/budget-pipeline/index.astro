@@ -120,6 +120,13 @@ const menu = [
         would change when I could retire. So I replaced my budgeting app with a pipeline of my own.
         It costs about $15 a year: that’s SimpleFIN, the service that connects to my banks. MotherDuck, GitHub Actions and Cloudflare all run on their free plans.
       </p>
+      <p class="prose">
+        <strong>Why SimpleFIN is safe to use:</strong> it only reads. It shares balances, transactions and
+        account names, and it has no way to move money. My bank logins never touch SimpleFIN or my code:
+        the banks are connected through MX, the financial data company that handles the logins. My
+        pipeline holds a single access key, kept as an encrypted secret, and I can cut it off at any time
+        by deleting the connection in SimpleFIN.
+      </p>
     </div>
   </section>
 
