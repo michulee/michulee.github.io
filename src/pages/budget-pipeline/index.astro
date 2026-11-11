@@ -1,106 +1,205 @@
 ---
 import Base from '../../layouts/Base.astro';
+
+const parts = [
+  {
+    icon: 'sun',
+    title: 'Pulls everything in every morning',
+    line: 'Bank, card and investment activity arrives on its own each day, with no laptop involved.',
+    more: 'A GitHub Actions schedule runs a Prefect flow at dawn. The bank aggregator allows about 24 requests a day, so each run makes exactly one, covering the last week, and never retries a refusal. Every file is logged with a checksum, so rerunning a day can’t create duplicates.',
+    tools: 'GitHub Actions, Prefect, Python, SimpleFIN',
+  },
+  {
+    icon: 'box',
+    title: 'Keeps the raw data exactly as it arrived',
+    line: 'Everything lands untouched first, and gets cleaned up afterwards.',
+    more: 'Raw tables hold each bank response and email as it was sent. If I fix how something is parsed, I rebuild from raw instead of asking the banks again, and history comes along for free. When I moved the warehouse to MotherDuck, only the raw tables had to travel (as Parquet files); everything else was rebuilt from them.',
+    tools: 'DuckDB, MotherDuck, Parquet, SQL',
+  },
+  {
+    icon: 'split',
+    title: 'Splits Amazon charges into the items I bought',
+    line: 'My card shows one Amazon total. The pipeline shows the serum, the cable and the lamp.',
+    more: 'Order history and order emails are matched to card charges by date and amount, the charge is shared out across the items, and returned items are taken off. Amazon renamed its export columns partway through, so staging reads both versions.',
+    tools: 'dbt, SQL',
+  },
+  {
+    icon: 'tag',
+    title: 'Sorts every transaction into a category',
+    line: 'Rules do most of the work, and I can fix anything right from the dashboard.',
+    more: 'Categories come from pattern rules kept in version control, with priorities and one-off overrides. A fix I make on the live dashboard is saved to a small cloud database and merged over the rules on the next build, so it reaches every report. A broken pattern is skipped instead of breaking the build.',
+    tools: 'dbt seeds, Cloudflare D1',
+  },
+  {
+    icon: 'check',
+    title: 'Tests the data before anything is published',
+    line: '95 checks run on every build. If one fails, nothing goes out.',
+    more: 'dbt tests cover uniqueness, missing values, relationships between tables, allowed categories and custom rules like one balance per account per day. The deploy step also refuses to upload unless the site is still behind its login, for both the main address and the preview links.',
+    tools: 'dbt tests, Cloudflare Access',
+  },
+  {
+    icon: 'chart',
+    title: 'Turns it into answers I actually use',
+    line: 'What did I spend this week? Can I afford this before payday? When could I retire?',
+    more: 'The dashboard shows spending by week and month, a spending calendar, card due dates and a 90-day cash-flow forecast, savings and spending goals, retirement projections under different rent and lifestyle choices, and a look back at the year’s biggest purchases: were they worth it?',
+    tools: 'JavaScript, HTML, CSS, Cloudflare Pages',
+  },
+  {
+    icon: 'lock',
+    title: 'Keeps my financial data private',
+    line: 'The real dashboard sits behind a login, and real numbers never touch the code repository.',
+    more: 'Secrets live in GitHub’s encrypted settings and a local file that isn’t committed. Gmail access is read-only and its token never leaves my computer. The demo below runs the same pipeline on a made-up person generated from a fixed seed.',
+    tools: 'Cloudflare Access, GitHub secrets, read-only OAuth',
+  },
+];
+
+const icons: Record<string, string> = {
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/>',
+  box: '<path d="M3.5 7.5 12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5 12 12l8.5-4.5M12 12v9"/>',
+  split: '<path d="M4 12h6M10 12l4-6h6M10 12l4 6h6"/><circle cx="20" cy="6" r="1"/><circle cx="20" cy="18" r="1"/>',
+  tag: '<path d="M3.5 12.5V4.5a1 1 0 0 1 1-1h8l8 8-9 9z"/><circle cx="8.5" cy="8.5" r="1.5"/>',
+  check: '<path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.2 7.5 9.5 4.3-1.3 7.5-4.9 7.5-9.5V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
+  chart: '<path d="M4 20V10M10 20V4M16 20v-7M21 20H3"/>',
+  lock: '<rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/>',
+};
+
+const menu = [
+  { group: 'Languages', items: 'Python, SQL, JavaScript' },
+  { group: 'Warehouse', items: 'DuckDB, MotherDuck' },
+  { group: 'Transformation', items: 'dbt models, seeds and tests' },
+  { group: 'Orchestration', items: 'Prefect, GitHub Actions' },
+  { group: 'Sources', items: 'SimpleFIN, Gmail API, Amazon exports' },
+  { group: 'Hosting', items: 'Cloudflare Pages, Functions, D1, Access' },
+];
 ---
 <Base
   title="Budget Pipeline · Michelle Lee"
-  description="Budget Pipeline is a personal data pipeline by Michelle Lee that joins bank and card transactions with Amazon order emails to report spending item by item."
+  description="Budget Pipeline is a personal data pipeline by Michelle Lee that pulls bank, card and Amazon data every morning, tests it with dbt and turns it into a private spending dashboard."
   current="budget"
 >
   <div class="wrap page-head">
-    <span class="tag">In progress</span>
+    <span class="tag tag--done">Running daily</span>
     <h1>Budget Pipeline</h1>
     <p class="lede">
-      A personal data pipeline that turns bank, card and Amazon order data into itemized
-      spending and net worth reports. It’s a private tool for my own accounts, built the way
-      I’d build a production pipeline: layered, tested and safe to rerun.
+      A personal data pipeline that pulls my bank, card and Amazon activity every morning, cleans it
+      into tested tables and turns it into a private dashboard. I built it the way I’d build a
+      production pipeline: layered, tested, scheduled and safe to rerun.
     </p>
+    <div class="head-actions">
+      <a class="button" href="/budget-pipeline/demo/">Try the demo</a>
+      <a class="button button--ghost" href="#how">How it works</a>
+    </div>
   </div>
+
+  <section class="why">
+    <div class="wrap">
+      <h2>Why I built it</h2>
+      <p class="prose">
+        Shopping is my most expensive hobby, and budgeting apps only told me half the story. My bank
+        shows every Amazon order as one total, so I couldn’t tell skincare from cables. I wanted to see
+        exactly where my money goes, set limits I’d keep, and plan bigger things, like how different rents
+        would change when I could retire. So I replaced my budgeting app with a pipeline of my own.
+      </p>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <h2>How the data flows</h2>
+      <p class="prose muted">
+        Data is loaded first and transformed inside the warehouse (ELT), the same pattern I use at work.
+      </p>
+
+      <div class="flow" role="img" aria-label="Banks, cards and brokerages through SimpleFIN, plus Amazon order emails and order history, are extracted by Python into a MotherDuck warehouse, where dbt builds raw, staging and mart tables with tests. The tables are exported to a private dashboard on Cloudflare. Category fixes made on the dashboard are saved to Cloudflare D1 and merged into the next build. GitHub Actions runs everything every morning.">
+        <div class="flow-group">
+          <p class="flow-title">Where the data comes from</p>
+          <span class="chip">Banks, cards and brokerages (SimpleFIN)</span>
+          <span class="chip">Amazon order emails (read-only)</span>
+          <span class="chip">Amazon order history</span>
+        </div>
+        <div class="flow-link"><span>Python extract and load</span></div>
+        <div class="flow-hub">
+          <strong>Warehouse</strong>
+          <span>MotherDuck: raw → staging → marts, built and tested by dbt</span>
+        </div>
+        <div class="flow-link"><span>Export and build</span></div>
+        <div class="flow-group">
+          <p class="flow-title">Where it shows up</p>
+          <span class="chip">Private dashboard, behind a login</span>
+          <span class="chip">Goals and cash-flow forecast</span>
+          <span class="chip">Retirement projections</span>
+        </div>
+        <p class="flow-note">Category fixes I make on the dashboard are saved to a small cloud database and folded into the next build.</p>
+        <p class="flow-base">Runs every morning on a schedule. If any of the 95 data checks fails, nothing is published.</p>
+      </div>
+
+      <div class="roles">
+        {parts.map((w) => (
+          <details class="role">
+            <summary>
+              <span class="role-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[w.icon]} /></span>
+              <span class="role-text"><strong>{w.title}</strong><span>{w.line}</span></span>
+              <span class="role-toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="role-more">
+              <p>{w.more}</p>
+              <p class="tools">{w.tools}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="demo">
+    <div class="wrap demo">
+      <div class="demo-text">
+        <h2>Try it with made-up data</h2>
+        <p class="prose">
+          The demo is the real dashboard, built by the same pipeline and tests, for a made-up person
+          paid weekly, renting, with two cards and a long weekend in Portland. Click a category, fix a
+          transaction, add a goal or compare rents in the retirement page. Nothing is saved, and none of it is mine.
+        </p>
+        <a class="button" href="/budget-pipeline/demo/">Open the demo</a>
+      </div>
+      <a class="demo-shot" href="/budget-pipeline/demo/" aria-label="Open the demo dashboard">
+        <img src="/img/budget-demo.png" alt="The demo dashboard: net worth, a drinks spending widget and a net worth chart" width="1100" height="760" loading="lazy" />
+      </a>
+    </div>
+  </section>
+
+  <section id="menu" class="menu-section">
+    <div class="wrap">
+      <div class="menu-board">
+        <h2>What it’s built with</h2>
+        <dl class="menu">
+          {menu.map((m) => (
+            <div class="menu-row">
+              <dt>{m.group}</dt>
+              <dd>{m.items}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  </section>
 
   <section class="wrap longform">
     <div class="prose">
-      <h2>The problem</h2>
-      <p>
-        Shopping is my most expensive hobby, so I want to know exactly where
-        the money goes. My bank shows each Amazon charge as one total and a merchant name. What I
-        actually bought, and what I returned, only lives in Amazon’s order emails. Joining the two
-        answers questions a budgeting app can’t, like how much went to clothing versus household
-        things last month, so I can set limits and see whether I’m keeping them.
-      </p>
-
-      <h2>How it works</h2>
-    </div>
-
-    <figure class="flow" aria-labelledby="flow-caption">
-      <svg viewBox="0 0 880 250" role="img" aria-labelledby="flow-title flow-desc">
-        <title id="flow-title">Budget Pipeline data flow</title>
-        <desc id="flow-desc">Bank and card data from SimpleFIN and Amazon emails from Gmail are extracted by Python into raw tables, cleaned into staging tables by dbt, and joined into marts. Prefect runs every step.</desc>
-        <defs>
-          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M0,0 L10,5 L0,10 z" fill="#c9a463" />
-          </marker>
-        </defs>
-        <g font-family="Hanken Grotesk, sans-serif" font-size="15" fill="#f3e8de">
-          <rect x="10" y="30" width="160" height="58" rx="14" fill="#3a2923" stroke="#4b372f" />
-          <text x="90" y="56" text-anchor="middle">SimpleFIN</text>
-          <text x="90" y="75" text-anchor="middle" fill="#cdbbad" font-size="12.5">banks, cards</text>
-
-          <rect x="10" y="132" width="160" height="58" rx="14" fill="#3a2923" stroke="#4b372f" />
-          <text x="90" y="158" text-anchor="middle">Gmail (read-only)</text>
-          <text x="90" y="177" text-anchor="middle" fill="#cdbbad" font-size="12.5">Amazon order emails</text>
-
-          <rect x="250" y="80" width="150" height="58" rx="14" fill="#3a2923" stroke="#c9a463" />
-          <text x="325" y="106" text-anchor="middle">raw</text>
-          <text x="325" y="125" text-anchor="middle" fill="#cdbbad" font-size="12.5">as extracted</text>
-
-          <rect x="480" y="80" width="150" height="58" rx="14" fill="#3a2923" stroke="#c9a463" />
-          <text x="555" y="106" text-anchor="middle">staging</text>
-          <text x="555" y="125" text-anchor="middle" fill="#cdbbad" font-size="12.5">typed, deduped</text>
-
-          <rect x="710" y="80" width="160" height="58" rx="14" fill="#e3aca7" />
-          <text x="790" y="106" text-anchor="middle" fill="#2a1d19">marts</text>
-          <text x="790" y="125" text-anchor="middle" fill="#2a1d19" font-size="12.5">itemized spending</text>
-
-          <text x="210" y="222" fill="#c9a463" font-size="13">Python extract</text>
-          <text x="470" y="222" fill="#c9a463" font-size="13">dbt models + tests in DuckDB</text>
-          <text x="440" y="20" text-anchor="middle" fill="#cdbbad" font-size="13">Prefect runs each step in order, with retries</text>
-        </g>
-        <g stroke="#c9a463" stroke-width="1.6" fill="none" marker-end="url(#arrow)">
-          <path d="M170 59 C 210 59, 210 100, 247 104" />
-          <path d="M170 161 C 210 161, 210 118, 247 114" />
-          <path d="M400 109 H 476" />
-          <path d="M630 109 H 706" />
-        </g>
-      </svg>
-      <figcaption id="flow-caption" class="muted">Extract and load first, then transform inside the warehouse (ELT).</figcaption>
-    </figure>
-
-    <div class="prose">
+      <h2>Decisions worth explaining</h2>
       <ul>
-        <li><strong>Extract:</strong> Python pulls accounts and transactions from SimpleFIN, and order, shipping and refund emails from six Amazon sender addresses through the Gmail API with read-only access.</li>
-        <li><strong>Load:</strong> records land unchanged in raw tables in DuckDB, keyed so a rerun can’t duplicate them.</li>
-        <li><strong>Transform:</strong> dbt casts and dedupes into staging tables, then builds marts that match Amazon order items to card charges.</li>
-        <li><strong>Orchestrate:</strong> a Prefect flow runs extract, load and transform in order, with retries on the network steps.</li>
+        <li><strong>DuckDB, then MotherDuck.</strong> A personal dataset is megabytes. DuckDB ran it locally for free while I built, and MotherDuck hosts the same database in the cloud without rewriting a single dbt model.</li>
+        <li><strong>ELT instead of ETL.</strong> Raw data is kept as sent, so a parsing fix replays over all of history without calling the banks again, which matters when the source only allows about 24 requests a day.</li>
+        <li><strong>Rule fixes in a database, not a code change.</strong> Fixing a category from my phone shouldn’t need a commit. Edits are stored in Cloudflare D1, applied on screen right away, and merged over the version-controlled rules at build time.</li>
+        <li><strong>A check before every deploy.</strong> The upload step confirms the site is still behind its login, including preview copies, before it publishes real numbers.</li>
+        <li><strong>Synthetic data first.</strong> A seeded generator produces the same made-up records every run, which made tests and rerun checks repeatable before any real account was connected, and now powers the demo.</li>
       </ul>
 
       <h2>Where it stands</h2>
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th scope="col">Piece</th><th scope="col">Status</th></tr></thead>
-          <tbody>
-            <tr><td>Raw, staging and mart layers</td><td>Built and tested on synthetic data</td></tr>
-            <tr><td>dbt project</td><td>18 tests passing</td></tr>
-            <tr><td>Prefect flow</td><td>Runs end to end; a second run changes nothing</td></tr>
-            <tr><td>SimpleFIN and Gmail extractors</td><td>Written; connecting real accounts next</td></tr>
-            <tr><td>Scheduling and hosted warehouse (MotherDuck)</td><td>Planned</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2>Decisions worth explaining</h2>
-      <ul>
-        <li><strong>DuckDB over Snowflake or Postgres.</strong> A personal dataset is megabytes. DuckDB runs locally at no cost, and MotherDuck can host the same database later without rewriting the dbt models.</li>
-        <li><strong>ELT instead of ETL.</strong> Keeping raw data unchanged means a parsing fix can be replayed over history without calling the APIs again.</li>
-        <li><strong>Synthetic data first.</strong> A seeded generator produces the same records every run, so tests and rerun checks are repeatable before any real account is connected.</li>
+      <ul class="status-list">
+        <li><span class="tag tag--done">Done</span> Daily cloud run: SimpleFIN → MotherDuck → dbt (95 tests) → Cloudflare, with a login and a pre-deploy check.</li>
+        <li><span class="tag tag--done">Done</span> Itemized Amazon spending, category rules editable from the dashboard, goals, forecasts and retirement projections.</li>
+        <li><span class="tag">Next</span> Moving the Amazon email step to the cloud, and adding the notes people write on Zelle payments.</li>
       </ul>
 
       <h2>How this app uses Google data</h2>
@@ -121,7 +220,99 @@ import Base from '../../layouts/Base.astro';
 </Base>
 
 <style>
-  .flow { margin: 1rem 0 2rem; max-width: 880px; }
-  .flow svg { width: 100%; height: auto; }
-  .flow figcaption { font-size: .9rem; margin-top: .5rem; }
+  .head-actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.75rem; }
+  .why { border-top: 0; padding-top: 1rem; }
+  .why .prose { font-size: 1.1rem; color: var(--foam); }
+
+  /* how the data flows (same pieces as the home page's "What I do at work") */
+  .flow {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 7.5rem minmax(0, .8fr) 7.5rem minmax(0, 1fr);
+    align-items: center;
+    gap: .75rem 0;
+    margin: 2.5rem 0 2.75rem;
+  }
+  .flow-group {
+    background: var(--walnut);
+    border: 1px solid var(--grain);
+    border-radius: 18px;
+    padding: 1.1rem 1.2rem 1.2rem;
+    display: flex; flex-wrap: wrap; gap: .45rem;
+    align-content: flex-start;
+  }
+  .flow-title { flex-basis: 100%; margin: 0 0 .35rem; font-family: var(--serif); font-size: 1.1rem; }
+  .chip { font-size: .85rem; padding: .2rem .65rem; border-radius: 999px; background: var(--roast); color: var(--foam); border: 1px solid var(--grain); }
+  .flow-hub {
+    background: var(--rose); color: var(--roast);
+    border-radius: 999px 999px 22px 22px;
+    padding: 2rem 1rem 1.4rem;
+    text-align: center; display: grid; gap: .2rem;
+  }
+  .flow-hub strong { font-family: var(--serif); font-weight: 500; font-size: 1.35rem; }
+  .flow-hub span { font-size: .85rem; line-height: 1.3; }
+  .flow-link { position: relative; height: 3rem; }
+  .flow-link::before { content: ''; position: absolute; left: 10px; right: 10px; top: 50%; border-top: 1.5px solid var(--brass); }
+  .flow-link::after {
+    content: ''; position: absolute; inset: calc(50% - 5px) 0 auto 0; height: 10px;
+    background: linear-gradient(-45deg, transparent 50%, var(--brass) 50%) right / 10px 10px no-repeat;
+    clip-path: polygon(100% 50%, calc(100% - 10px) 0, calc(100% - 10px) 100%);
+  }
+  .flow-link span { position: absolute; bottom: calc(50% + 6px); left: 0; right: 0; text-align: center; font-size: .78rem; line-height: 1.2; color: var(--brass); }
+  .flow-note { grid-column: 1 / -1; margin: .5rem 0 0; text-align: center; color: var(--foam); font-size: .92rem; }
+  .flow-base { grid-column: 1 / -1; margin: 0; border: 1px dashed var(--sage-deep); border-radius: 14px; padding: .75rem 1rem; text-align: center; color: var(--sage); font-size: .95rem; }
+
+  /* the parts, one line each, details on tap */
+  .roles { max-width: 56rem; border-top: 1px solid var(--grain); }
+  .role { border-bottom: 1px solid var(--grain); }
+  .role summary { list-style: none; display: grid; grid-template-columns: 2.75rem 1fr auto; gap: 1rem; align-items: center; padding: 1rem 0; cursor: pointer; }
+  .role summary::-webkit-details-marker { display: none; }
+  .role summary:hover .role-text strong { color: var(--rose); }
+  .role-icon { width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--walnut); color: var(--rose); display: grid; place-items: center; }
+  .role-icon svg { width: 1.3rem; height: 1.3rem; }
+  .role-text { display: grid; gap: .15rem; }
+  .role-text strong { font-family: var(--serif); font-weight: 400; font-size: 1.2rem; transition: color .15s; }
+  .role-text > span { color: var(--foam); }
+  .role-toggle { font-size: 1.4rem; color: var(--brass); transition: transform .2s; padding: 0 .25rem; }
+  .role[open] .role-toggle { transform: rotate(45deg); }
+  .role-more { padding: 0 0 1.25rem 3.75rem; color: var(--foam); max-width: 66ch; }
+  .role-more p { margin: 0 0 .4rem; }
+  .role-more .tools { color: var(--sage); font-size: .92rem; margin: 0; }
+  @media (prefers-reduced-motion: reduce) { .role-toggle, .role-text strong { transition: none; } }
+
+  /* the demo: text beside a framed screenshot */
+  .demo { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(1.5rem, 5vw, 3.5rem); align-items: center; }
+  .demo-text .prose { color: var(--foam); margin-bottom: 1.5rem; }
+  .demo-shot { display: block; border-radius: 18px; overflow: hidden; border: 1px solid var(--grain); box-shadow: 0 0 0 8px var(--walnut), 0 0 0 9px var(--brass); transition: transform .2s; }
+  .demo-shot:hover { transform: translateY(-3px); }
+  .demo-shot img { width: 100%; height: auto; }
+  @media (prefers-reduced-motion: reduce) { .demo-shot { transition: none; } }
+
+  /* the café menu board */
+  .menu-board { background: var(--walnut); border-radius: 28px; padding: clamp(1.75rem, 5vw, 3.5rem); border: 1px solid var(--grain); }
+  .menu-board h2 { text-align: center; font-style: italic; font-variation-settings: 'SOFT' 100, 'WONK' 1; }
+  .menu { margin: 0 auto; max-width: 52rem; }
+  .menu-row { display: flex; align-items: baseline; gap: .75rem; padding: .55rem 0; }
+  .menu-row dt { font-family: var(--serif); font-size: 1.15rem; white-space: nowrap; }
+  .menu-row dd { margin: 0; flex: 1; display: flex; align-items: baseline; gap: .75rem; color: var(--foam); text-align: right; }
+  .menu-row dd::before { content: ''; flex: 1; min-width: 2rem; border-bottom: 2px dotted var(--brass); opacity: .55; transform: translateY(-0.3em); }
+
+  section.longform { padding-top: clamp(3rem, 7vw, 5rem); border-top: 1px solid rgba(201, 164, 99, 0.18); }
+  .status-list { list-style: none; padding: 0 !important; }
+  .status-list li { display: grid; grid-template-columns: 4.2rem 1fr; gap: .75rem; align-items: baseline; color: var(--foam); }
+  .status-list .tag { justify-self: start; }
+
+  @media (max-width: 760px) {
+    .flow { grid-template-columns: 1fr; gap: 0; }
+    .flow-link { height: 3.25rem; }
+    .flow-link::before { left: 50%; right: auto; top: 8px; bottom: 8px; border-top: 0; border-left: 1.5px solid var(--brass); }
+    .flow-link::after { display: none; }
+    .flow-link span { bottom: auto; top: 50%; transform: translateY(-50%); left: calc(50% + .75rem); text-align: left; }
+    .flow-hub { border-radius: 22px; padding: 1.25rem 1rem; }
+    .flow-note { margin: 1rem 0 .75rem; }
+    .role-more { padding-left: 0; }
+    .demo { grid-template-columns: 1fr; }
+    .menu-row { flex-wrap: wrap; gap: .1rem; }
+    .menu-row dd { flex-basis: 100%; text-align: left; }
+    .menu-row dd::before { display: none; }
+  }
 </style>
