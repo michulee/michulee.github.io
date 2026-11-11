@@ -4,7 +4,7 @@ import Base from '../../layouts/Base.astro';
 const parts = [
   {
     icon: 'sun',
-    title: 'Pulls everything in every morning',
+    title: 'Pulls bank and card data every morning',
     line: 'Bank, card and investment activity arrives on its own each day, with no laptop involved.',
     more: 'A GitHub Actions schedule runs a Prefect flow at dawn. The bank aggregator allows about 24 requests a day, so each run makes exactly one, covering the last week, and never retries a refusal. Every file is logged with a checksum, so rerunning a day can’t create duplicates.',
     tools: 'GitHub Actions, Prefect, Python, SimpleFIN',
