@@ -4,7 +4,7 @@ import Base from '../../layouts/Base.astro';
 const parts = [
   {
     icon: 'sun',
-    title: 'Pulls everything in every morning',
+    title: 'Pulls bank and card data every morning',
     line: 'Bank, card and investment activity arrives on its own each day, with no laptop involved.',
     more: 'A GitHub Actions schedule runs a Prefect flow at dawn. The bank aggregator allows about 24 requests a day, so each run makes exactly one, covering the last week, and never retries a refusal. Every file is logged with a checksum, so rerunning a day can’t create duplicates.',
     tools: 'GitHub Actions, Prefect, Python, SimpleFIN',
@@ -13,14 +13,14 @@ const parts = [
     icon: 'box',
     title: 'Keeps the raw data exactly as it arrived',
     line: 'Everything lands untouched first, and gets cleaned up afterwards.',
-    more: 'Raw tables hold each bank response and email as it was sent. If I fix how something is parsed, I rebuild from raw instead of asking the banks again, and history comes along for free. When I moved the warehouse to MotherDuck, only the raw tables had to travel (as Parquet files); everything else was rebuilt from them.',
+    more: 'Raw tables hold each bank response and Amazon export exactly as it was sent. If I fix how something is parsed, I rebuild from raw instead of asking the banks again, and history comes along for free. When I moved the warehouse to MotherDuck, only the raw tables had to travel (as Parquet files); everything else was rebuilt from them.',
     tools: 'DuckDB, MotherDuck, Parquet, SQL',
   },
   {
     icon: 'split',
     title: 'Splits Amazon charges into the items I bought',
     line: 'My card shows one Amazon total. The pipeline shows the serum, the cable and the lamp.',
-    more: 'Order history and order emails are matched to card charges by date and amount, the charge is shared out across the items, and returned items are taken off. Amazon renamed its export columns partway through, so staging reads both versions.',
+    more: 'Amazon’s order history export is matched to card charges by date and amount, the charge is shared out across the items, and returned items are taken off. Amazon renamed its export columns partway through, so staging reads both versions.',
     tools: 'dbt, SQL',
   },
   {
@@ -48,8 +48,8 @@ const parts = [
     icon: 'lock',
     title: 'Keeps my financial data private',
     line: 'The real dashboard sits behind a login, and real numbers never touch the code repository.',
-    more: 'Secrets live in GitHub’s encrypted settings and a local file that isn’t committed. Gmail access is read-only and its token never leaves my computer. The demo below runs the same pipeline on a made-up person generated from a fixed seed.',
-    tools: 'Cloudflare Access, GitHub secrets, read-only OAuth',
+    more: 'Secrets live in GitHub’s encrypted settings and a local file that isn’t committed. The demo runs the same pipeline on a made-up person generated from a fixed seed, so nothing real is ever public.',
+    tools: 'Cloudflare Access, GitHub secrets',
   },
 ];
 
@@ -63,32 +63,51 @@ const icons: Record<string, string> = {
   lock: '<rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/>',
 };
 
+// the same pieces in AWS terms, for readers who know AWS better than Cloudflare
+const aws = [
+  { mine: 'Cloudflare Pages', what: 'hosts the dashboard', aws: 'S3 + CloudFront' },
+  { mine: 'Cloudflare Pages Functions', what: 'small server code: settings, rule edits', aws: 'Lambda behind API Gateway' },
+  { mine: 'Cloudflare D1', what: 'small serverless SQL database', aws: 'DynamoDB or Aurora Serverless' },
+  { mine: 'Cloudflare Access', what: 'login in front of the site', aws: 'Cognito or IAM Identity Center' },
+  { mine: 'GitHub Actions schedule', what: 'runs the pipeline every morning', aws: 'EventBridge Scheduler + a Fargate task' },
+  { mine: 'Prefect', what: 'orders the steps, with retries', aws: 'Step Functions or MWAA (Airflow)' },
+  { mine: 'MotherDuck', what: 'the cloud warehouse', aws: 'Redshift Serverless, or Athena over S3' },
+  { mine: 'GitHub secrets', what: 'keys and tokens', aws: 'Secrets Manager' },
+];
+
 const menu = [
   { group: 'Languages', items: 'Python, SQL, JavaScript' },
   { group: 'Warehouse', items: 'DuckDB, MotherDuck' },
   { group: 'Transformation', items: 'dbt models, seeds and tests' },
   { group: 'Orchestration', items: 'Prefect, GitHub Actions' },
-  { group: 'Sources', items: 'SimpleFIN, Gmail API, Amazon exports' },
+  { group: 'Sources', items: 'SimpleFIN, Amazon order history export' },
   { group: 'Hosting', items: 'Cloudflare Pages, Functions, D1, Access' },
 ];
 ---
 <Base
   title="Budget Pipeline · Michelle Lee"
-  description="Budget Pipeline is a personal data pipeline by Michelle Lee that pulls bank, card and Amazon data every morning, tests it with dbt and turns it into a private spending dashboard."
+  description="Budget Pipeline is a personal data pipeline by Michelle Lee that pulls bank and card data every morning, itemizes Amazon charges from exported order history, tests it with dbt and turns it into a private spending dashboard."
   current="budget"
 >
-  <div class="wrap page-head">
-    <span class="tag tag--done">Running daily</span>
-    <h1>Budget Pipeline</h1>
-    <p class="lede">
-      A personal data pipeline that pulls my bank, card and Amazon activity every morning, cleans it
-      into tested tables and turns it into a private dashboard. I built it the way I’d build a
-      production pipeline: layered, tested, scheduled and safe to rerun.
-    </p>
-    <div class="head-actions">
-      <a class="button" href="/budget-pipeline/demo/">Try the demo</a>
-      <a class="button button--ghost" href="#how">How it works</a>
+  <div class="wrap page-head hero">
+    <div class="hero-text">
+      <span class="tag tag--done">Running daily</span>
+      <h1>Budget Pipeline</h1>
+      <p class="lede">
+        A personal data pipeline that pulls my bank and card activity every morning, itemizes my Amazon
+        charges from the order history I export, cleans it all into tested tables and turns it into a
+        private dashboard. I built it the way I’d build a
+        production pipeline: layered, tested, scheduled and safe to rerun.
+      </p>
+      <div class="head-actions">
+        <a class="button" href="/budget-pipeline/demo/">Try the demo</a>
+        <a class="button button--ghost" href="#how">How it works</a>
+      </div>
     </div>
+    <a class="hero-shot" href="/budget-pipeline/demo/" aria-label="Open the demo dashboard">
+      <img src="/img/budget-demo.png" alt="The dashboard, shown with made-up data: net worth, spending widgets and goals" width="1100" height="760" />
+      <span class="hero-shot-cap">The dashboard, with made-up data</span>
+    </a>
   </div>
 
   <section class="why">
@@ -99,6 +118,7 @@ const menu = [
         shows every Amazon order as one total, so I couldn’t tell skincare from cables. I wanted to see
         exactly where my money goes, set limits I’d keep, and plan bigger things, like how different rents
         would change when I could retire. So I replaced my budgeting app with a pipeline of my own.
+        It costs about $15 a year, the price of the bank connection; everything else runs on free tiers.
       </p>
     </div>
   </section>
@@ -110,12 +130,11 @@ const menu = [
         Data is loaded first and transformed inside the warehouse (ELT), the same pattern I use at work.
       </p>
 
-      <div class="flow" role="img" aria-label="Banks, cards and brokerages through SimpleFIN, plus Amazon order emails and order history, are extracted by Python into a MotherDuck warehouse, where dbt builds raw, staging and mart tables with tests. The tables are exported to a private dashboard on Cloudflare. Category fixes made on the dashboard are saved to Cloudflare D1 and merged into the next build. GitHub Actions runs everything every morning.">
+      <div class="flow" role="img" aria-label="Banks, cards and brokerages through SimpleFIN, plus Amazon's order history export, are extracted by Python into a MotherDuck warehouse, where dbt builds raw, staging and mart tables with tests. The tables are exported to a private dashboard on Cloudflare. Category fixes made on the dashboard are saved to Cloudflare D1 and merged into the next build. GitHub Actions runs everything every morning.">
         <div class="flow-group">
           <p class="flow-title">Where the data comes from</p>
           <span class="chip">Banks, cards and brokerages (SimpleFIN)</span>
-          <span class="chip">Amazon order emails (read-only)</span>
-          <span class="chip">Amazon order history</span>
+          <span class="chip">Amazon order history export</span>
         </div>
         <div class="flow-link"><span>Python extract and load</span></div>
         <div class="flow-hub">
@@ -153,7 +172,7 @@ const menu = [
 
   <section id="demo">
     <div class="wrap demo">
-      <div class="demo-text">
+      <div class="demo-card">
         <h2>Try it with made-up data</h2>
         <p class="prose">
           The demo is the real dashboard, built by the same pipeline and tests, for a made-up person
@@ -162,9 +181,6 @@ const menu = [
         </p>
         <a class="button" href="/budget-pipeline/demo/">Open the demo</a>
       </div>
-      <a class="demo-shot" href="/budget-pipeline/demo/" aria-label="Open the demo dashboard">
-        <img src="/img/budget-demo.png" alt="The demo dashboard: net worth, a drinks spending widget and a net worth chart" width="1100" height="760" loading="lazy" />
-      </a>
     </div>
   </section>
 
@@ -184,6 +200,24 @@ const menu = [
     </div>
   </section>
 
+  <section id="aws">
+    <div class="wrap">
+      <h2>If you know AWS</h2>
+      <p class="prose muted">
+        I picked these for their free tiers, but each one has a familiar AWS counterpart. The design
+        would carry over piece for piece.
+      </p>
+      <div class="table-scroll">
+        <table class="aws">
+          <thead><tr><th scope="col">What I use</th><th scope="col">What it does here</th><th scope="col">Closest AWS service</th></tr></thead>
+          <tbody>
+            {aws.map((a) => (<tr><td>{a.mine}</td><td>{a.what}</td><td>{a.aws}</td></tr>))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
   <section class="wrap longform">
     <div class="prose">
       <h2>Decisions worth explaining</h2>
@@ -199,28 +233,25 @@ const menu = [
       <ul class="status-list">
         <li><span class="tag tag--done">Done</span> Daily cloud run: SimpleFIN → MotherDuck → dbt (95 tests) → Cloudflare, with a login and a pre-deploy check.</li>
         <li><span class="tag tag--done">Done</span> Itemized Amazon spending, category rules editable from the dashboard, goals, forecasts and retirement projections.</li>
-        <li><span class="tag">Next</span> Moving the Amazon email step to the cloud, and adding the notes people write on Zelle payments.</li>
+        <li><span class="tag">Next</span> Notes on transactions, and a monthly budget for each category.</li>
       </ul>
 
-      <h2>How this app uses Google data</h2>
-      <div class="callout">
-        <p>
-          Budget Pipeline requests read-only Gmail access (<code>gmail.readonly</code>) to read order,
-          shipping and refund emails from Amazon in the author’s own mailbox. It never sends, changes or
-          deletes email, stores data only on the author’s computer or the author’s own database, and shares
-          nothing with anyone. It is a personal tool and isn’t offered to other users.
-          Details are in the <a href="/budget-pipeline/privacy/">privacy policy</a>.
-        </p>
-      </div>
-
       <h2>Contact</h2>
-      <p>Michelle Lee · <a href="mailto:hello@michulee.com">hello@michulee.com</a></p>
+      <p>Michelle Lee · <a href="mailto:hello@michulee.com">hello@michulee.com</a> · <a href="/budget-pipeline/privacy/">Privacy policy</a></p>
     </div>
   </section>
 </Base>
 
 <style>
   .head-actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.75rem; }
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; padding-bottom: clamp(2.5rem, 6vw, 4.5rem); }
+  .hero-shot { display: block; text-decoration: none; animation: rise-in .9s ease-out both; }
+  .hero-shot img { width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--grain);
+    box-shadow: 0 0 0 9px var(--walnut), 0 0 0 10px var(--brass), 0 30px 60px -20px rgba(0, 0, 0, .55); transition: transform .25s; }
+  .hero-shot:hover img { transform: translateY(-4px) rotate(-.3deg); }
+  .hero-shot-cap { display: block; margin-top: 1.1rem; text-align: center; font-size: .8rem; color: var(--foam); }
+  @keyframes rise-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .hero-shot, .hero-shot img { animation: none; transition: none; } }
   .why { border-top: 0; padding-top: 1rem; }
   .why .prose { font-size: 1.1rem; color: var(--foam); }
 
@@ -279,13 +310,9 @@ const menu = [
   .role-more .tools { color: var(--sage); font-size: .92rem; margin: 0; }
   @media (prefers-reduced-motion: reduce) { .role-toggle, .role-text strong { transition: none; } }
 
-  /* the demo: text beside a framed screenshot */
-  .demo { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(1.5rem, 5vw, 3.5rem); align-items: center; }
-  .demo-text .prose { color: var(--foam); margin-bottom: 1.5rem; }
-  .demo-shot { display: block; border-radius: 18px; overflow: hidden; border: 1px solid var(--grain); box-shadow: 0 0 0 8px var(--walnut), 0 0 0 9px var(--brass); transition: transform .2s; }
-  .demo-shot:hover { transform: translateY(-3px); }
-  .demo-shot img { width: 100%; height: auto; }
-  @media (prefers-reduced-motion: reduce) { .demo-shot { transition: none; } }
+  /* the demo: one card with the button */
+  .demo-card { background: var(--walnut); border: 1px solid var(--grain); border-radius: 24px; padding: clamp(1.5rem, 4vw, 2.75rem); max-width: 52rem; }
+  .demo-card .prose { color: var(--foam); margin-bottom: 1.5rem; }
 
   /* the café menu board */
   .menu-board { background: var(--walnut); border-radius: 28px; padding: clamp(1.75rem, 5vw, 3.5rem); border: 1px solid var(--grain); }
@@ -296,6 +323,10 @@ const menu = [
   .menu-row dd { margin: 0; flex: 1; display: flex; align-items: baseline; gap: .75rem; color: var(--foam); text-align: right; }
   .menu-row dd::before { content: ''; flex: 1; min-width: 2rem; border-bottom: 2px dotted var(--brass); opacity: .55; transform: translateY(-0.3em); }
 
+  .aws { max-width: 56rem; }
+  .aws td:first-child { font-family: var(--serif); font-size: 1.05rem; white-space: nowrap; }
+  .aws td:nth-child(2) { color: var(--foam); }
+  .aws td:last-child { color: var(--sage); }
   section.longform { padding-top: clamp(3rem, 7vw, 5rem); border-top: 1px solid rgba(201, 164, 99, 0.18); }
   .status-list { list-style: none; padding: 0 !important; }
   .status-list li { display: grid; grid-template-columns: 4.2rem 1fr; gap: .75rem; align-items: baseline; color: var(--foam); }
@@ -310,7 +341,7 @@ const menu = [
     .flow-hub { border-radius: 22px; padding: 1.25rem 1rem; }
     .flow-note { margin: 1rem 0 .75rem; }
     .role-more { padding-left: 0; }
-    .demo { grid-template-columns: 1fr; }
+    .hero { grid-template-columns: 1fr; }
     .menu-row { flex-wrap: wrap; gap: .1rem; }
     .menu-row dd { flex-basis: 100%; text-align: left; }
     .menu-row dd::before { display: none; }

@@ -160,7 +160,7 @@ const timeline = [
     <div class="wrap">
       <h2>Outside work</h2>
       <p class="prose muted">
-        A pipeline I’m building on my own time, held to the same standards as the ones I run at work.
+        A pipeline I built and run on my own time, held to the same standards as the ones I run at work.
       </p>
 
       <article class="project">
@@ -170,16 +170,22 @@ const timeline = [
         </div>
         <p class="stack">Python · dbt · MotherDuck · Prefect · GitHub Actions · Cloudflare</p>
         <p class="prose">
-          Shopping is my most expensive hobby. My bank only shows an Amazon
-          charge as a single total, so I built a pipeline that matches each charge to the items in
-          the order emails. Every morning it pulls my bank, card and Amazon data, tests it and
-          updates a private dashboard with spending, goals and retirement projections.
+          Shopping is my most expensive hobby, and I’m Amazon’s best customer. Budgeting apps
+          couldn’t tell me what I actually bought there, so I built my own: the cheapest option I could
+          find that’s still secure, made for exactly how I spend. Every morning it pulls my bank and card activity,
+          matches Amazon charges to the order history I export from Amazon, tests it all and updates a
+          private dashboard with spending, goals and retirement projections.
         </p>
-        <ul class="status-list prose">
-          <li><span class="tag tag--done">Done</span> Scheduled daily in the cloud: raw, staging and mart layers in MotherDuck, built by dbt with 95 passing tests, published only if every check passes.</li>
-          <li><span class="tag">Next</span> Moving the Amazon email step to the cloud.</li>
+        <ul class="why-list prose">
+          <li><span class="tag tag--done">I use it daily</span> It replaced my budgeting app. I check it before I buy something, not just when I’m curious.</li>
+          <li><span class="tag tag--done">About $15 a year</span> The bank connection is the only paid part; everything else runs on free tiers. That’s less than a typical budgeting app subscription.</li>
+          <li><span class="tag tag--done">Itemizes Amazon</span> Every Amazon charge is split into the items in the order, with returns taken off, which budgeting apps don’t do.</li>
+          <li><span class="tag tag--done">Built around me</span> Weekly paychecks, card due dates, savings goals without bank rules and retirement plans for different rents.</li>
         </ul>
-        <p class="project-links"><a href="/budget-pipeline/">Read the case study</a><a href="/budget-pipeline/demo/">Try the demo</a></p>
+        <div class="project-links">
+          <a class="button" href="/budget-pipeline/">Read the case study</a>
+          <a class="button button--ghost" href="/budget-pipeline/demo/">Try the demo</a>
+        </div>
       </article>
     </div>
   </section>
@@ -341,7 +347,11 @@ const timeline = [
   .status-list { list-style: none; padding: 0; margin: 0 0 1.25rem; }
   .status-list li { display: grid; grid-template-columns: 4.2rem 1fr; gap: .75rem; align-items: baseline; margin: .6rem 0; color: var(--foam); }
   .status-list .tag { justify-self: start; }
-  .project-links { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 0; }
+  .project-links { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+  .why-list { list-style: none; padding: 0; margin: 0; }
+  .why-list li { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1rem; align-items: baseline; margin: .7rem 0; color: var(--foam); }
+  .why-list .tag { justify-self: start; }
+  @media (max-width: 560px) { .why-list li { grid-template-columns: 1fr; gap: .3rem; } }
 
   /* the café menu board: groups on the left, a brass dotted leader, the items on the right */
   .menu-board {
