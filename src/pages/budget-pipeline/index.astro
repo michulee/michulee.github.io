@@ -74,7 +74,7 @@ const menu = [
 ---
 <Base
   title="Budget Pipeline · Michelle Lee"
-  description="Budget Pipeline is a personal data pipeline by Michelle Lee that pulls bank, card and Amazon data every morning, tests it with dbt and turns it into a private spending dashboard."
+  description="Budget Pipeline is a personal data pipeline by Michelle Lee that pulls bank and card data every morning, itemizes Amazon charges from exported order history, tests it with dbt and turns it into a private spending dashboard."
   current="budget"
 >
   <div class="wrap page-head hero">
@@ -82,8 +82,9 @@ const menu = [
       <span class="tag tag--done">Running daily</span>
       <h1>Budget Pipeline</h1>
       <p class="lede">
-        A personal data pipeline that pulls my bank, card and Amazon activity every morning, cleans it
-        into tested tables and turns it into a private dashboard. I built it the way I’d build a
+        A personal data pipeline that pulls my bank and card activity every morning, itemizes my Amazon
+        charges from the order history I export, cleans it all into tested tables and turns it into a
+        private dashboard. I built it the way I’d build a
         production pipeline: layered, tested, scheduled and safe to rerun.
       </p>
       <div class="head-actions">
