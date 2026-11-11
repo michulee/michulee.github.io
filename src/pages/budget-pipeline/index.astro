@@ -63,6 +63,18 @@ const icons: Record<string, string> = {
   lock: '<rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/>',
 };
 
+// the same pieces in AWS terms, for readers who know AWS better than Cloudflare
+const aws = [
+  { mine: 'Cloudflare Pages', what: 'hosts the dashboard', aws: 'S3 + CloudFront' },
+  { mine: 'Cloudflare Pages Functions', what: 'small server code: settings, rule edits', aws: 'Lambda behind API Gateway' },
+  { mine: 'Cloudflare D1', what: 'small serverless SQL database', aws: 'DynamoDB or Aurora Serverless' },
+  { mine: 'Cloudflare Access', what: 'login in front of the site', aws: 'Cognito or IAM Identity Center' },
+  { mine: 'GitHub Actions schedule', what: 'runs the pipeline every morning', aws: 'EventBridge Scheduler + a Fargate task' },
+  { mine: 'Prefect', what: 'orders the steps, with retries', aws: 'Step Functions or MWAA (Airflow)' },
+  { mine: 'MotherDuck', what: 'the cloud warehouse', aws: 'Redshift Serverless, or Athena over S3' },
+  { mine: 'GitHub secrets', what: 'keys and tokens', aws: 'Secrets Manager' },
+];
+
 const menu = [
   { group: 'Languages', items: 'Python, SQL, JavaScript' },
   { group: 'Warehouse', items: 'DuckDB, MotherDuck' },
@@ -188,6 +200,24 @@ const menu = [
     </div>
   </section>
 
+  <section id="aws">
+    <div class="wrap">
+      <h2>If you know AWS</h2>
+      <p class="prose muted">
+        I picked these for their free tiers, but each one has a familiar AWS counterpart. The design
+        would carry over piece for piece.
+      </p>
+      <div class="table-scroll">
+        <table class="aws">
+          <thead><tr><th scope="col">What I use</th><th scope="col">What it does here</th><th scope="col">Closest AWS service</th></tr></thead>
+          <tbody>
+            {aws.map((a) => (<tr><td>{a.mine}</td><td>{a.what}</td><td>{a.aws}</td></tr>))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
   <section class="wrap longform">
     <div class="prose">
       <h2>Decisions worth explaining</h2>
@@ -293,6 +323,10 @@ const menu = [
   .menu-row dd { margin: 0; flex: 1; display: flex; align-items: baseline; gap: .75rem; color: var(--foam); text-align: right; }
   .menu-row dd::before { content: ''; flex: 1; min-width: 2rem; border-bottom: 2px dotted var(--brass); opacity: .55; transform: translateY(-0.3em); }
 
+  .aws { max-width: 56rem; }
+  .aws td:first-child { font-family: var(--serif); font-size: 1.05rem; white-space: nowrap; }
+  .aws td:nth-child(2) { color: var(--foam); }
+  .aws td:last-child { color: var(--sage); }
   section.longform { padding-top: clamp(3rem, 7vw, 5rem); border-top: 1px solid rgba(201, 164, 99, 0.18); }
   .status-list { list-style: none; padding: 0 !important; }
   .status-list li { display: grid; grid-template-columns: 4.2rem 1fr; gap: .75rem; align-items: baseline; color: var(--foam); }
